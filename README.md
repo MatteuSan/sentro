@@ -5,6 +5,8 @@
 #### SCSS Input
 - Tokenize your UI while creating an intuitive theming API for your design system.
 ```scss
+@use 'path/to/sentro/Theme' with ($prefix: 'sdb');
+
 // :root context
 :root {
     @include Theme.token-add(
@@ -38,6 +40,20 @@
 #### CSS Output
 - Voila!
 ```css
+:root {
+  --sdb-theme-primary: #122c53;
+  --sdb-theme-primary-light: #536b99;
+  --sdb-theme-primary-dark: #061021;
+  --sdb-theme-on-primary: #fff;
+  --sdb-theme-secondary: #ffac00;
+  --sdb-theme-secondary-light: #ffd77e;
+  --sdb-theme-secondary-dark: #533800;
+  --sdb-theme-on-secondary: #000;
+  --sdb-theme-radius-small: 0.3rem;
+  --sdb-theme-radius-medium: 0.5rem;
+  --sdb-theme-radius-large: 0.7rem;
+}
+
 .my-button-theme {
     background: var(--sdb-button-fill, var(--sdb-theme-secondary));
     color: var(--sdb-button-ink, var(--sdb-theme-on-secondary));
