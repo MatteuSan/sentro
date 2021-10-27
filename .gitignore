@@ -1,0 +1,7 @@
+/node_modules
+/.idea
+/build
+/dist
+
+*/**/*.test.css
+*/**/*.test.css.map

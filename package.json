@@ -1,0 +1,25 @@
+{
+  "name": "tulay-design-system",
+  "version": "0.1.0",
+  "description": "A smart and elegant design system builder",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "gulp"
+  },
+  "keywords": [
+    "SCSS",
+    "design-system",
+    "CSS",
+    "UI",
+    "UX"
+  ],
+  "author": "Matteu",
+  "license": "MIT",
+  "devDependencies": {
+    "cssnano": "^5.0.8",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.43.4"
+  }
+}

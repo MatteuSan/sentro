@@ -1,0 +1,8 @@
+{
+  "name": "@matteu/sentro",
+  "version": "0.1.0",
+  "description": "A design system builder.",
+  "main": "index.js",
+  "author": "Matteu",
+  "license": "MIT"
+}
