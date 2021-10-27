@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-@use '../../src/TDSCore/Tools';
+@use '../../src/Tools';
 
 .test-component {
     @include Tools.prefix(transition, all 0.1s ease);
