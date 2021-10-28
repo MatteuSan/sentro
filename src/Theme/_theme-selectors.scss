@@ -20,14 +20,7 @@
 //  SOFTWARE.
 //
 
-@use 'sass:list';
-@use 'sass:map';
 @use 'sass:meta';
+@use 'sass:selector';
 
-@function has-item($reference, $query) {
-    @return list.index($reference, $query) != null;
-}
-
-@function has-property($reference, $query) {
-    @return map.has-key($reference, $query) != null;
-}
+$ds-prefix: 'sdb' !default;

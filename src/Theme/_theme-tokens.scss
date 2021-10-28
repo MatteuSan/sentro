@@ -1,23 +1,23 @@
 //
-// Copyright (c) 2021 Matteu
+//  Copyright (c) 2021 Matteu
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
 //
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 //
 
 @use 'sass:string';
@@ -42,45 +42,52 @@ $ds-prefix: 'sdb' !default;
 /// @return {*}
 @mixin add($token-map: (), $tokens...) {
     @if not Feature.is-empty($token-map) {
+        
         @each $key, $value in $token-map {
+            
             @if meta.type-of($value) == map {
+                
                 @each $_key, $_value in $value {
-                    // TODO: Put it in a validator next time ;)
-                    @if $_key == 'default'
-                    or $_key == default
-                    or $_key == 'base'
-                    or $_key == base {
+                    
+                    @if string.index($_key, 'default') > -1 {
                         @include create(#{$key}, $_value);
-                    } @else if $_key == 'ink' {
-                        @include create(on-#{$key}, $_value);
                     } @else {
                         @include create(#{$key}-#{$_key}, $_value);
                     }
+                    
                 }
+                
             } @else {
+                
                 @include create(#{$key}, $value);
+                
             }
         }
+        
     } @else {
+        
         @each $key, $value in meta.keywords($tokens) {
+            
             @if meta.type-of($value) == map {
+                
                 @each $_key, $_value in $value {
-                    // TODO: Put it in a validator next time ;)
-                    @if $_key == 'default'
-                    or $_key == default
-                    or $_key == 'base'
-                    or $_key == base {
+                    
+                    @if string.index($_key, 'default') > -1 {
                         @include create(#{$key}, $_value);
-                    } @else if $_key == 'ink' {
-                        @include create(on-#{$key}, $_value);
                     } @else {
                         @include create(#{$key}-#{$_key}, $_value);
                     }
+                    
                 }
+                
             } @else {
+                
                 @include create($key, $value);
+                
             }
+            
         }
+        
     }
 }
 

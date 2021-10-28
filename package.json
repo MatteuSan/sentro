@@ -1,6 +1,6 @@
 {
-  "name": "tulay-design-system",
-  "version": "0.1.0",
+  "name": "sentro",
+  "version": "0.1.1",
   "description": "A smart and elegant design system builder",
   "main": "index.js",
   "scripts": {

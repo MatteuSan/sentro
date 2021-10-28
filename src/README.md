@@ -13,32 +13,32 @@ A token based design system builder.
 @use 'path/to/sentro/Theme' with ($prefix: 'sdb');
 
 :root {
-    @include Theme.token-add(
-        $primary: (
-            'default': #122c53,
-            'light': #536b99,
-            'dark': #061021,
-            'ink': #fff
-        ),
-        $secondary: (
-            'default': #ffac00,
-            'light': #ffd77e,
-            'dark': #533800,
-            'ink': #000
-        ),
-        $radius: (
-            'small': 0.3rem,
-            'medium': 0.5rem,
-            'large': 0.7rem
-        ),
-    );
+  @include Theme.token-add(
+          $primary: (
+                  'default': #122c53,
+                  'light': #536b99,
+                  'dark': #061021,
+                  'ink': #fff
+          ),
+          $secondary: (
+                  'default': #ffac00,
+                  'light': #ffd77e,
+                  'dark': #533800,
+                  'ink': #000
+          ),
+          $radius: (
+                  'small': 0.3rem,
+                  'medium': 0.5rem,
+                  'large': 0.7rem
+          ),
+  );
 }
 
 .my-button-theme {
-    background: Theme.key-create('button-fill', Theme.token-get('secondary'));
-    color: Theme.key-create('button-ink', Theme.token-get('secondary-ink'));
-    border-color: Theme.key-create('button-border', Theme.token-get('secondary'));
-    border-radius: Theme.key-create('button-radius', Theme.token-get('radius-small'));
+  background: Theme.key-create('button-fill', Theme.token-get('secondary'));
+  color: Theme.key-create('button-ink', Theme.token-get('secondary-ink'));
+  border-color: Theme.key-create('button-border', Theme.token-get('secondary'));
+  border-radius: Theme.key-create('button-radius', Theme.token-get('radius-small'));
 }
 ```
 #### CSS Output
