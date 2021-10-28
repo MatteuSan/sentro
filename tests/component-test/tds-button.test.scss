@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-@use '../../src/Theme';
+@use '../../src' as Sentro with ($prefix: 'sdc');
 
 $light-theme: (
     primary: (
@@ -44,7 +44,7 @@ $light-theme: (
 );
 
 :root {
-    @include Theme.token-add($light-theme);
+    @include Sentro.token-add($light-theme);
 }
 
 .tds-button {
@@ -60,31 +60,28 @@ $light-theme: (
     border-width: 1px;
     border-style: solid;
     
-    @include Theme.key-bind('button-fill', #232323);
-    @include Theme.key-bind('button-ink', #fff);
+    @include Sentro.key-bind('button-fill', #232323);
+    @include Sentro.key-bind('button-ink', #fff);
     
-    // Struct
-    padding: Theme.key-create('button-padding', 0.4rem 0.6rem); // --tds-button-padding
+    padding: Sentro.key-create('button-padding', 0.4rem 0.6rem);
     
-    // Color
-    background: Theme.key-create('button-fill', Theme.token-get('secondary')); // --tds-button-fill
-    color: Theme.key-create('button-ink', Theme.token-get('on-secondary')); // --tds-button-ink
-    border-color: Theme.key-create('button-border', Theme.token-get('secondary')); // --tds-button-border
+    background: Sentro.key-create('button-fill', Sentro.token-get('secondary'));
+    color: Sentro.key-create('button-ink', Sentro.token-get('secondary-ink'));
+    border-color: Sentro.key-create('button-border', Sentro.token-get('secondary'));
     
-    // Shape
-    border-radius: Theme.key-create('button-radius', Theme.token-get('radius-small')); // --tds-button-radius
+    border-radius: Sentro.key-create('button-radius', Sentro.token-get('radius-small'));
     
     & > * + * {
-        margin-left: 0.3rem; // --tds-button-gap
+        margin-left: Sentro.key-create('button-gap', 0.3rem);
     }
     
     .tds-button__icon {
-        color: inherit; // --tds-button-icon-ink
-        font-size: 20px; // --tds-button-icon-size
+        color: Sentro.key-create('button-icon-ink', inherit);
+        font-size: Sentro.key-create('button-icon-size', Sentro.px-to-rem(20px));
     }
     
     .tds-button__label {
-        color: inherit; // --tds-button-label-ink
-        font-size: 14px; // --tds-button-label-size
+        color: Sentro.key-create('button-label-ink', inherit);
+        font-size: Sentro.key-create('button-icon-size', Sentro.px-to-rem(14px));
     }
 }

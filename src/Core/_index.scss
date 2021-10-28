@@ -21,6 +21,7 @@
 //
 
 $prefix: 'sdb' !default;
+$context: '' !default;
 
-@forward 'theme-tokens' as token-* with ($ds-prefix: $prefix);
-@forward 'theme-keys' as key-* with ($ds-prefix: $prefix);
+@forward 'tokens' as token-* with ($ds-prefix: $prefix, $ds-context: $context);
+@forward 'keys' as key-* with ($ds-prefix: $prefix);

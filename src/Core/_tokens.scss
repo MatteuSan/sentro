@@ -27,13 +27,14 @@
 @use '../Feature';
 
 $ds-prefix: 'sdb' !default;
+$ds-context: '' !default;
 
 /// Creates a theme token.
 /// @param {string} $key
 /// @param {*} $value
 /// @return {*}
 @mixin create($key, $value) {
-    --#{$ds-prefix}-theme-#{$key}: #{$value};
+    --#{$ds-prefix}#{_sanitize-context($ds-context)}#{$key}: #{$value};
 }
 
 /// Adds a set of tokens, either using maps or separate arguments, to a context-ed selector like :root.
@@ -95,7 +96,7 @@ $ds-prefix: 'sdb' !default;
 /// @param {string} $key
 /// @return {string}
 @function get($key) {
-    @return var(--#{$ds-prefix}-theme-#{_sanitize-key($key)});
+    @return var(--#{$ds-prefix}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
 }
 
 /// Sanitizes and verifies a key.
@@ -106,4 +107,14 @@ $ds-prefix: 'sdb' !default;
         @return string.slice($key, 2);
     }
     @return $key;
+}
+
+/// Sanitizes and verifies a context.
+/// @param {string} $context
+/// @return {string}
+@function _sanitize-context($context) {
+    @if Feature.is-empty($context) {
+        @return '-';
+    }
+    @return '-#{$context}-';
 }
