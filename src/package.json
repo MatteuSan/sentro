@@ -1,6 +1,6 @@
 {
   "name": "@matteusan/sentro",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A design system builder.",
   "main": "index.js",
   "author": "Matteu",

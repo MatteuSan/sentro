@@ -105,6 +105,7 @@ yarn add @matteusan/sentro
         // It can also be separate variable arguments.
         $small-radius: 0.3rem,
         $medium-radius: 0.5rem,
+        $global-font: ('Arial', sans-serif)
     );
 }
 ```
