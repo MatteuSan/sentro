@@ -25,3 +25,4 @@ $context: '' !default;
 
 @forward 'tokens' as token-* with ($ds-prefix: $prefix, $ds-context: $context);
 @forward 'keys' as key-* with ($ds-prefix: $prefix);
+@forward 'selectors' as selector-* with ($ds-prefix: $prefix);

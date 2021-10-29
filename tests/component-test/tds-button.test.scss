@@ -21,6 +21,7 @@
 //
 
 @use '../../src' as Sentro with ($prefix: 'sdc');
+@use '~sass-true/sass/true' as true;
 
 $light-theme: (
     primary: (
@@ -43,45 +44,66 @@ $light-theme: (
     global-font: ('Arial', sans-serif)
 );
 
-:root {
-    @include Sentro.token-add($light-theme);
+@include true.it('Outputs the tokens for the button component') {
+    @include true.assert {
+        @include true.output {
+            :root {
+                @include Sentro.token-add($light-theme);
+            }
+        }
+        @include true.expect {
+            :root {
+                --sdc-primary: #122c53;
+                --sdc-primary-light: #536b99;
+                --sdc-primary-dark: #061021;
+                --sdc-primary-ink: #fff;
+                --sdc-secondary: #ffac00;
+                --sdc-secondary-light: #ffd77e;
+                --sdc-secondary-dark: #533800;
+                --sdc-secondary-ink: #000;
+                --sdc-radius-small: 0.3rem;
+                --sdc-radius-medium: 0.5rem;
+                --sdc-radius-large: 0.7rem;
+                --sdc-global-font: Arial, sans-serif;
+            }
+        }
+    }
 }
 
-.tds-button {
-    width: 100%;
-    max-width: max-content;
-    display: inline-flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    cursor: pointer;
-    box-sizing: border-box;
-    border-width: 1px;
-    border-style: solid;
-    
-    @include Sentro.key-bind('button-fill', #232323);
-    @include Sentro.key-bind('button-ink', #fff);
-    
-    padding: Sentro.key-create('button-padding', 0.4rem 0.6rem);
-    
-    background: Sentro.key-create('button-fill', Sentro.token-get('secondary'));
-    color: Sentro.key-create('button-ink', Sentro.token-get('secondary-ink'));
-    border-color: Sentro.key-create('button-border', Sentro.token-get('secondary'));
-    
-    border-radius: Sentro.key-create('button-radius', Sentro.token-get('radius-small'));
-    
-    & > * + * {
-        margin-left: Sentro.key-create('button-gap', 0.3rem);
-    }
-    
-    .tds-button__icon {
-        color: Sentro.key-create('button-icon-ink', inherit);
-        font-size: Sentro.key-create('button-icon-size', Sentro.px-to-rem(20px));
-    }
-    
-    .tds-button__label {
-        color: Sentro.key-create('button-label-ink', inherit);
-        font-size: Sentro.key-create('button-icon-size', Sentro.px-to-rem(14px));
+@include true.it('Outputs a font size and line height based on keyword') {
+    @include true.assert {
+        @include true.output {
+            @include Sentro.selector-create('.button') {
+                width: 100%;
+                max-width: max-content;
+                display: inline-flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+                cursor: pointer;
+                box-sizing: border-box;
+                border-width: 1px;
+                border-style: solid;
+            }
+        }
+        
+        @include true.expect {
+            .sdc-button {
+                width: 100%;
+                max-width: max-content;
+                display: inline-flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                user-select: none;
+                cursor: pointer;
+                box-sizing: border-box;
+                border-width: 1px;
+                border-style: solid;
+            }
+        }
     }
 }
+
+@include true.report;

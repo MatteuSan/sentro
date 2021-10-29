@@ -22,5 +22,29 @@
 
 @use 'sass:meta';
 @use 'sass:selector';
+@use 'sass:string';
 
 $ds-prefix: 'sdb' !default;
+
+/// Creates a selector with your design system prefix.
+/// @param {string} $selector
+/// @return {*}
+@mixin create($selector) {
+    #{_prepend-selector-type($selector)} {
+        @content;
+    }
+}
+
+/// Determines the selector type and composes the selector name with your design system prefix.
+/// @access private
+/// @param {string} $selector
+/// @return {string}
+@function _prepend-selector-type($selector) {
+    @if string.slice($selector, 1, 1) == '.' {
+        @return string.unquote('.#{$ds-prefix}-#{string.slice($selector, 2)}');
+    } @else if string.slice($selector, 1, 1) == '#' {
+        @return string.unquote('##{$ds-prefix}-#{string.slice($selector, 2)}');
+    } @else {
+        @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
+    }
+}
