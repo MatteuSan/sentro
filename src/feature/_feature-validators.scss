@@ -20,33 +20,30 @@
 //  SOFTWARE.
 //
 
-@use 'sass:string';
-@use 'sass:map';
 @use 'sass:meta';
 
-@use '../Feature';
-
-$ds-prefix: 'sdb' !default;
-
-/// Creates a key for a css property of a component.
-/// @param {string} $key
-/// @param {*} $value
-/// @return {string}
-@function create($key, $value) {
-    @return var(--#{$ds-prefix}-#{$key}, #{$value});
+/// Check if query is empty.
+/// @param {*} $query
+/// @return {boolean}
+@function is-empty($query) {
+    @if not $query
+       or $query == ''
+       or $query == ()
+       or $query == none
+       or $query == null
+       or length($query) == 0 {
+        @return true;
+    }
+    @return false;
 }
 
-/// Retrieves an existing component key.
-/// @param {string} $key
-/// @return {string}
-@function get($key) {
-    @return var(--#{$ds-prefix}-#{$key});
-}
-
-/// Binds the a value to the component key.
-/// @param {string} $key
-/// @param {*} $value
-/// @return {string|*}
-@mixin bind($key, $value) {
-    --#{$ds-prefix}-#{$key}: #{$value};
+/// Validate a query's data type from a reference.
+/// @param {string} $reference
+/// @param {*} $query
+/// @return {boolean}
+@function validate-data-type($reference, $query) {
+    @if meta.type-of($query) != unquote($reference) {
+        @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
+    }
+    @return true;
 }

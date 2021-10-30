@@ -24,7 +24,7 @@
 @use 'sass:map';
 @use 'sass:meta';
 
-@use '../Feature';
+@use '../feature';
 
 $ds-prefix: 'sdb' !default;
 $ds-context: '' !default;
@@ -42,22 +42,17 @@ $ds-context: '' !default;
 /// @param {args} $tokens...
 /// @return {*}
 @mixin add($token-map: (), $tokens...) {
-    @if not Feature.is-empty($token-map) {
+    @if not feature.is-empty($token-map) {
         
         @each $key, $value in $token-map {
-            
             @if meta.type-of($value) == map {
-                
                 @each $_key, $_value in $value {
-                    
                     @if $_key == 'default' {
                         @include create(#{$key}, $_value);
                     } @else {
                         @include create(#{$key}-#{$_key}, $_value);
                     }
-                    
                 }
-                
             } @else {
                 
                 @include create(#{$key}, $value);
@@ -68,25 +63,19 @@ $ds-context: '' !default;
     } @else {
         
         @each $key, $value in meta.keywords($tokens) {
-            
             @if meta.type-of($value) == map {
-                
                 @each $_key, $_value in $value {
-                    
                     @if $_key == 'default' {
                         @include create(#{$key}, $_value);
                     } @else {
                         @include create(#{$key}-#{$_key}, $_value);
                     }
-                    
                 }
-                
             } @else {
                 
                 @include create($key, $value);
                 
             }
-            
         }
         
     }
@@ -115,7 +104,7 @@ $ds-context: '' !default;
 /// @param {string} $context
 /// @return {string}
 @function _sanitize-context($context) {
-    @if Feature.is-empty($context) {
+    @if feature.is-empty($context) {
         @return '-';
     }
     @return '-#{$context}-';

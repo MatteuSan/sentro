@@ -20,8 +20,22 @@
 //  SOFTWARE.
 //
 
-$prefix: 'sdb' !default;
-$context: '' !default;
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
 
-@forward 'core' with ($prefix: $prefix, $context: $context);
-@forward 'tools';
+/// Checks if the list has the item queried.
+/// @param {list} $reference
+/// @param {*} $query
+/// @return {*}
+@function has-item($reference, $query) {
+    @return list.index($reference, $query) != null;
+}
+
+/// Checks if the map has the property queried.
+/// @param {list} $reference
+/// @param {*} $query
+/// @return {*}
+@function has-property($reference, $query) {
+    @return map.has-key($reference, $query) != null;
+}

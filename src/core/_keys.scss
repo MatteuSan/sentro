@@ -20,14 +20,31 @@
 //  SOFTWARE.
 //
 
-@use 'sass:list';
+@use 'sass:string';
 @use 'sass:map';
 @use 'sass:meta';
 
-@function has-item($reference, $query) {
-    @return list.index($reference, $query) != null;
+$ds-prefix: 'sdb' !default;
+
+/// Creates a key for a css property of a component.
+/// @param {string} $key
+/// @param {*} $value
+/// @return {string}
+@function create($key, $value) {
+    @return var(--#{$ds-prefix}-#{$key}, #{$value});
 }
 
-@function has-property($reference, $query) {
-    @return map.has-key($reference, $query) != null;
+/// Retrieves an existing component key.
+/// @param {string} $key
+/// @return {string}
+@function get($key) {
+    @return var(--#{$ds-prefix}-#{$key});
+}
+
+/// Binds the a value to the component key.
+/// @param {string} $key
+/// @param {*} $value
+/// @return {string|*}
+@mixin bind($key, $value) {
+    --#{$ds-prefix}-#{$key}: #{$value};
 }

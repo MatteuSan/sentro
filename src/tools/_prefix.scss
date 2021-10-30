@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-@use '../Feature';
+@use '../feature';
 @use 'sass:map';
 
 $prefix-properties: (
@@ -67,7 +67,7 @@ $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
 
 @mixin prefix-property($property, $value, $targets: all) {
     
-    @if not Feature.has-property($prefix-properties, $property) {
+    @if not feature.has-property($prefix-properties, $property) {
         
         #{$property}: $value;
         

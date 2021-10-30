@@ -4,7 +4,7 @@
 ![license_badge](https://img.shields.io/npm/l/@matteusan/sentro)
 ![stars](https://img.shields.io/github/stars/MatteuSan/sentro?style=social)
 
-A token based design system builder.
+A low-level SCSS library for building and managing token-driven design systems.
 
 ## Showcase
 #### SCSS Input
