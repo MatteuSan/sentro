@@ -6,6 +6,9 @@
 
 A low-level SCSS library for building and managing token-driven design systems.
 
+## Documentation
+- The documentation for this project is located [here](https://docs.matteusan.me/docs/sentro).
+
 ## Showcase
 #### SCSS Input
 - Tokenize your UI while creating an intuitive theming API for your design system.
@@ -66,74 +69,5 @@ A low-level SCSS library for building and managing token-driven design systems.
     color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
     border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
     border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
-}
-```
-
-## Setup
-### Prerequisites
-- `NodeJS` - v14.x (or above)
-- `Sass`
-- Some build pack like `gulp`, `webpack`, etc.
-  - *Alternatively, you can use a live sass watcher.*
-
-### Installation
-```shell
-# NPM
-npm install @matteusan/sentro
-
-# Yarn
-yarn add @matteusan/sentro
-```
-
-### Instantiation
-- In your SCSS stylesheet, use the `@use` directive to use the library.
-```scss
-@use 'path/to/@matteusan/sentro';
-```
-- Then configure the prefix to be used and the context in your design system using the `with ()` sass feature.
-- Prefixes are a way to identify your tokens and classes from other design system tokens and classes.
-- Context provides an additional unique prefix for your tokens (e.g. `'token'`, `'theme'`, etc.)
-```scss
-@use 'path/to/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
-```
-- Configure your tokens.
-```scss
-@use 'path/to/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
-
-:root {
-  @include sentro.token-add(
-      // It can be a map with a default value and variants.
-    $brand-color: (
-      'default': #122c53,
-      'ink': #fff
-    ),
-      // It can also be separate variable arguments.
-    $small-radius: 0.3rem,
-    $medium-radius: 0.5rem,
-  );
-}
-
-...
-```
-- Apply these tokens to your design system property values.
-```scss
-...
-
-.my-component {
-  background: sentro.token-get('brand-color-default');
-  color: sentro.token-get('brand-color-ink');
-}
-```
-- Let the library do its magic... then... wait for it... VOILA!
-```css
-/* CSS Output */
-:root {
-  --sdc-token-brand-color: #122c53;
-  --sdc-token-brand-color-ink: #fff;
-}
-
-.my-component {
-  background: var(--sdc-token-brand-color);
-  color: var(--sdc-token-brand-color-ink);
 }
 ```
