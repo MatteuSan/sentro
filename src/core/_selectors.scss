@@ -40,11 +40,21 @@ $ds-prefix: 'sdb' !default;
 /// @param {string} $selector
 /// @return {string|error} returns a cleaned and prefixed selector.
 @function _prepend-selector-type($selector) {
-    @if string.slice($selector, 1, 1) == '.' {
-        @return string.unquote('.#{$ds-prefix}-#{string.slice($selector, 2)}');
-    } @else if string.slice($selector, 1, 1) == '#' {
-        @return string.unquote('##{$ds-prefix}-#{string.slice($selector, 2)}');
-    } @else {
-        @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
+    @if string.slice($selector, 1, 1) == '&' {
+        @if string.slice($selector, 2, 2) == '.' {
+            @return string.unquote('&.#{$ds-prefix}-#{string.slice($selector, 3)}');
+        } @else if string.slice($selector, 2, 2) == '#' {
+            @return string.unquote('&##{$ds-prefix}-#{string.slice($selector, 3)}');
+        } @else {
+            @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
+        }
+    } @else if string.slice($selector, 1, 1) != '&' {
+        @if string.slice($selector, 1, 1) == '.' {
+            @return string.unquote('.#{$ds-prefix}-#{string.slice($selector, 2)}');
+        } @else if string.slice($selector, 1, 1) == '#' {
+            @return string.unquote('##{$ds-prefix}-#{string.slice($selector, 2)}');
+        } @else {
+            @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
+        }
     }
 }

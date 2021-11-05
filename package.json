@@ -1,7 +1,7 @@
 {
   "name": "sentro",
-  "version": "0.1.5",
-  "description": "A smart and elegant design system builder",
+  "version": "0.1.6",
+  "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "index.js",
   "scripts": {
     "build:sass": "gulp"

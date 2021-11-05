@@ -1,7 +1,7 @@
 {
   "name": "@matteusan/sentro",
-  "version": "0.1.5",
-  "description": "A design system builder.",
+  "version": "0.1.6",
+  "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "index.js",
   "author": "Matteu",
   "license": "MIT",

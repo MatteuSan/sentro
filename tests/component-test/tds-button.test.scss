@@ -20,8 +20,7 @@
 //  SOFTWARE.
 //
 
-@use '../../src' as Sentro with ($prefix: 'sdc');
-@use '~sass-true/sass/true' as true;
+@use '../../src' as Sentro with ($prefix: 'msc');
 
 $light-theme: (
     primary: (
@@ -44,66 +43,24 @@ $light-theme: (
     global-font: ('Arial', sans-serif)
 );
 
-@include true.it('Outputs the tokens for the button component') {
-    @include true.assert {
-        @include true.output {
-            :root {
-                @include Sentro.token-add($light-theme);
-            }
-        }
-        @include true.expect {
-            :root {
-                --sdc-primary: #122c53;
-                --sdc-primary-light: #536b99;
-                --sdc-primary-dark: #061021;
-                --sdc-primary-ink: #fff;
-                --sdc-secondary: #ffac00;
-                --sdc-secondary-light: #ffd77e;
-                --sdc-secondary-dark: #533800;
-                --sdc-secondary-ink: #000;
-                --sdc-radius-small: 0.3rem;
-                --sdc-radius-medium: 0.5rem;
-                --sdc-radius-large: 0.7rem;
-                --sdc-global-font: Arial, sans-serif;
-            }
-        }
-    }
+:root {
+    @include Sentro.token-add($light-theme);
 }
 
-@include true.it('Outputs a font size and line height based on keyword') {
-    @include true.assert {
-        @include true.output {
-            @include Sentro.selector-create('.button') {
-                width: 100%;
-                max-width: max-content;
-                display: inline-flex;
-                flex-flow: row nowrap;
-                justify-content: center;
-                align-items: center;
-                user-select: none;
-                cursor: pointer;
-                box-sizing: border-box;
-                border-width: 1px;
-                border-style: solid;
-            }
-        }
-        
-        @include true.expect {
-            .sdc-button {
-                width: 100%;
-                max-width: max-content;
-                display: inline-flex;
-                flex-flow: row nowrap;
-                justify-content: center;
-                align-items: center;
-                user-select: none;
-                cursor: pointer;
-                box-sizing: border-box;
-                border-width: 1px;
-                border-style: solid;
-            }
-        }
+@include Sentro.selector-create('.button') {
+    width: 100%;
+    max-width: max-content;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    
+    @include Sentro.selector-create('&.button--variant') {
+        content: 'hello :)';
     }
 }
-
-@include true.report;
