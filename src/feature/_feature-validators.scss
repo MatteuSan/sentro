@@ -24,7 +24,7 @@
 
 /// Check if query is empty.
 /// @param {*} $query
-/// @return {boolean}
+/// @return {boolean} true if empty, false if not.
 @function is-empty($query) {
     @if not $query
        or $query == ''
@@ -40,7 +40,7 @@
 /// Validate a query's data type from a reference.
 /// @param {string} $reference
 /// @param {*} $query
-/// @return {boolean}
+/// @return {boolean|error} true if the query matches the referenced data type.
 @function validate-data-type($reference, $query) {
     @if meta.type-of($query) != unquote($reference) {
         @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';

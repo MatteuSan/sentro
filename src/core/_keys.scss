@@ -29,14 +29,14 @@ $ds-prefix: 'sdb' !default;
 /// Creates a key for a css property of a component.
 /// @param {string} $key
 /// @param {*} $value
-/// @return {string}
+/// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
     @return var(--#{$ds-prefix}-#{$key}, #{$value});
 }
 
 /// Retrieves an existing component key.
 /// @param {string} $key
-/// @return {string}
+/// @return {string} returns var() with key.
 @function get($key) {
     @return var(--#{$ds-prefix}-#{$key});
 }
@@ -44,7 +44,7 @@ $ds-prefix: 'sdb' !default;
 /// Binds the a value to the component key.
 /// @param {string} $key
 /// @param {*} $value
-/// @return {string|*}
+/// @return {string|*} returns an overrider css custom property with a new value.
 @mixin bind($key, $value) {
     --#{$ds-prefix}-#{$key}: #{$value};
 }

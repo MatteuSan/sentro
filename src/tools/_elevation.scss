@@ -31,7 +31,7 @@
 /// @param {int} $level
 /// @param {*} $color
 /// @param {float} $opacity-boost
-/// @return {*}
+/// @return {*} elevation values.
 @mixin apply($level, $color: #000, $opacity-boost: 0.075) {
     
     $_umbra-opacity: 0.2;

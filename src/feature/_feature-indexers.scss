@@ -27,7 +27,7 @@
 /// Checks if the list has the item queried.
 /// @param {list} $reference
 /// @param {*} $query
-/// @return {*}
+/// @return {*} an entity if item is successfully indexed from a list.
 @function has-item($reference, $query) {
     @return list.index($reference, $query) != null;
 }
@@ -35,7 +35,7 @@
 /// Checks if the map has the property queried.
 /// @param {list} $reference
 /// @param {*} $query
-/// @return {*}
+/// @return {*} an entity if item is successfully indexed from a map.
 @function has-property($reference, $query) {
     @return map.has-key($reference, $query) != null;
 }

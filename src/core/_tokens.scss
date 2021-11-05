@@ -32,7 +32,7 @@ $ds-context: '' !default;
 /// Creates a theme token.
 /// @param {string} $key
 /// @param {*} $value
-/// @return {*}
+/// @return {*} returns a token as CSS custom properties with prefix and context.
 @mixin create($key, $value) {
     --#{$ds-prefix}#{_sanitize-context($ds-context)}#{$key}: #{$value};
 }
@@ -40,7 +40,7 @@ $ds-context: '' !default;
 /// Adds a set of tokens, either using maps or separate arguments, to a context-ed selector like :root.
 /// @param {map} $token-map
 /// @param {args} $tokens...
-/// @return {*}
+/// @return {*} returns CSS-ized tokens.
 @mixin add($token-map: (), $tokens...) {
     @if not feature.is-empty($token-map) {
         
@@ -83,7 +83,7 @@ $ds-context: '' !default;
 
 /// Retrieves an existing theme key.
 /// @param {string} $key
-/// @return {string}
+/// @return {string} returns a tokenized css custom property.
 @function get($key) {
     @return var(--#{$ds-prefix}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
 }
@@ -91,7 +91,7 @@ $ds-context: '' !default;
 /// Sanitizes and verifies a key.
 /// @access private
 /// @param {string} $key
-/// @return {string}
+/// @return {string} sanitizes args passed in the token-get() function.
 @function _sanitize-key($key) {
     @if string.index($key, '$') {
         @return string.slice($key, 2);
@@ -102,7 +102,7 @@ $ds-context: '' !default;
 /// Sanitizes and verifies a context.
 /// @access private
 /// @param {string} $context
-/// @return {string}
+/// @return {string} sanitizes context passed in the token-get() function
 @function _sanitize-context($context) {
     @if feature.is-empty($context) {
         @return '-';
