@@ -24,6 +24,8 @@
 @use 'sass:selector';
 @use 'sass:string';
 
+@use '../feature';
+
 $ds-prefix: 'sdb' !default;
 
 /// Creates a selector with your design system prefix.
@@ -42,19 +44,29 @@ $ds-prefix: 'sdb' !default;
 @function _prepend-selector-type($selector) {
     @if string.slice($selector, 1, 1) == '&' {
         @if string.slice($selector, 2, 2) == '.' {
-            @return string.unquote('&.#{$ds-prefix}-#{string.slice($selector, 3)}');
+            @return string.unquote('&.#{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 3)}');
         } @else if string.slice($selector, 2, 2) == '#' {
-            @return string.unquote('&##{$ds-prefix}-#{string.slice($selector, 3)}');
+            @return string.unquote('&##{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 3)}');
         } @else {
             @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
         }
     } @else if string.slice($selector, 1, 1) != '&' {
         @if string.slice($selector, 1, 1) == '.' {
-            @return string.unquote('.#{$ds-prefix}-#{string.slice($selector, 2)}');
+            @return string.unquote('.#{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 2)}');
         } @else if string.slice($selector, 1, 1) == '#' {
-            @return string.unquote('##{$ds-prefix}-#{string.slice($selector, 2)}');
+            @return string.unquote('##{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 2)}');
         } @else {
             @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
         }
     }
+}
+
+/// Sanitizes and verifies a prefix.
+/// @param {string} $prefix
+/// @return {string} sanitized and validated prefix.
+@function _sanitize-prefix($prefix) {
+    @if feature.is-empty($prefix) {
+        @return '';
+    }
+    @return '#{$prefix}-';
 }

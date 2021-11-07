@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-@use '../../src' as Sentro with ($prefix: 'msc');
+@use '../../src' as Sentro with ($prefix: '');
 
 $light-theme: (
     primary: (
@@ -59,7 +59,7 @@ $light-theme: (
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
-    
+
     @include Sentro.selector-create('&.button--variant') {
         content: 'hello :)';
     }

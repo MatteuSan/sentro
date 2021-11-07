@@ -24,6 +24,8 @@
 @use 'sass:map';
 @use 'sass:meta';
 
+@use '../feature';
+
 $ds-prefix: 'sdb' !default;
 
 /// Creates a key for a css property of a component.
@@ -31,14 +33,14 @@ $ds-prefix: 'sdb' !default;
 /// @param {*} $value
 /// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
-    @return var(--#{$ds-prefix}-#{$key}, #{$value});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key}, #{$value});
 }
 
 /// Retrieves an existing component key.
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get($key) {
-    @return var(--#{$ds-prefix}-#{$key});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
 }
 
 /// Binds the a value to the component key.
@@ -46,5 +48,15 @@ $ds-prefix: 'sdb' !default;
 /// @param {*} $value
 /// @return {string|*} returns an overrider css custom property with a new value.
 @mixin bind($key, $value) {
-    --#{$ds-prefix}-#{$key}: #{$value};
+    --#{_sanitize-prefix($ds-prefix)}#{$key}: #{$value};
+}
+
+/// Sanitizes and verifies a prefix.
+/// @param {string} $prefix
+/// @return {string} sanitized and validated prefix.
+@function _sanitize-prefix($prefix) {
+    @if feature.is-empty($prefix) {
+        @return '';
+    }
+    @return '#{$prefix}-';
 }

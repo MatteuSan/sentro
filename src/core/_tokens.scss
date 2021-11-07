@@ -34,16 +34,16 @@ $ds-context: '' !default;
 /// @param {*} $value
 /// @return {*} returns a token as CSS custom properties with prefix and context.
 @mixin create($key, $value) {
-    --#{$ds-prefix}#{_sanitize-context($ds-context)}#{$key}: #{$value};
+    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{$key}: #{$value};
 }
 
 /// Adds a set of tokens, either using maps or separate arguments, to a context-ed selector like :root.
 /// @param {map} $token-map
 /// @param {args} $tokens...
-/// @return {*} returns CSS-ized tokens.
+/// @return {*} CSS-ized tokens.
 @mixin add($token-map: (), $tokens...) {
     @if not feature.is-empty($token-map) {
-        
+
         @each $key, $value in $token-map {
             @if meta.type-of($value) == map {
                 @each $_key, $_value in $value {
@@ -54,14 +54,14 @@ $ds-context: '' !default;
                     }
                 }
             } @else {
-                
+
                 @include create(#{$key}, $value);
-                
+
             }
         }
-        
+
     } @else {
-        
+
         @each $key, $value in meta.keywords($tokens) {
             @if meta.type-of($value) == map {
                 @each $_key, $_value in $value {
@@ -72,26 +72,26 @@ $ds-context: '' !default;
                     }
                 }
             } @else {
-                
+
                 @include create($key, $value);
-                
+
             }
         }
-        
+
     }
 }
 
 /// Retrieves an existing theme key.
 /// @param {string} $key
-/// @return {string} returns a tokenized css custom property.
+/// @return {string} tokenized css custom property selector.
 @function get($key) {
-    @return var(--#{$ds-prefix}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
 }
 
 /// Sanitizes and verifies a key.
 /// @access private
 /// @param {string} $key
-/// @return {string} sanitizes args passed in the token-get() function.
+/// @return {string} sanitized and validated key.
 @function _sanitize-key($key) {
     @if string.index($key, '$') {
         @return string.slice($key, 2);
@@ -102,10 +102,20 @@ $ds-context: '' !default;
 /// Sanitizes and verifies a context.
 /// @access private
 /// @param {string} $context
-/// @return {string} sanitizes context passed in the token-get() function
+/// @return {string} sanitized and validated context.
 @function _sanitize-context($context) {
     @if feature.is-empty($context) {
-        @return '-';
+        @return '';
     }
-    @return '-#{$context}-';
+    @return '#{$context}-';
+}
+
+/// Sanitizes and verifies a prefix.
+/// @param {string} $prefix
+/// @return {string} sanitized and validated prefix.
+@function _sanitize-prefix($prefix) {
+    @if feature.is-empty($prefix) {
+        @return '';
+    }
+    @return '#{$ds-prefix}-';
 }
