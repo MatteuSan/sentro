@@ -20,3 +20,48 @@
 //  SOFTWARE.
 //
 
+@use '../../src' as sentro with ($prefix: 'my', $context: 'theme');
+
+@use 'modules/my-button';
+
+$tokens: (
+    'primary': (
+        'default': #232323,
+        'ink': #fff
+    )
+);
+
+:root {
+    @include sentro.token-add(
+        $map: $tokens,
+        $accent: (
+            'light': #efa0a0,
+            'default': #d95f5f,
+            'dark': #bb3030,
+            'ink': #3b0000
+        ),
+        $radius: (
+            'small': 0.3rem,
+            'medium': 0.5rem,
+            'large': 0.7rem
+        ),
+        $surface: #232323
+    );
+}
+
+.sample-component {
+    background-color: sentro.token-get('accent');
+    color: sentro.token-get('accent-ink');
+}
+
+@include sentro.selector-create('.card') {
+    background-color: sentro.key-create('card-fill', sentro.token-get('accent-light'));
+    color: sentro.key-create('card-ink', sentro.token-get('accent-ink'));
+
+    @include sentro.selector-create('&.card--variant') {
+        @include sentro.key-bind('card-fill', sentro.token-get('accent-ink'));
+        @include sentro.key-bind('card-ink', sentro.token-get('accent-light'));
+    }
+}
+
+@include my-button.use();

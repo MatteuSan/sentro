@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-$prefix: 'sdb' !default;
+$prefix: '' !default;
 $context: '' !default;
 
 @forward 'tokens' as token-* with ($ds-prefix: $prefix, $ds-context: $context);

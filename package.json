@@ -1,6 +1,6 @@
 {
   "name": "sentro",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "index.js",
   "scripts": {

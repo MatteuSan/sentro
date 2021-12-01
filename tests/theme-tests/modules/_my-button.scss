@@ -20,43 +20,15 @@
 //  SOFTWARE.
 //
 
-@use 'sass:string';
-@use 'sass:map';
-@use 'sass:meta';
+@use '../../../src' as sentro;
 
-@use '../feature';
+@mixin use() {
+    .my-button {
+        background-color: sentro.token-get('accent');
+        color: sentro.token-get('accent-ink');
 
-$ds-prefix: '' !default;
-
-/// Creates a key for a css property of a component.
-/// @param {string} $key
-/// @param {*} $value
-/// @return {string} returns var() with key and fallback value.
-@function create($key, $value) {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key}, #{$value});
-}
-
-/// Retrieves an existing component key.
-/// @param {string} $key
-/// @return {string} returns var() with key.
-@function get($key) {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
-}
-
-/// Binds the a value to the component key.
-/// @param {string} $key
-/// @param {*} $value
-/// @return {string|*} returns an overrider css custom property with a new value.
-@mixin bind($key, $value) {
-    --#{_sanitize-prefix($ds-prefix)}#{$key}: #{$value};
-}
-
-/// Sanitizes and verifies a prefix.
-/// @param {string} $prefix
-/// @return {string} sanitized and validated prefix.
-@function _sanitize-prefix($prefix) {
-    @if feature.is-empty($prefix) {
-        @return '';
+        &:hover {
+            background-color: sentro.token-get('accent-light');
+        }
     }
-    @return '#{$prefix}-';
 }

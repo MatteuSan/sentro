@@ -26,7 +26,7 @@
 
 @use '../feature';
 
-$ds-prefix: 'sdb' !default;
+$ds-prefix: '' !default;
 
 /// Creates a selector with your design system prefix.
 /// @param {string} $selector

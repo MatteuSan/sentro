@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-$prefix: 'sdb' !default;
+$prefix: '' !default;
 $context: '' !default;
 
 @forward 'core' with ($prefix: $prefix, $context: $context);

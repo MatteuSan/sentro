@@ -26,7 +26,7 @@
 
 @use '../feature';
 
-$ds-prefix: 'sdb' !default;
+$ds-prefix: '' !default;
 $ds-context: '' !default;
 
 /// Creates a theme token.
@@ -41,10 +41,9 @@ $ds-context: '' !default;
 /// @param {map} $token-map
 /// @param {args} $tokens...
 /// @return {*} CSS-ized tokens.
-@mixin add($token-map: (), $tokens...) {
-    @if not feature.is-empty($token-map) {
-
-        @each $key, $value in $token-map {
+@mixin add($map: (), $tokens...) {
+    @if not feature.is-empty($map) {
+        @each $key, $value in $map {
             @if meta.type-of($value) == map {
                 @each $_key, $_value in $value {
                     @if $_key == 'default' {
@@ -59,9 +58,9 @@ $ds-context: '' !default;
 
             }
         }
+    }
 
-    } @else {
-
+    @if meta.keywords($tokens) {
         @each $key, $value in meta.keywords($tokens) {
             @if meta.type-of($value) == map {
                 @each $_key, $_value in $value {
@@ -77,7 +76,6 @@ $ds-context: '' !default;
 
             }
         }
-
     }
 }
 

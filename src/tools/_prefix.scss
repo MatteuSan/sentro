@@ -65,35 +65,34 @@ $prefix-values: ();
 
 $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
 
-@mixin prefix-property($property, $value, $targets: all) {
-    
+@mixin _prefix-property($property, $value, $targets: all) {
+
     @if not feature.has-property($prefix-properties, $property) {
-        
+
         #{$property}: $value;
-        
+
     } @else {
-        
+
         $_prefix-map: map.get($prefix-properties, $property);
-        
+
         @each $prefix in $_prefix-map {
             #{'-' + $prefix + '-' + $property}: $value;
         }
-        
+
         #{$property}: $value;
-        
+
     }
-    
+
 }
 
-@function prefix-value($property, $value, $targets: all) {
-    
+@function _prefix-value($property, $value, $targets: all) {
+
     //
-    
+
 }
 
-// Retained for backwards compatability
 @mixin prefix($property, $value, $targets: all) {
-    
-    @include prefix-property($property, $value, $targets);
-    
+
+    @include _prefix-property($property, $value, $targets);
+
 }
