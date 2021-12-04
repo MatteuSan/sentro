@@ -50,13 +50,13 @@ $ds-context: '' !default;
                         @if meta.type-of($_value) == map {
                             @include add($map: ($_key: $_value));
                         } @else {
-                            @include create(#{$key}, $_value);
+                            @include create('#{$key}', $_value);
                         }
                     } @else {
                         @if meta.type-of($_value) == map {
                             @include add($map: ('#{$key}-#{$_key}': $_value));
                         } @else {
-                            @include create(#{$key}-#{$_key}, $_value);
+                            @include create('#{$key}-#{$_key}', $_value);
                         }
                     }
                 }
@@ -76,13 +76,13 @@ $ds-context: '' !default;
                         @if meta.type-of($_value) == map {
                             @include add($map: ($_key: $_value));
                         } @else {
-                            @include create(#{$key}, $_value);
+                            @include create('#{$key}', $_value);
                         }
                     } @else {
                         @if meta.type-of($_value) == map {
                             @include add($map: ('#{$key}-#{$_key}': $_value));
                         } @else {
-                            @include create(#{$key}-#{$_key}, $_value);
+                            @include create('#{$key}-#{$_key}', $_value);
                         }
                     }
                 }
