@@ -37,7 +37,16 @@ $tokens: (
         $accent: (
             'light': #efa0a0,
             'default': #d95f5f,
-            'dark': #bb3030,
+            'dark': (
+                'default': #bb3030,
+                'variant': (
+                    '1': (
+                        'default': #871212,
+                        'point-5': #6a0f0f
+                    ),
+                    '2': #232323
+                ),
+            ),
             'ink': #3b0000
         ),
         $radius: (
