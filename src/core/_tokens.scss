@@ -48,7 +48,7 @@ $ds-context: '' !default;
                 @each $_key, $_value in $value {
                     @if $_key == 'default' {
                         @if meta.type-of($_value) == map {
-                            @include add($map: ($_key: $_value));
+                            @include add($map: ($key: $_value));
                         } @else {
                             @include create('#{$key}', $_value);
                         }
@@ -74,7 +74,7 @@ $ds-context: '' !default;
                 @each $_key, $_value in $value {
                     @if $_key == 'default' {
                         @if meta.type-of($_value) == map {
-                            @include add($map: ($_key: $_value));
+                            @include add($map: ($key: $_value));
                         } @else {
                             @include create('#{$key}', $_value);
                         }

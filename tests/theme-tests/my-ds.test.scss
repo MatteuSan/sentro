@@ -47,7 +47,10 @@ $tokens: (
                     '2': #232323
                 ),
             ),
-            'ink': #3b0000
+            'ink': (
+                '1': #3b0000,
+                '2': #3b0000
+            )
         ),
         $radius: (
             'small': 0.3rem,
@@ -63,8 +66,10 @@ $tokens: (
     color: sentro.token-get('accent-ink');
 }
 
+$card-bg: 'accent-light';
+
 @include sentro.selector-create('.card') {
-    background-color: sentro.key-create('card-fill', sentro.token-get('accent-light'));
+    content: sentro.key-create('card-fill', sentro.token-get($card-bg));
     color: sentro.key-create('card-ink', sentro.token-get('accent-ink'));
 
     @include sentro.selector-create('&.card--variant') {
