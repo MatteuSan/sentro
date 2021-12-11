@@ -1,5 +1,5 @@
 {
-  "name": "@matteusan/sentro",
+  "name": "@matteu-san/sentro",
   "version": "0.1.10",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "index.js",
