@@ -1,7 +1,7 @@
 # Sentro
 ![lang](https://img.shields.io/badge/lang-SCSS-%23c69)
-[![version_badge](https://img.shields.io/npm/v/@matteusan/sentro)](https://www.npmjs.com/package/@matteusan/sentro)
-![license_badge](https://img.shields.io/npm/l/@matteusan/sentro)
+[![version_badge](https://img.shields.io/npm/v/@matteu-san/sentro)](https://www.npmjs.com/package/@matteu-san/sentro)
+![license_badge](https://img.shields.io/npm/l/@matteu-san/sentro)
 ![stars](https://img.shields.io/github/stars/MatteuSan/sentro?style=social)
 
 A low-level SCSS library for building and managing token-driven design systems.
