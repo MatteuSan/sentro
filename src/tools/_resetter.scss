@@ -20,7 +20,25 @@
 //  SOFTWARE.
 //
 
-@forward 'converters';
-@forward 'prefix' hide prefix-property;
-@forward 'elevation' as elevation-*;
-@forward 'resetter';
+@use 'resetter-validators' as validator;
+@use 'resetter-presets' as preset;
+
+/// Sets a css reset by using a mixin wrapper.
+/// @param {string} $preset
+/// @return {*} css reset preset.
+@mixin reset($preset) {
+    @if validator.is-preset($preset) {
+        @if $preset == 'cssremedy' {
+            @include preset.css-remedy();
+            @content;
+        }
+        @if $preset == 'normalize' {
+            @include preset.normalize();
+            @content;
+        }
+        @if $preset == 'reseter' {
+            @include preset.reseter-css();
+            @content;
+        }
+    }
+}

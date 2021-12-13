@@ -20,7 +20,12 @@
 //  SOFTWARE.
 //
 
-@forward 'converters';
-@forward 'prefix' hide prefix-property;
-@forward 'elevation' as elevation-*;
-@forward 'resetter';
+@use '../../src' as sentro;
+
+@include sentro.reset('cssremedy') {
+    :root {
+        @include sentro.token-add(
+            $token: #232323
+        );
+    }
+}

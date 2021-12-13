@@ -1,6 +1,6 @@
 {
   "name": "sentro",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "index.js",
   "scripts": {
@@ -16,14 +16,14 @@
   "author": "Matteu",
   "license": "MIT",
   "devDependencies": {
-    "cssnano": "^5.0.8",
-    "gulp": "^4.0.2",
-    "gulp-postcss": "^9.0.1",
-    "gulp-sass": "^5.0.0",
-    "sass": "^1.43.4"
+    "cssnano": "5.0.12",
+    "gulp": "4.0.2",
+    "gulp-postcss": "9.0.1",
+    "gulp-sass": "5.0.0",
+    "sass": "1.44.0"
   },
   "dependencies": {
-    "@matteusan/sentro": "^0.1.9",
-    "sass-true": "^6.0.1"
+    "@matteusan/sentro": "0.1.9",
+    "sass-true": "6.0.1"
   }
 }
