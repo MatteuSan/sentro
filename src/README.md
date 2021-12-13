@@ -1,6 +1,6 @@
 # Sentro
 ![lang](https://img.shields.io/badge/lang-SCSS-%23c69)
-[![version_badge](https://img.shields.io/npm/v/@matteusan/sentro)](https://www.npmjs.com/package/@matteu-san/sentro)
+[![version_badge](https://img.shields.io/npm/v/@matteusan/sentro)](https://www.npmjs.com/package/@matteusan/sentro)
 ![license_badge](https://img.shields.io/npm/l/@matteusan/sentro)
 ![stars](https://img.shields.io/github/stars/MatteuSan/sentro?style=social)
 
