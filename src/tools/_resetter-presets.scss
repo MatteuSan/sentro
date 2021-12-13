@@ -21,6 +21,7 @@
 //
 
 /// cssremedy preset
+/// @source 'https://github.com/jensimmons/cssremedy'
 @mixin css-remedy() {
     *, ::before, ::after {
         box-sizing: border-box;
@@ -113,6 +114,7 @@
 }
 
 /// normalize.css preset
+/// @source 'https://github.com/necolas/normalize.css'
 @mixin normalize() {
     html {
         line-height: 1.15;
@@ -294,6 +296,7 @@
 }
 
 /// reseter.css preset
+/// @source 'https://github.com/resetercss/reseter.css'
 @mixin reseter-css() {
     *,
     *::before,
