@@ -66,13 +66,11 @@ $prefix-values: ();
 $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
 
 @mixin _prefix-property($property, $value, $targets: all) {
-
     @if not feature.has-property($prefix-properties, $property) {
 
         #{$property}: $value;
 
     } @else {
-
         $_prefix-map: map.get($prefix-properties, $property);
 
         @each $prefix in $_prefix-map {
@@ -80,19 +78,13 @@ $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
         }
 
         #{$property}: $value;
-
     }
-
 }
 
 @function _prefix-value($property, $value, $targets: all) {
-
     //
-
 }
 
 @mixin prefix($property, $value, $targets: all) {
-
     @include _prefix-property($property, $value, $targets);
-
 }
