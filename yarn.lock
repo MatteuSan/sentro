@@ -2,10 +2,17 @@
 # yarn lockfile v1
 
 
-"@matteusan/sentro@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.9.tgz#0d9b507f3b4017b39c0409d817b572d36e43a0c9"
-  integrity sha512-G3eKMsU4llMPIOOluGGcSjVUNrNohBxq7bhrfyj7uNmGwWb5qVC5sHx/FuielSur+7f7QEBBIzM/lp12LSErdQ==
+"@matteusan/himig-web@0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@matteusan/himig-web/-/himig-web-0.1.5.tgz#537481880a0a917799f82e5730066b4d8aa9055b"
+  integrity sha512-jKl7SLGcTUGpkg0ISCA5Vq3tlJPbcJTsnVK51+uzJvydj+CY7tJPQyP/Mx0k/Q+lhbavy6H3F/iU71rdV2FNig==
+  dependencies:
+    "@matteusan/sentro" "0.1.12"
+
+"@matteusan/sentro@0.1.12":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@matteusan/sentro/-/sentro-0.1.12.tgz#4d5cf8df261b42f94bc7fe40ea49d376ea89177a"
+  integrity sha512-xsC7usEW/IJtiFt1jSjKy8bGIWN6sTQ8YDauUoaqVwbnCMZX689SDgZNWYm9K6YppgihAlRq2U9gIKeHYRZjPw==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -595,7 +602,7 @@ cssnano-utils@^2.0.1:
   resolved "https://registry.yarnpkg.com/cssnano-utils/-/cssnano-utils-2.0.1.tgz#8660aa2b37ed869d2e2f22918196a9a8b6498ce2"
   integrity sha512-i8vLRZTnEH9ubIyfdZCAdIdgnHAUeQeByEeQ2I7oTilvP9oHO6RScpeq3GsFUVqeB8uZgOQ9pw8utofNn32hhQ==
 
-cssnano@^5.0.8:
+cssnano@5.0.12:
   version "5.0.12"
   resolved "https://registry.yarnpkg.com/cssnano/-/cssnano-5.0.12.tgz#2c083a1c786fc9dc2d5522bd3c0e331b7cd302ab"
   integrity sha512-U38V4x2iJ3ijPdeWqUrEr4eKBB5PbEKsNP5T8xcik2Au3LeMtiMHX0i2Hu9k51FcKofNZumbrcdC6+a521IUHg==
@@ -1127,7 +1134,7 @@ gulp-cli@^2.2.0:
     v8flags "^3.2.0"
     yargs "^7.1.0"
 
-gulp-postcss@^9.0.1:
+gulp-postcss@9.0.1:
   version "9.0.1"
   resolved "https://registry.yarnpkg.com/gulp-postcss/-/gulp-postcss-9.0.1.tgz#d43caa2f2ce1018f889f7c1296faf82e9928b66f"
   integrity sha512-9QUHam5JyXwGUxaaMvoFQVT44tohpEFpM8xBdPfdwTYGM0AItS1iTQz0MpsF8Jroh7GF5Jt2GVPaYgvy8qD2Fw==
@@ -1137,7 +1144,7 @@ gulp-postcss@^9.0.1:
     postcss-load-config "^3.0.0"
     vinyl-sourcemaps-apply "^0.2.1"
 
-gulp-sass@^5.0.0:
+gulp-sass@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-5.0.0.tgz#c338fc021e450a51ae977fea9014eda331ce66b7"
   integrity sha512-J0aH0/2N4+2szGCeut0ktGHK0Wg8L9uWivuigrl7xv+nhxozBQRAKLrhnDDaTa3FeUWYtgT8w4RlgdhRy5v16w==
@@ -1150,7 +1157,7 @@ gulp-sass@^5.0.0:
     transfob "^1.0.0"
     vinyl-sourcemaps-apply "^0.2.1"
 
-gulp@^4.0.2:
+gulp@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-4.0.2.tgz#543651070fd0f6ab0a0650c6a3e6ff5a7cb09caa"
   integrity sha512-dvEs27SCZt2ibF29xYgmnwwCYZxdxhQ/+LFWlbAW8y7jt68L/65402Lz3+CKy0Ov4rOs+NERmDq7YlZaDqUIfA==
@@ -2387,7 +2394,7 @@ safe-regex@^1.1.0:
   dependencies:
     ret "~0.1.10"
 
-sass-true@^6.0.1:
+sass-true@6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-6.0.1.tgz#c159fa27df2f9ee22bb624a851144a8af7dc8a32"
   integrity sha512-Ow72fStIgw+qRRUc0r77emeWry06a3e1hXtadPEzDL/GFiEjtQKZel5fr+gu85zC8JYmLkZofMn6x9b/sq+wfg==
@@ -2396,13 +2403,14 @@ sass-true@^6.0.1:
     css "^3.0.0"
     lodash "^4.17.19"
 
-sass@^1.43.4:
-  version "1.44.0"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.44.0.tgz#619aa0a2275c097f9af5e6b8fe8a95e3056430fb"
-  integrity sha512-0hLREbHFXGQqls/K8X+koeP+ogFRPF4ZqetVB19b7Cst9Er8cOR0rc6RU7MaI4W1JmUShd1BPgPoeqmmgMMYFw==
+sass@1.45.1:
+  version "1.45.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.45.1.tgz#fa03951f924d1ba5762949567eaf660e608a1ab0"
+  integrity sha512-pwPRiq29UR0o4X3fiQyCtrESldXvUQAAE0QmcJTpsI4kuHHcLzZ54M1oNBVIXybQv8QF2zfkpFcTxp8ta97dUA==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
 
 semver-greatest-satisfied-range@^1.1.0:
   version "1.1.0"
@@ -2460,6 +2468,11 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
+
+"source-map-js@>=0.6.2 <2.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.1.tgz#a1741c131e3c77d048252adfa24e23b908670caf"
+  integrity sha512-4+TN2b3tqOCd/kaGRJ/sTYA0tR0mdXx26ipdolxcwtJVqEnqNYvlCAt1q3ypy4QMlYus+Zh34RNtYLoq2oQ4IA==
 
 source-map-resolve@^0.5.0:
   version "0.5.3"
