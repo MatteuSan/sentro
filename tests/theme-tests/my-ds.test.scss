@@ -71,6 +71,8 @@ $card-bg: 'accent-light';
 @include sentro.selector-create('.card') {
     content: sentro.key-create('card-fill', sentro.token-get($card-bg));
     color: sentro.key-create('card-ink', sentro.token-get('accent-ink'));
+    background: sentro.token-get-raw('accent-dark-variant-1');
+    border-color: sentro.key-get-raw('card-ink');
 
     @include sentro.selector-create('&.card--variant') {
         @include sentro.key-bind('card-fill', sentro.token-get('accent-ink'));
