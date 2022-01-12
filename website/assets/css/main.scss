@@ -20,8 +20,56 @@
 //  SOFTWARE.
 //
 
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'hc', $context: 'theme');
+@use 'node_modules/@matteusan/himig-web' as himig;
 
-:root {
-    @include sentro.token-add();
+@use 'node_modules/@matteusan/himig-web/hc-button';
+@use 'node_modules/@matteusan/himig-web/hc-card';
+@use 'node_modules/@matteusan/himig-web/hc-header';
+@use 'node_modules/@matteusan/himig-web/hc-hero';
+@use 'node_modules/@matteusan/himig-web/hc-navbar';
+
+@include himig.init(
+    $accent-inverted: (
+        'default': #210c00,
+        'dark': #100500,
+        'light': #401d00,
+        'ink': #ff6a00,
+    ),
+) {
+    ::-moz-selection {
+        color: himig.theme-token-get('accent-ink');
+        background: himig.theme-token-get('accent');
+    }
+
+    ::selection {
+        color: himig.theme-token-get('accent-ink');
+        background: himig.theme-token-get('accent');
+    }
+
+    .content-wrap {
+        width: calc(100% - 30px);
+        max-width: 977px;
+        margin: 0 auto;
+        padding: 0 0 40px 0;
+    }
+
+    @include hc-button.use();
+
+    .hc-button--inverted {
+        @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+
+        &:hover,
+        &:focus {
+            @include hc-button.override('accent-inverted', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+        }
+
+        &:active {
+            @include hc-button.override('accent-inverted-light', 'accent-inverted-ink', $shadow: 'accent-inverted-light');
+        }
+    }
+
+    @include hc-card.use();
+    @include hc-header.use();
+    @include hc-hero.use();
+    @include hc-navbar.use();
 }
