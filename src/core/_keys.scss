@@ -26,13 +26,20 @@
 
 @use '../feature';
 
+/// Stores the prefix for the design system.
+/// @access public
 $ds-prefix: '' !default;
+
+/// Stores the keys for getting raw values.
+/// @access private
+$_ds-key-registry: ();
 
 /// Creates a key for a css property of a component.
 /// @param {string} $key
 /// @param {*} $value
 /// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
+    $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
     @return var(--#{_sanitize-prefix($ds-prefix)}#{$key}, #{$value});
 }
 
@@ -41,6 +48,13 @@ $ds-prefix: '' !default;
 /// @return {string} returns var() with key.
 @function get($key) {
     @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+}
+
+/// Retrieves the raw value of an existing component key.
+/// @param {string} $key
+/// @return {string} returns var() with key.
+@function get-raw($key) {
+    @return map.get($_ds-key-registry, $key);
 }
 
 /// Binds the a value to the component key.

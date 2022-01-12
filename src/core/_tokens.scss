@@ -26,8 +26,17 @@
 
 @use '../feature';
 
+/// Stores the prefix for the design system.
+/// @access public
 $ds-prefix: '' !default;
+
+/// Stores the context for the design system.
+/// @access public
 $ds-context: '' !default;
+
+/// Stores all the tokens for getting raw values.
+/// @access private
+$_ds-token-registry: ();
 
 /// Creates a theme token.
 /// @param {string} $key
@@ -35,6 +44,7 @@ $ds-context: '' !default;
 /// @return {*} returns a token as CSS custom properties with prefix and context.
 @mixin create($key, $value) {
     --#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{$key}: #{$value};
+    @include _register-token($key, $value);
 }
 
 /// Adds a set of tokens, either using maps or separate arguments, to a context-ed selector like :root.
@@ -95,11 +105,18 @@ $ds-context: '' !default;
     }
 }
 
-/// Retrieves an existing theme key.
+/// Retrieves an existing theme token.
 /// @param {string} $key
 /// @return {string} tokenized css custom property selector.
 @function get($key) {
     @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+}
+
+/// Retrieves the raw value of an existing theme token.
+/// @param {string} $key
+/// @return {*} token value.
+@function get-raw($key) {
+    @return map.get($_ds-token-registry, $key);
 }
 
 /// Sanitizes and verifies a key.
@@ -132,4 +149,12 @@ $ds-context: '' !default;
         @return '';
     }
     @return '#{$ds-prefix}-';
+}
+
+/// Registers a token to the token registry variable.
+/// @param {string} $key
+/// @param {*} $value
+/// @return {void} token registry
+@mixin _register-token($key, $value) {
+    $_ds-token-registry: map.set($_ds-token-registry, $key, $value) !global;
 }
