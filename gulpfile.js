@@ -44,6 +44,12 @@ function sassTaskTest() {
         .pipe(dest('./tests', {sourcemaps: '.'}));
 }
 
+function sassTaskWebsite() {
+    return src('website/**/*.scss', {sourcemaps: true})
+        .pipe(sass().on('error', sass.logError))
+        .pipe(dest('./website', {sourcemaps: '.'}));
+}
+
 function watchTask() {
     watch(['src/**/*.scss', '!src/**/*.test.scss'], sassTaskDev());
     watch(['tests/**/*.scss'], sassTaskTest());
@@ -52,7 +58,8 @@ function watchTask() {
 
 exports.default = series(
     // sassTaskDev,
-    sassTaskTest,
+    // sassTaskTest,
     // sassTaskProd,
+    sassTaskWebsite,
     // watchTask
 );
