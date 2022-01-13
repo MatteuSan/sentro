@@ -20,9 +20,10 @@
 //  SOFTWARE.
 //
 
-@use 'sass:string';
+@use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:string';
 
 @use '../feature';
 
@@ -47,14 +48,18 @@ $_ds-key-registry: ();
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get($key) {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+    @if _is-registered-key($key) {
+        @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+    }
 }
 
 /// Retrieves the raw value of an existing component key.
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get-raw($key) {
-    @return map.get($_ds-key-registry, $key);
+    @if _is-registered-key($key) {
+        @return map.get($_ds-key-registry, $key);
+    }
 }
 
 /// Binds the a value to the component key.
@@ -73,4 +78,14 @@ $_ds-key-registry: ();
         @return '';
     }
     @return '#{$prefix}-';
+}
+
+/// Validates a query if it's a registered key or not
+/// @param {string} $query
+/// @return {boolean|error} is registered key
+@function _is-registered-key($query) {
+    @if not list.index(map.keys($_ds-key-registry), $query) {
+        @error "Invalid key: #{$query}! Please use a valid registered key: #{map.keys($_ds-key-registry)}";
+    }
+    @return true;
 }

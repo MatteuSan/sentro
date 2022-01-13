@@ -58,8 +58,8 @@ function watchTask() {
 
 exports.default = series(
     // sassTaskDev,
-    // sassTaskTest,
+    sassTaskTest,
     // sassTaskProd,
-    sassTaskWebsite,
+    // sassTaskWebsite,
     // watchTask
 );

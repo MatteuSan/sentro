@@ -20,9 +20,10 @@
 //  SOFTWARE.
 //
 
-@use 'sass:string';
+@use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:string';
 
 @use '../feature';
 
@@ -109,14 +110,18 @@ $_ds-token-registry: ();
 /// @param {string} $key
 /// @return {string} tokenized css custom property selector.
 @function get($key) {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+    @if _is-registered-token($key) {
+        @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+    }
 }
 
 /// Retrieves the raw value of an existing theme token.
 /// @param {string} $key
 /// @return {*} token value.
 @function get-raw($key) {
-    @return map.get($_ds-token-registry, $key);
+    @if _is-registered-token($key) {
+        @return map.get($_ds-token-registry, $key);
+    }
 }
 
 /// Sanitizes and verifies a key.
@@ -157,4 +162,14 @@ $_ds-token-registry: ();
 /// @return {void} token registry
 @mixin _register-token($key, $value) {
     $_ds-token-registry: map.set($_ds-token-registry, $key, $value) !global;
+}
+
+/// Validates a query if it's a registered token or not
+/// @param {string} $query
+/// @return {boolean|error} is registered token
+@function _is-registered-token($query) {
+    @if not list.index(map.keys($_ds-token-registry), $query) {
+        @error "Invalid token: #{$query}! Please use a valid registered token: #{map.keys($_ds-token-registry)}";
+    }
+    @return true;
 }
