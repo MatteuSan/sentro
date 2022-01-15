@@ -65,7 +65,7 @@ $_ds-key-registry: ();
 /// Checks if the query is a valid registered key. This is a different method from the private one.
 /// @param {*} query
 /// @return {boolean} validated query.
-@function is-token($query) {
+@function check($query) {
     @return _is-registered-key($query, false);
 }
 

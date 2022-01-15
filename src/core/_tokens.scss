@@ -138,7 +138,7 @@ $_ds-token-registry: ();
 /// Checks if the query is a valid registered token. This is a different method from the private one.
 /// @param {*} query
 /// @return {boolean} validated query.
-@function is-token($query) {
+@function check($query) {
     @return _is-registered-token($query, false);
 }
 
