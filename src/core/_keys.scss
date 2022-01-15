@@ -62,6 +62,13 @@ $_ds-key-registry: ();
     }
 }
 
+/// Checks if the query is a valid registered key. This is a different method from the private one.
+/// @param {*} query
+/// @return {boolean} validated query.
+@function is-token($query) {
+    @return _is-registered-key($query, false);
+}
+
 /// Binds the a value to the component key.
 /// @param {string} $key
 /// @param {*} $value
@@ -71,6 +78,7 @@ $_ds-key-registry: ();
 }
 
 /// Sanitizes and verifies a prefix.
+/// @access private
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
@@ -81,11 +89,17 @@ $_ds-key-registry: ();
 }
 
 /// Validates a query if it's a registered key or not
+/// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered key
-@function _is-registered-key($query) {
+@function _is-registered-key($query, $errors: true) {
     @if not list.index(map.keys($_ds-key-registry), $query) {
-        @error "Invalid key: #{$query}! Please use a valid registered key: #{map.keys($_ds-key-registry)}";
+        @if $errors {
+            @error "Invalid key: #{$query}! Please use a valid registered key: #{map.keys($_ds-key-registry)}";
+        } @else {
+            @return false;
+        }
+    } @else {
+        @return true;
     }
-    @return true;
 }

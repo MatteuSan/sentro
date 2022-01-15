@@ -124,6 +124,24 @@ $_ds-token-registry: ();
     }
 }
 
+/// Check if the query is a token or not. If the query is a token, output a token. If not, output as is.
+/// @param {*} $query
+/// @return {token|*} token or raw value.
+@function switch($query) {
+    @if not is-token($query) {
+        @return $query;
+    } @else {
+        @return get($query);
+    }
+}
+
+/// Checks if the query is a valid registered token. This is a different method from the private one.
+/// @param {*} query
+/// @return {boolean} validated query.
+@function is-token($query) {
+    @return _is-registered-token($query, false);
+}
+
 /// Sanitizes and verifies a key.
 /// @access private
 /// @param {string} $key
@@ -147,6 +165,7 @@ $_ds-token-registry: ();
 }
 
 /// Sanitizes and verifies a prefix.
+/// @access private
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
@@ -157,6 +176,7 @@ $_ds-token-registry: ();
 }
 
 /// Registers a token to the token registry variable.
+/// @access private
 /// @param {string} $key
 /// @param {*} $value
 /// @return {void} token registry
@@ -165,11 +185,17 @@ $_ds-token-registry: ();
 }
 
 /// Validates a query if it's a registered token or not
+/// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered token
-@function _is-registered-token($query) {
+@function _is-registered-token($query, $errors: true) {
     @if not list.index(map.keys($_ds-token-registry), $query) {
-        @error "Invalid token: #{$query}! Please use a valid registered token: #{map.keys($_ds-token-registry)}";
+        @if $errors {
+            @error "Invalid token: #{$query}! Please use a valid registered token: #{map.keys($_ds-token-registry)}";
+        } @else {
+            @return false;
+        }
+    } @else {
+        @return true;
     }
-    @return true;
 }

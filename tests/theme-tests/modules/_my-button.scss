@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //
 
-@use '../../../src' as sentro;
+@use 'node_modules/@matteusan/sentro';
 
 @mixin use() {
     .my-button {
