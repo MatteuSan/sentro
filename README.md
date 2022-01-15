@@ -7,7 +7,7 @@
 A low-level SCSS library for building and managing token-driven design systems.
 
 ## Installation
-```shell
+```sh
 # NPM
 npm install @matteu-san/sentro --save
 
