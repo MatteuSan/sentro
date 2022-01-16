@@ -128,7 +128,7 @@ $_ds-token-registry: ();
 /// @param {*} $query
 /// @return {token|*} token or raw value.
 @function switch($query) {
-    @if not is-token($query) {
+    @if not check($query) {
         @return $query;
     } @else {
         @return get($query);
