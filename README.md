@@ -9,10 +9,10 @@ A low-level SCSS library for building and managing token-driven design systems.
 ## Installation
 ```sh
 # NPM
-npm install @matteu-san/sentro --save
+npm install @matteusan/sentro --save
 
 # Yarn
-yarn add @matteu-san/sentro --save
+yarn add @matteusan/sentro --save
 ```
 
 ## Documentation
@@ -22,7 +22,7 @@ yarn add @matteu-san/sentro --save
 #### SCSS Input
 - Tokenize your UI while creating an intuitive theming API for your design system.
 ```scss
-@use 'path/to/@matteu-san/sentro' with (
+@use 'path/to/@matteusan/sentro' with (
   $prefix: 'sdb',
   $context: 'theme'
 );

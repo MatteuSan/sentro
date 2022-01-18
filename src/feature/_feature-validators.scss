@@ -41,7 +41,7 @@
 /// @param {string} $reference
 /// @param {*} $query
 /// @return {boolean|error} true if the query matches the referenced data type.
-@function validate-data-type($reference, $query) {
+@function is-type($reference, $query) {
     @if meta.type-of($query) != unquote($reference) {
         @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
     }

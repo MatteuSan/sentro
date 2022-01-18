@@ -75,6 +75,9 @@ $_ds-key-registry: ();
 /// @return {string|*} returns an overrider css custom property with a new value.
 @mixin bind($key, $value) {
     --#{_sanitize-prefix($ds-prefix)}#{$key}: #{$value};
+    @if not check($key) {
+        @include _register-key($key, $value);
+    }
 }
 
 /// Sanitizes and verifies a prefix.
@@ -86,6 +89,15 @@ $_ds-key-registry: ();
         @return '';
     }
     @return '#{$prefix}-';
+}
+
+/// Registers a key to the key registry variable.
+/// @access private
+/// @param {string} $key
+/// @param {*} $value
+/// @return {void} key registry
+@mixin _register-key($key, $value) {
+    $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
 }
 
 /// Validates a query if it's a registered key or not
