@@ -35,6 +35,10 @@ $ds-prefix: '' !default;
 /// @access private
 $_ds-key-registry: ();
 
+/// Validation for keys.
+/// @access public
+$validation: true !default;
+
 /// Creates a key for a css property of a component.
 /// @param {string} $key
 /// @param {*} $value
@@ -51,6 +55,9 @@ $_ds-key-registry: ();
     @if _is-registered-key($key) {
         @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
     }
+    @if not $validation {
+        @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+    }
 }
 
 /// Retrieves the raw value of an existing component key.
@@ -58,6 +65,9 @@ $_ds-key-registry: ();
 /// @return {string} returns var() with key.
 @function get-raw($key) {
     @if _is-registered-key($key) {
+        @return map.get($_ds-key-registry, $key);
+    }
+    @if not $validation {
         @return map.get($_ds-key-registry, $key);
     }
 }
@@ -104,7 +114,7 @@ $_ds-key-registry: ();
 /// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered key
-@function _is-registered-key($query, $errors: true) {
+@function _is-registered-key($query, $errors: $validation) {
     @if not list.index(map.keys($_ds-key-registry), $query) {
         @if $errors {
             @error "Invalid key: #{$query}! Please use a valid registered key: #{map.keys($_ds-key-registry)}";

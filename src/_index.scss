@@ -22,6 +22,13 @@
 
 $prefix: '' !default;
 $context: '' !default;
+$token-validation: true !default;
+$key-validation: true !default;
 
-@forward 'core' with ($prefix: $prefix, $context: $context);
+@forward 'core' with (
+    $prefix: $prefix,
+    $context: $context,
+    $token-validation: $token-validation,
+    $key-validation: $key-validation
+);
 @forward 'tools';

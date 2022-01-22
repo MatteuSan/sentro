@@ -35,6 +35,10 @@ $ds-prefix: '' !default;
 /// @access public
 $ds-context: '' !default;
 
+/// Validation for tokens.
+/// @access public
+$validation: true !default;
+
 /// Stores all the tokens for getting raw values.
 /// @access private
 $_ds-token-registry: ();
@@ -113,6 +117,9 @@ $_ds-token-registry: ();
     @if _is-registered-token($key) {
         @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
     }
+    @if not $validation {
+        @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+    }
 }
 
 /// Retrieves the raw value of an existing theme token.
@@ -120,6 +127,9 @@ $_ds-token-registry: ();
 /// @return {*} token value.
 @function get-raw($key) {
     @if _is-registered-token($key) {
+        @return map.get($_ds-token-registry, $key);
+    }
+    @if not $validation {
         @return map.get($_ds-token-registry, $key);
     }
 }
@@ -188,7 +198,7 @@ $_ds-token-registry: ();
 /// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered token
-@function _is-registered-token($query, $errors: true) {
+@function _is-registered-token($query, $errors: $validation) {
     @if not list.index(map.keys($_ds-token-registry), $query) {
         @if $errors {
             @error "Invalid token: #{$query}! Please use a valid registered token: #{map.keys($_ds-token-registry)}";

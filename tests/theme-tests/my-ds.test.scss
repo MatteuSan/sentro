@@ -20,7 +20,11 @@
 //  SOFTWARE.
 //
 
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'my', $context: 'theme');
+@use 'node_modules/@matteusan/sentro' with (
+    $prefix: 'my',
+    $context: 'theme',
+    $token-validation: true
+);
 
 @use 'modules/my-button';
 

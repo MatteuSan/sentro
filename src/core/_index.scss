@@ -22,7 +22,16 @@
 
 $prefix: '' !default;
 $context: '' !default;
+$token-validation: true !default;
+$key-validation: true !default;
 
-@forward 'tokens' as token-* with ($ds-prefix: $prefix, $ds-context: $context);
-@forward 'keys' as key-* with ($ds-prefix: $prefix);
+@forward 'tokens' as token-* with (
+    $ds-prefix: $prefix,
+    $ds-context: $context,
+    $validation: $token-validation
+);
+@forward 'keys' as key-* with (
+    $ds-prefix: $prefix,
+    $validation: $key-validation
+);
 @forward 'selectors' as selector-* with ($ds-prefix: $prefix);
