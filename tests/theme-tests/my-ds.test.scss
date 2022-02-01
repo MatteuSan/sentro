@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,8 @@
 @use 'node_modules/@matteusan/sentro' with (
     $prefix: 'my',
     $context: 'theme',
-    $token-validation: true
+    $token-validation: true,
+    $breakpoint-validation: true
 );
 
 @use 'modules/my-button';
@@ -73,6 +74,12 @@ $tokens: (
 
 $card-bg: 'accent-light';
 
+@include sentro.breakpoint-config(
+    $small: 320px,
+    $medium: 640px,
+    $large: 870px
+);
+
 @include sentro.selector-create('.card') {
     content: sentro.key-create('card-fill', sentro.token-get($card-bg));
     color: sentro.key-create('card-ink', sentro.token-get('accent-ink'));
@@ -82,6 +89,14 @@ $card-bg: 'accent-light';
     @include sentro.selector-create('&.card--variant') {
         @include sentro.key-bind('card-fill', sentro.token-get('accent-ink'));
         @include sentro.key-bind('card-ink', sentro.token-get('accent-light'));
+    }
+
+    @include sentro.breakpoint-create('medium') {
+        content: 'my breakpoint value :)';
+    }
+
+    @include sentro.breakpoint-create('small', 'max') {
+        content: 'my max breakpoint value :)';
     }
 }
 
