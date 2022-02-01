@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,13 @@ $prefix: '' !default;
 $context: '' !default;
 $token-validation: true !default;
 $key-validation: true !default;
+$breakpoint-validation: true !default;
 
 @forward 'core' with (
     $prefix: $prefix,
     $context: $context,
     $token-validation: $token-validation,
-    $key-validation: $key-validation
+    $key-validation: $key-validation,
+    $breakpoint-validation: $breakpoint-validation,
 );
 @forward 'tools';

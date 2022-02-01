@@ -1,0 +1,109 @@
+//
+//  Copyright (c) 2022 Matteu
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+//
+
+@use 'sass:list';
+@use 'sass:map';
+@use 'sass:meta';
+
+/// Stores all breakpoints of the design system. Reference for all mixins below
+/// @access private
+$_ds-breakpoint-registry: ();
+
+/// Validation for breakpoints.
+/// @access public
+$validation: true !default;
+
+/// Configures all the breakpoints to be used in the design system.
+/// @param {*} $breakpoints...
+/// @return {void} breakpoint configuration.
+@mixin config($breakpoints...) {
+    @each $key, $value in meta.keywords($breakpoints) {
+        @include _register-breakpoint($key, $value);
+    }
+}
+
+/// Creates a breakpoint for an element.
+/// @param {string} $query
+/// @return {*} breakpoint.
+@mixin create($query, $context: 'min') {
+    @media (#{$context}-width: _sanitize-breakpoint($query, $context)) {
+        @content;
+    }
+}
+
+/// Gets a breakpoint from query.
+/// @param {string} $query
+/// @return {int|null} breakpoint.
+@function get($query) {
+    @if _is-registered-breakpoint($query) {
+        @return map.get($_ds-breakpoint-registry, $query);
+    }
+    @if not $validation {
+        @return map.get($_ds-breakpoint-registry, $query);
+    }
+}
+
+/// Verifies a breakpoint.
+/// @param {string} $query
+/// @return {boolean} breakpoint verification.
+@function check($query) {
+    @return _is-registered-breakpoint($query, false);
+}
+
+/// Registers a breakpoint to the registry.
+/// @param {string} $key
+/// @param {int} $value
+/// @return {void} register breakpoint.
+@mixin _register-breakpoint($key, $value) {
+    $_ds-breakpoint-registry: map.set($_ds-breakpoint-registry, $key, $value) !global;
+}
+
+/// Validates a query if it's a registered token or not.
+/// @access private
+/// @param {string} $query
+/// @return {boolean|error} is registered token
+@function _is-registered-breakpoint($query, $errors: $validation) {
+    @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
+        @if $errors {
+            @error "Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}";
+        } @else {
+            @return false;
+        }
+    } @else {
+        @return true;
+    }
+}
+
+/// Cleans a breakpoint based on a given context.
+/// @access private
+/// @param {string} $query
+/// @param {string} $context
+/// @return {*} clean breakpoint.
+@function _sanitize-breakpoint($query, $context) {
+    @if not $context == 'min' or not $context == 'max' {
+        @error "Invalid context: #{$context}. Please select from the following valid contexts: min, max.";
+    } @else if $context == 'min' {
+        @return get($query);
+    } @else if $context == 'max' {
+        @return get($query) - 1;
+    }
+}
