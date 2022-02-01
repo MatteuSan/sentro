@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -201,7 +201,7 @@ $_ds-token-registry: ();
 @function _is-registered-token($query, $errors: $validation) {
     @if not list.index(map.keys($_ds-token-registry), $query) {
         @if $errors {
-            @error "Invalid token: #{$query}! Please use a valid registered token: #{map.keys($_ds-token-registry)}";
+            @error "Invalid token: #{$query}. Please use a valid registered token: #{map.keys($_ds-token-registry)}";
         } @else {
             @return false;
         }

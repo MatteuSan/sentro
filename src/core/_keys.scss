@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -117,7 +117,7 @@ $validation: true !default;
 @function _is-registered-key($query, $errors: $validation) {
     @if not list.index(map.keys($_ds-key-registry), $query) {
         @if $errors {
-            @error "Invalid key: #{$query}! Please use a valid registered key: #{map.keys($_ds-key-registry)}";
+            @error "Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}";
         } @else {
             @return false;
         }
