@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@matteusan/himig-web": "0.1.5",
-    "@matteusan/sentro": "0.1.19",
+    "@matteusan/sentro": "0.1.20",
     "sass-true": "6.0.1"
   }
 }
