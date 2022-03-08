@@ -24,6 +24,8 @@
 @use 'sass:map';
 @use 'sass:meta';
 
+@use '../feature';
+
 /// Stores all breakpoints of the design system. Reference for all mixins below
 /// @access private
 $_ds-breakpoint-registry: ();
@@ -35,38 +37,82 @@ $validation: true !default;
 /// Configures all the breakpoints to be used in the design system.
 /// @param {*} $breakpoints...
 /// @return {void} breakpoint configuration.
-@mixin config($breakpoints...) {
-    @each $key, $value in meta.keywords($breakpoints) {
+@mixin config($map: (), $breakpoints...) {
+  @if not feature.is-empty($map) {
+    @each $key, $value in $map {
+      @if meta.type-of($value) == map {
+        @each $_key, $_value in $value {
+          @if $_key == 'default' {
+            @if meta.type-of($_value) == map {
+              @include config(('#{$key}': $_value))
+            } @else {
+              @include _register-breakpoint('#{$key}', $_value);
+            }
+          } @else {
+            @if meta.type-of($_value) == map {
+              @include config(('#{$key}-#{$_key}': $_value))
+            } @else {
+              @include _register-breakpoint('#{$key}-#{$_key}', $_value);
+            }
+          }
+        }
+      } @else {
         @include _register-breakpoint($key, $value);
+      }
     }
+  }
+  
+  @if meta.keywords($breakpoints) {
+    @each $key, $value in meta.keywords($breakpoints) {
+      @if meta.type-of($value) == map {
+        @each $_key, $_value in $value {
+          @if $_key == 'default' {
+            @if meta.type-of($_value) == map {
+              @include config(('#{$key}': $_value))
+            } @else {
+              @include _register-breakpoint('#{$key}', $_value);
+            }
+          } @else {
+            @if meta.type-of($_value) == map {
+              @include config(('#{$key}-#{$_key}': $_value))
+            } @else {
+              @include _register-breakpoint('#{$key}-#{$_key}', $_value);
+            }
+          }
+        }
+      } @else {
+        @include _register-breakpoint($key, $value);
+      }
+    }
+  }
 }
 
 /// Creates a breakpoint for an element.
 /// @param {string} $query
 /// @return {*} breakpoint.
 @mixin create($query, $context: 'min') {
-    @media (#{$context}-width: _sanitize-breakpoint($query, $context)) {
-        @content;
-    }
+  @media (#{$context}-width: _sanitize-breakpoint($query, $context)) {
+    @content;
+  }
 }
 
 /// Gets a breakpoint from query.
 /// @param {string} $query
 /// @return {int|null} breakpoint.
 @function get($query) {
-    @if _is-registered-breakpoint($query) {
-        @return map.get($_ds-breakpoint-registry, $query);
-    }
-    @if not $validation {
-        @return map.get($_ds-breakpoint-registry, $query);
-    }
+  @if _is-registered-breakpoint($query) {
+    @return map.get($_ds-breakpoint-registry, $query);
+  }
+  @if not $validation {
+    @return map.get($_ds-breakpoint-registry, $query);
+  }
 }
 
 /// Verifies a breakpoint.
 /// @param {string} $query
 /// @return {boolean} breakpoint verification.
 @function check($query) {
-    @return _is-registered-breakpoint($query, false);
+  @return _is-registered-breakpoint($query, false);
 }
 
 /// Registers a breakpoint to the registry.
@@ -74,7 +120,7 @@ $validation: true !default;
 /// @param {int} $value
 /// @return {void} register breakpoint.
 @mixin _register-breakpoint($key, $value) {
-    $_ds-breakpoint-registry: map.set($_ds-breakpoint-registry, $key, $value) !global;
+  $_ds-breakpoint-registry: map.set($_ds-breakpoint-registry, $key, $value) !global;
 }
 
 /// Validates a query if it's a registered token or not.
@@ -82,15 +128,15 @@ $validation: true !default;
 /// @param {string} $query
 /// @return {boolean|error} is registered token
 @function _is-registered-breakpoint($query, $errors: $validation) {
-    @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
-        @if $errors {
-            @error "Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}";
-        } @else {
-            @return false;
-        }
+  @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
+    @if $errors {
+      @error 'Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}';
     } @else {
-        @return true;
+      @return false;
     }
+  } @else {
+    @return true;
+  }
 }
 
 /// Cleans a breakpoint based on a given context.
@@ -99,11 +145,11 @@ $validation: true !default;
 /// @param {string} $context
 /// @return {*} clean breakpoint.
 @function _sanitize-breakpoint($query, $context) {
-    @if not $context == 'min' or not $context == 'max' {
-        @error "Invalid context: #{$context}. Please select from the following valid contexts: min, max.";
-    } @else if $context == 'min' {
-        @return get($query);
-    } @else if $context == 'max' {
-        @return get($query) - 1;
-    }
+  @if not $context == 'min' or not $context == 'max' {
+    @error 'Invalid context: #{$context}. Please select from the following valid contexts: min, max.';
+  } @else if $context == 'min' {
+    @return get($query);
+  } @else if $context == 'max' {
+    @return get($query) - 1;
+  }
 }
