@@ -6,6 +6,15 @@
 
 A low-level SCSS library for building and managing token-driven design systems.
 
+## Installation
+```sh
+# NPM
+npm install @matteusan/sentro --save
+
+# Yarn
+yarn add @matteusan/sentro --save
+```
+
 ## Documentation
 - The documentation for this project is located [here](https://docs.matteusan.me/docs/sentro).
 
@@ -19,7 +28,7 @@ A low-level SCSS library for building and managing token-driven design systems.
 );
 
 :root {
-  @include sentro.token-add(
+  @include sentro.token-config(
     $primary: (
       'default': #122c53,
       'light': #536b99,
@@ -65,9 +74,9 @@ A low-level SCSS library for building and managing token-driven design systems.
 }
 
 .my-button-theme {
-    background: var(--sdb-button-fill, var(--sdb-theme-secondary));
-    color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
-    border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
-    border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
+  background: var(--sdb-button-fill, var(--sdb-theme-secondary));
+  color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
+  border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
+  border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
 }
 ```

@@ -28,7 +28,7 @@ yarn add @matteusan/sentro --save
 );
 
 :root {
-  @include sentro.token-add(
+  @include sentro.token-config(
     $primary: (
       'default': #122c53,
       'light': #536b99,
