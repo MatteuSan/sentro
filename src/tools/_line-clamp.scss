@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,12 +24,12 @@
 /// @param {string|int} $lines
 /// @return {*} queried line clamp styles.
 @mixin line-clamp($lines) {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    @if $lines == 0 or $lines == 'none' {
-        -webkit-line-clamp: unset;
-    } @else {
-        -webkit-line-clamp: $lines;
-    }
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  @if $lines == 0 or $lines == 'none' {
+    -webkit-line-clamp: unset;
+  } @else {
+    -webkit-line-clamp: $lines;
+  }
 }

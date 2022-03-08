@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -24,41 +24,41 @@
 @use 'sass:map';
 
 $prefix-properties: (
-    transition: (
-        'webkit'
-    ),
-    box-shadow: (
-        'webkit',
-        'ms'
-    ),
-    background-clip: (
-        'webkit'
-    ),
-    box-reflect: (
-        'webkit'
-    ),
-    filter: (
-        'webkit'
-    ),
-    word-break: (
-        'ms'
-    ),
-    object-fit: (
-        'o'
-    ),
-    transform: (
-        'webkit',
-        'ms'
-    ),
-    appearance: (
-        'webkit',
-        'moz'
-    ),
-    user-select: (
-        'webkit',
-        'moz',
-        'ms'
-    )
+  transition: (
+    'webkit'
+  ),
+  box-shadow: (
+    'webkit',
+    'ms'
+  ),
+  background-clip: (
+    'webkit'
+  ),
+  box-reflect: (
+    'webkit'
+  ),
+  filter: (
+    'webkit'
+  ),
+  word-break: (
+    'ms'
+  ),
+  object-fit: (
+    'o'
+  ),
+  transform: (
+    'webkit',
+    'ms'
+  ),
+  appearance: (
+    'webkit',
+    'moz'
+  ),
+  user-select: (
+    'webkit',
+    'moz',
+    'ms'
+  )
 );
 
 $prefix-values: ();
@@ -66,25 +66,25 @@ $prefix-values: ();
 $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
 
 @mixin _prefix-property($property, $value, $targets: all) {
-    @if not feature.has-property($prefix-properties, $property) {
-
-        #{$property}: $value;
-
-    } @else {
-        $_prefix-map: map.get($prefix-properties, $property);
-
-        @each $prefix in $_prefix-map {
-            #{'-' + $prefix + '-' + $property}: $value;
-        }
-
-        #{$property}: $value;
+  @if not feature.has-property($prefix-properties, $property) {
+    
+    #{$property}: $value;
+    
+  } @else {
+    $_prefix-map: map.get($prefix-properties, $property);
+    
+    @each $prefix in $_prefix-map {
+      #{'-' + $prefix + '-' + $property}: $value;
     }
+    
+    #{$property}: $value;
+  }
 }
 
 @function _prefix-value($property, $value, $targets: all) {
-    //
+  //
 }
 
 @mixin prefix($property, $value, $targets: all) {
-    @include _prefix-property($property, $value, $targets);
+  @include _prefix-property($property, $value, $targets);
 }

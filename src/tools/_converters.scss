@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,12 @@
 /// @param {int} $px
 /// @return {int} rem value.
 @function px-to-rem($px) {
-    @return math.div($px, 16px) * 1rem;
+  @return math.div($px, 16px) * 1rem;
 }
 
 /// Converts rem values to px values.
 /// @param {int} $rem
 /// @return {int} px value.
 @function rem-to-px($rem) {
-    @return ($rem * 16) * 1px;
+  @return ($rem * 16) * 1px;
 }

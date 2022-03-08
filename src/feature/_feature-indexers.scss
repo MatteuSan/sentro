@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@
 /// @param {*} $query
 /// @return {*} an entity if item is successfully indexed from a list.
 @function has-item($reference, $query) {
-    @return list.index($reference, $query) != null;
+  @return list.index($reference, $query) != null;
 }
 
 /// Checks if the map has the property queried.
@@ -37,5 +37,5 @@
 /// @param {*} $query
 /// @return {*} an entity if item is successfully indexed from a map.
 @function has-property($reference, $query) {
-    @return map.has-key($reference, $query) != null;
+  @return map.has-key($reference, $query) != null;
 }

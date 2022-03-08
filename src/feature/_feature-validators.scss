@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -26,15 +26,15 @@
 /// @param {*} $query
 /// @return {boolean} true if empty, false if not.
 @function is-empty($query) {
-    @if not $query
+  @if not $query
        or $query == ''
        or $query == ()
        or $query == none
        or $query == null
        or length($query) == 0 {
-        @return true;
-    }
-    @return false;
+    @return true;
+  }
+  @return false;
 }
 
 /// Validate a query's data type from a reference.
@@ -42,8 +42,8 @@
 /// @param {*} $query
 /// @return {boolean|error} true if the query matches the referenced data type.
 @function is-type($reference, $query) {
-    @if meta.type-of($query) != unquote($reference) {
-        @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
-    }
-    @return true;
+  @if meta.type-of($query) != unquote($reference) {
+    @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
+  }
+  @return true;
 }

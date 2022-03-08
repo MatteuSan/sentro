@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,7 +18,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
 $prefix: '' !default;
 $context: '' !default;
@@ -27,17 +27,17 @@ $key-validation: true !default;
 $breakpoint-validation: true !default;
 
 @forward 'tokens' as token-* with (
-    $ds-prefix: $prefix,
-    $ds-context: $context,
-    $validation: $token-validation
+  $ds-prefix: $prefix,
+  $ds-context: $context,
+  $validation: $token-validation
 );
 @forward 'keys' as key-* with (
-    $ds-prefix: $prefix,
-    $validation: $key-validation
+  $ds-prefix: $prefix,
+  $validation: $key-validation
 );
 @forward 'selectors' as selector-* with (
-    $ds-prefix: $prefix
+  $ds-prefix: $prefix
 );
 @forward 'breakpoints' as breakpoint-* with (
-    $validation: $breakpoint-validation
+  $validation: $breakpoint-validation
 );

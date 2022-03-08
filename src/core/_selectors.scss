@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -32,9 +32,9 @@ $ds-prefix: '' !default;
 /// @param {string} $selector
 /// @return {*} returns a selector with content block inside.
 @mixin create($selector) {
-    #{_prepend-selector-type($selector)} {
-        @content;
-    }
+  #{_prepend-selector-type($selector)} {
+    @content;
+  }
 }
 
 /// Determines the selector type and composes the selector name with your design system prefix.
@@ -42,31 +42,31 @@ $ds-prefix: '' !default;
 /// @param {string} $selector
 /// @return {string|error} returns a cleaned and prefixed selector.
 @function _prepend-selector-type($selector) {
-    @if string.slice($selector, 1, 1) == '&' {
-        @if string.slice($selector, 2, 2) == '.' {
-            @return string.unquote('&.#{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 3)}');
-        } @else if string.slice($selector, 2, 2) == '#' {
-            @return string.unquote('&##{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 3)}');
-        } @else {
-            @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
-        }
-    } @else if string.slice($selector, 1, 1) != '&' {
-        @if string.slice($selector, 1, 1) == '.' {
-            @return string.unquote('.#{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 2)}');
-        } @else if string.slice($selector, 1, 1) == '#' {
-            @return string.unquote('##{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 2)}');
-        } @else {
-            @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
-        }
+  @if string.slice($selector, 1, 1) == '&' {
+    @if string.slice($selector, 2, 2) == '.' {
+      @return string.unquote('&.#{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 3)}');
+    } @else if string.slice($selector, 2, 2) == '#' {
+      @return string.unquote('&##{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 3)}');
+    } @else {
+      @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
     }
+  } @else if string.slice($selector, 1, 1) != '&' {
+    @if string.slice($selector, 1, 1) == '.' {
+      @return string.unquote('.#{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 2)}');
+    } @else if string.slice($selector, 1, 1) == '#' {
+      @return string.unquote('##{_sanitize-prefix($ds-prefix)}#{string.slice($selector, 2)}');
+    } @else {
+      @error 'Invalid selector type: #{string.slice($selector, 1, 1)}. Please prefix your selector by using a class selector (.) or an id selector (#).';
+    }
+  }
 }
 
 /// Sanitizes and verifies a prefix.
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
-    @if feature.is-empty($prefix) {
-        @return '';
-    }
-    @return '#{$prefix}-';
+  @if feature.is-empty($prefix) {
+    @return '';
+  }
+  @return '#{$prefix}-';
 }

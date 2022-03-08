@@ -44,39 +44,39 @@ $validation: true !default;
 /// @param {*} $value
 /// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
-    $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key}, #{$value});
+  $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
+  @return var(--#{_sanitize-prefix($ds-prefix)}#{$key}, #{$value});
 }
 
 /// Retrieves an existing component key.
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get($key) {
-    @if _is-registered-key($key) {
-        @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
-    }
-    @if not $validation {
-        @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
-    }
+  @if _is-registered-key($key) {
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+  }
+  @if not $validation {
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+  }
 }
 
 /// Retrieves the raw value of an existing component key.
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get-raw($key) {
-    @if _is-registered-key($key) {
-        @return map.get($_ds-key-registry, $key);
-    }
-    @if not $validation {
-        @return map.get($_ds-key-registry, $key);
-    }
+  @if _is-registered-key($key) {
+    @return map.get($_ds-key-registry, $key);
+  }
+  @if not $validation {
+    @return map.get($_ds-key-registry, $key);
+  }
 }
 
 /// Checks if the query is a valid registered key. This is a different method from the private one.
 /// @param {*} query
 /// @return {boolean} validated query.
 @function check($query) {
-    @return _is-registered-key($query, false);
+  @return _is-registered-key($query, false);
 }
 
 /// Binds the a value to the component key.
@@ -84,10 +84,10 @@ $validation: true !default;
 /// @param {*} $value
 /// @return {string|*} returns an overrider css custom property with a new value.
 @mixin bind($key, $value) {
-    --#{_sanitize-prefix($ds-prefix)}#{$key}: #{$value};
-    @if not check($key) {
-        @include _register-key($key, $value);
-    }
+  --#{_sanitize-prefix($ds-prefix)}#{$key}: #{$value};
+  @if not check($key) {
+    @include _register-key($key, $value);
+  }
 }
 
 /// Sanitizes and verifies a prefix.
@@ -95,10 +95,10 @@ $validation: true !default;
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
-    @if feature.is-empty($prefix) {
-        @return '';
-    }
-    @return '#{$prefix}-';
+  @if feature.is-empty($prefix) {
+    @return '';
+  }
+  @return '#{$prefix}-';
 }
 
 /// Registers a key to the key registry variable.
@@ -107,7 +107,7 @@ $validation: true !default;
 /// @param {*} $value
 /// @return {void} key registry
 @mixin _register-key($key, $value) {
-    $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
+  $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
 }
 
 /// Validates a query if it's a registered key or not
@@ -115,13 +115,13 @@ $validation: true !default;
 /// @param {string} $query
 /// @return {boolean|error} is registered key
 @function _is-registered-key($query, $errors: $validation) {
-    @if not list.index(map.keys($_ds-key-registry), $query) {
-        @if $errors {
-            @error "Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}";
-        } @else {
-            @return false;
-        }
+  @if not list.index(map.keys($_ds-key-registry), $query) {
+    @if $errors {
+      @error 'Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}';
     } @else {
-        @return true;
+      @return false;
     }
+  } @else {
+    @return true;
+  }
 }

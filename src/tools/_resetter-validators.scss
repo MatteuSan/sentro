@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,18 +23,18 @@
 @use 'sass:list';
 
 $_valid-presets: (
-    'cssremedy',
-    'normalize',
-    'reseter',
-    'reset'
+  'cssremedy',
+  'normalize',
+  'reseter',
+  'reset'
 );
 
 /// Validates a queried preset
 /// @param {string} $query
 /// @return {boolean} true if met, false if not.
 @function is-preset($query) {
-    @if not list.index($_valid-presets, $query) {
-        @error "Invalid reseter preset: #{$query}! Please use a valid preset: #{$_valid-presets}.";
-    }
-    @return true;
+  @if not list.index($_valid-presets, $query) {
+    @error 'Invalid reseter preset: #{$query}! Please use a valid preset: #{$_valid-presets}.';
+  }
+  @return true;
 }

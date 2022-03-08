@@ -27,10 +27,10 @@ $key-validation: true !default;
 $breakpoint-validation: true !default;
 
 @forward 'core' with (
-    $prefix: $prefix,
-    $context: $context,
-    $token-validation: $token-validation,
-    $key-validation: $key-validation,
-    $breakpoint-validation: $breakpoint-validation,
+  $prefix: $prefix,
+  $context: $context,
+  $token-validation: $token-validation,
+  $key-validation: $key-validation,
+  $breakpoint-validation: $breakpoint-validation,
 );
 @forward 'tools';

@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,579 +23,579 @@
 /// cssremedy preset
 /// @source 'https://github.com/jensimmons/cssremedy'
 @mixin css-remedy() {
-    *, ::before, ::after {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    [hidden] {
-        display: none;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-    h2 {
-        font-size: 1.5rem;
-    }
-    h3 {
-        font-size: 1.17rem;
-    }
-    h4 {
-        font-size: 1.00rem;
-    }
-    h5 {
-        font-size: 0.83rem;
-    }
-    h6 {
-        font-size: 0.67rem;
-    }
-
-    h1 {
-        margin: 0.67em 0;
-    }
-
-    pre {
-        white-space: pre-wrap;
-    }
-
-    hr {
-        border-style: solid;
-        border-width: 1px 0 0;
-        color: inherit;
-        height: 0;
-        overflow: visible;
-    }
-
-    img, svg, video, canvas, audio, iframe, embed, object {
-        display: block;
-        vertical-align: middle;
-        max-width: 100%;
-    }
-    audio:not([controls]) {
-        display: none;
-    }
-
-    picture {
-        display: contents;
-    }
-    source {
-        display: none;
-    }
-
-    img, svg, video, canvas {
-        height: auto;
-    }
-
-    audio {
-        width: 100%;
-    }
-
-    img {
-        border-style: none;
-    }
-
-    svg {
-        overflow: hidden;
-    }
-
-    article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
-        display: block;
-    }
-
-    [type='checkbox'],
-    [type='radio'] {
-        box-sizing: border-box;
-        padding: 0;
-    }
+  *, ::before, ::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  [hidden] {
+    display: none;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.17rem;
+  }
+  h4 {
+    font-size: 1.00rem;
+  }
+  h5 {
+    font-size: 0.83rem;
+  }
+  h6 {
+    font-size: 0.67rem;
+  }
+  
+  h1 {
+    margin: 0.67em 0;
+  }
+  
+  pre {
+    white-space: pre-wrap;
+  }
+  
+  hr {
+    border-style: solid;
+    border-width: 1px 0 0;
+    color: inherit;
+    height: 0;
+    overflow: visible;
+  }
+  
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+    max-width: 100%;
+  }
+  audio:not([controls]) {
+    display: none;
+  }
+  
+  picture {
+    display: contents;
+  }
+  source {
+    display: none;
+  }
+  
+  img, svg, video, canvas {
+    height: auto;
+  }
+  
+  audio {
+    width: 100%;
+  }
+  
+  img {
+    border-style: none;
+  }
+  
+  svg {
+    overflow: hidden;
+  }
+  
+  article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+  }
+  
+  [type='checkbox'],
+  [type='radio'] {
+    box-sizing: border-box;
+    padding: 0;
+  }
 }
 
 /// normalize.css preset
 /// @source 'https://github.com/necolas/normalize.css'
 @mixin normalize() {
-    html {
-        line-height: 1.15;
-        -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    main {
-        display: block;
-    }
-
-    h1 {
-        font-size: 2em;
-        margin: 0.67em 0;
-    }
-
-
-    hr {
-        box-sizing: content-box;
-        height: 0;
-        overflow: visible;
-    }
-
-    pre {
-        font-family: monospace, monospace;
-        font-size: 1em;
-    }
-
-
-    a {
-        background-color: transparent;
-    }
-
-    abbr[title] {
-        border-bottom: none;
-        text-decoration: underline;
-        text-decoration: underline dotted;
-    }
-
-    b,
-    strong {
-        font-weight: bolder;
-    }
-
-    code,
-    kbd,
-    samp {
-        font-family: monospace, monospace;
-
-        font-size: 1em;
-
-    }
-
-    small {
-        font-size: 80%;
-    }
-
-    sub,
-    sup {
-        font-size: 75%;
-        line-height: 0;
-        position: relative;
-        vertical-align: baseline;
-    }
-    sub {
-        bottom: -0.25em;
-    }
-    sup {
-        top: -0.5em;
-    }
-
-    img {
-        border-style: none;
-    }
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        font-family: inherit;
-        font-size: 100%;
-        line-height: 1.15;
-        margin: 0;
-    }
-
-    button,
-    input {
-        overflow: visible;
-    }
-
-    button,
-    select {
-        text-transform: none;
-    }
-
-    button,
-    [type='button'],
-    [type='reset'],
-    [type='submit'] {
-        -webkit-appearance: button;
-    }
-
-    button::-moz-focus-inner, [type='button']::-moz-focus-inner, [type='reset']::-moz-focus-inner, [type='submit']::-moz-focus-inner {
-        border-style: none;
-        padding: 0;
-    }
-
-    button:-moz-focusring,
-    [type='button']:-moz-focusring,
-    [type='reset']:-moz-focusring,
-    [type='submit']:-moz-focusring {
-        outline: 1px dotted ButtonText;
-    }
-
-    fieldset {
-        padding: 0.35em 0.75em 0.625em;
-    }
-
-    legend {
-        box-sizing: border-box;
-        color: inherit;
-        display: table;
-        max-width: 100%;
-        padding: 0;
-        white-space: normal;
-    }
-
-    progress {
-        vertical-align: baseline;
-    }
-
-    textarea {
-        overflow: auto;
-    }
-
-    [type='checkbox'],
-    [type='radio'] {
-        box-sizing: border-box;
-        padding: 0;
-    }
-
-    [type='number']::-webkit-inner-spin-button, [type='number']::-webkit-outer-spin-button {
-        height: auto;
-    }
-
-    [type='search'] {
-        -webkit-appearance: textfield;
-        outline-offset: -2px;
-    }
-
-    [type='search']::-webkit-search-decoration {
-        -webkit-appearance: none;
-    }
-
-    ::-webkit-file-upload-button {
-        -webkit-appearance: button;
-        font: inherit;
-    }
-
-    details {
-        display: block;
-    }
-
-    summary {
-        display: list-item;
-    }
-
-    template {
-        display: none;
-    }
-
-    [hidden] {
-        display: none;
-    }
+  html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  main {
+    display: block;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+  
+  pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+  
+  
+  a {
+    background-color: transparent;
+  }
+  
+  abbr[title] {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration: underline dotted;
+  }
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  
+  code,
+  kbd,
+  samp {
+    font-family: monospace, monospace;
+    
+    font-size: 1em;
+    
+  }
+  
+  small {
+    font-size: 80%;
+  }
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  
+  img {
+    border-style: none;
+  }
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+  
+  button,
+  input {
+    overflow: visible;
+  }
+  
+  button,
+  select {
+    text-transform: none;
+  }
+  
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+  }
+  
+  button::-moz-focus-inner, [type='button']::-moz-focus-inner, [type='reset']::-moz-focus-inner, [type='submit']::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+  }
+  
+  button:-moz-focusring,
+  [type='button']:-moz-focusring,
+  [type='reset']:-moz-focusring,
+  [type='submit']:-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+  
+  fieldset {
+    padding: 0.35em 0.75em 0.625em;
+  }
+  
+  legend {
+    box-sizing: border-box;
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    padding: 0;
+    white-space: normal;
+  }
+  
+  progress {
+    vertical-align: baseline;
+  }
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  [type='checkbox'],
+  [type='radio'] {
+    box-sizing: border-box;
+    padding: 0;
+  }
+  
+  [type='number']::-webkit-inner-spin-button, [type='number']::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  [type='search'] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+  
+  [type='search']::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+  }
+  
+  details {
+    display: block;
+  }
+  
+  summary {
+    display: list-item;
+  }
+  
+  template {
+    display: none;
+  }
+  
+  [hidden] {
+    display: none;
+  }
 }
 
 /// reseter.css preset
 /// @source 'https://github.com/resetercss/reseter.css'
 @mixin reseter-css() {
-    *,
-    *::before,
-    *::after {
-        box-sizing: inherit;
-        padding: 0;
-        margin: 0;
-    }
-
-    html {
-        line-height: 1.15;
-        box-sizing: border-box;
-        font-family: sans-serif;
-    }
-
-    main {
-        display: block;
-    }
-
-    h1 {
-        font-size: 2em;
-        margin: 0.67em 0;
-    }
-
-    p + p {
-        margin-top: 1rem;
-    }
-
-    a {
-        background-color: transparent;
-    }
-
-    abbr[title] {
-        -webkit-text-decoration: underline dotted;
-        text-decoration: underline dotted;
-    }
-
-    code,
-    kbd,
-    samp,
-    pre {
-        font-family: monospace, monospace;
-        font-size: 1em;
-    }
-
-    sub,
-    sup {
-        font-size: 75%;
-        line-height: 0;
-        position: relative;
-        vertical-align: baseline;
-    }
-
-    sub {
-        bottom: -0.25em;
-    }
-
-    sup {
-        top: -0.5em;
-    }
-
-    button,
-    input,
-    optgroup,
-    select,
-    textarea {
-        line-height: inherit;
-        border: 1px solid currentColor;
-    }
-
-    button {
-        overflow: visible;
-        text-transform: none;
-    }
-
-    button,
-    [type=button],
-    [type=reset],
-    [type=submit] {
-        -webkit-appearance: button;
-        padding: 1px 6px;
-    }
-
-    input {
-        overflow: visible;
-    }
-
-    input,
-    textarea {
-        padding: 1px;
-    }
-
-    fieldset {
-        border: 1px solid currentColor;
-        margin: 0 2px;
-    }
-
-    legend {
-        color: inherit;
-        display: table;
-        max-width: 100%;
-        white-space: normal;
-    }
-
-    progress {
-        display: inline-block;
-        vertical-align: baseline;
-    }
-
-    select {
-        text-transform: none;
-    }
-
-    textarea {
-        overflow: auto;
-        vertical-align: top;
-    }
-
-    [type=search] {
-        -webkit-appearance: textfield;
-        outline-offset: -2px;
-    }
-
-    [type=color] {
-        background: inherit;
-    }
-
-    ::-webkit-inner-spin-button,
-    ::-webkit-outer-spin-button {
-        height: auto;
-    }
-
-    ::-webkit-input-placeholder {
-        color: inherit;
-        opacity: 0.5;
-    }
-
-    ::-webkit-search-decoration,
-    ::-webkit-file-upload-button {
-        -webkit-appearance: button;
-        font: inherit;
-    }
-
-    ::-moz-focus-inner {
-        border: 0;
-    }
-
-    :-moz-focusring {
-        outline: 1px dotted ButtonText;
-    }
-
-    :-moz-ui-invalid {
-        box-shadow: none;
-    }
-
-    hr {
-        box-sizing: content-box;
-        height: 0;
-        color: inherit;
-        overflow: visible;
-    }
-
-    dl,
-    ol,
-    ul {
-        margin: 1em 0;
-    }
-
-    ol ol,
-    ol ul,
-    ol dl,
-    ul ol,
-    ul ul,
-    ul dl,
-    dl ol,
-    dl ul,
-    dl dl {
-        margin: 0;
-    }
-
-    b,
-    strong {
-        font-weight: bolder;
-    }
-
-    audio,
-    video {
-        display: inline-block;
-    }
-
-    audio:not([controls]) {
-        display: none;
-        height: 0;
-    }
-
-    img {
-        border: 0;
-    }
-
-    svg:not(:root) {
-        overflow: hidden;
-    }
-
-    table {
-        text-indent: 0;
-        border-color: inherit;
-    }
-
-    details {
-        display: block;
-    }
-
-    dialog {
-        background-color: inherit;
-        border: solid;
-        color: inherit;
-        display: block;
-        height: fit-content;
-        left: 0;
-        margin: auto;
-        padding: 1em;
-        position: absolute;
-        right: 0;
-        width: fit-content;
-    }
-
-    dialog:not([open]) {
-        display: none;
-    }
-
-    summary {
-        display: list-item;
-    }
-
-    canvas {
-        display: inline-block;
-    }
-
-    template {
-        display: none;
-    }
-
-    [hidden] {
-        display: none;
-    }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+  }
+  
+  html {
+    line-height: 1.15;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  main {
+    display: block;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  p + p {
+    margin-top: 1rem;
+  }
+  
+  a {
+    background-color: transparent;
+  }
+  
+  abbr[title] {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  
+  code,
+  kbd,
+  samp,
+  pre {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    line-height: inherit;
+    border: 1px solid currentColor;
+  }
+  
+  button {
+    overflow: visible;
+    text-transform: none;
+  }
+  
+  button,
+  [type=button],
+  [type=reset],
+  [type=submit] {
+    -webkit-appearance: button;
+    padding: 1px 6px;
+  }
+  
+  input {
+    overflow: visible;
+  }
+  
+  input,
+  textarea {
+    padding: 1px;
+  }
+  
+  fieldset {
+    border: 1px solid currentColor;
+    margin: 0 2px;
+  }
+  
+  legend {
+    color: inherit;
+    display: table;
+    max-width: 100%;
+    white-space: normal;
+  }
+  
+  progress {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  
+  select {
+    text-transform: none;
+  }
+  
+  textarea {
+    overflow: auto;
+    vertical-align: top;
+  }
+  
+  [type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+  
+  [type=color] {
+    background: inherit;
+  }
+  
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  ::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+  
+  ::-webkit-search-decoration,
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button;
+    font: inherit;
+  }
+  
+  ::-moz-focus-inner {
+    border: 0;
+  }
+  
+  :-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+  
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    color: inherit;
+    overflow: visible;
+  }
+  
+  dl,
+  ol,
+  ul {
+    margin: 1em 0;
+  }
+  
+  ol ol,
+  ol ul,
+  ol dl,
+  ul ol,
+  ul ul,
+  ul dl,
+  dl ol,
+  dl ul,
+  dl dl {
+    margin: 0;
+  }
+  
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  
+  audio,
+  video {
+    display: inline-block;
+  }
+  
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+  
+  img {
+    border: 0;
+  }
+  
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  
+  table {
+    text-indent: 0;
+    border-color: inherit;
+  }
+  
+  details {
+    display: block;
+  }
+  
+  dialog {
+    background-color: inherit;
+    border: solid;
+    color: inherit;
+    display: block;
+    height: fit-content;
+    left: 0;
+    margin: auto;
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    width: fit-content;
+  }
+  
+  dialog:not([open]) {
+    display: none;
+  }
+  
+  summary {
+    display: list-item;
+  }
+  
+  canvas {
+    display: inline-block;
+  }
+  
+  template {
+    display: none;
+  }
+  
+  [hidden] {
+    display: none;
+  }
 }
 
 /// reset.css preset
 /// @source: 'https://meyerweb.com/eric/tools/css/reset/'
 @mixin reset-css() {
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed,
-    figure, figcaption, footer, header, hgroup,
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-    }
-
-    article, aside, details, figcaption, figure,
-    footer, header, hgroup, menu, nav, section {
-        display: block;
-    }
-
-    body {
-        line-height: 1;
-    }
-
-    ol, ul {
-        list-style: none;
-    }
-
-    blockquote,
-    q {
-        quotes: none;
-    }
-
-    blockquote::before,
-    blockquote::after,
-    q::before,
-    q::after {
-        content: '';
-        content: none;
-    }
-
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+    display: block;
+  }
+  
+  body {
+    line-height: 1;
+  }
+  
+  ol, ul {
+    list-style: none;
+  }
+  
+  blockquote,
+  q {
+    quotes: none;
+  }
+  
+  blockquote::before,
+  blockquote::after,
+  q::before,
+  q::after {
+    content: '';
+    content: none;
+  }
+  
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 }
