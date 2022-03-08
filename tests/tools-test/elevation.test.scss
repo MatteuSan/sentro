@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,5 +23,5 @@
 @use '../../src/Tools';
 
 .test-component {
-    @include Tools.elevation-apply(5);
+  @include Tools.elevation-apply(5);
 }

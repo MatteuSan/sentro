@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@
 @use '../../src' as sentro;
 
 @include sentro.reset('cssremedy') {
-    :root {
-        @include sentro.token-add(
-            $token: #232323
-        );
-    }
+  :root {
+    @include sentro.token-config(
+      $token: #232323
+    );
+  }
 }

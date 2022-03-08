@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2021 Matteu
+//  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,44 +23,44 @@
 @use '../../src' as Sentro with ($prefix: '');
 
 $light-theme: (
-    primary: (
-        'default': #122c53,
-        'light': #536b99,
-        'dark': #061021,
-        'ink': #fff
-    ),
-    secondary: (
-        'default': #ffac00,
-        'light': #ffd77e,
-        'dark': #533800,
-        'ink': #000
-    ),
-    radius: (
-        'small': 0.3rem,
-        'medium': 0.5rem,
-        'large': 0.7rem
-    ),
-    global-font: ('Arial', sans-serif)
+  primary: (
+    'default': #122c53,
+    'light': #536b99,
+    'dark': #061021,
+    'ink': #fff
+  ),
+  secondary: (
+    'default': #ffac00,
+    'light': #ffd77e,
+    'dark': #533800,
+    'ink': #000
+  ),
+  radius: (
+    'small': 0.3rem,
+    'medium': 0.5rem,
+    'large': 0.7rem
+  ),
+  global-font: ('Arial', sans-serif)
 );
 
 :root {
-    @include Sentro.token-add($light-theme);
+  @include Sentro.token-config($light-theme);
 }
 
 @include Sentro.selector-create('.button') {
-    width: 100%;
-    max-width: max-content;
-    display: inline-flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    user-select: none;
-    cursor: pointer;
-    box-sizing: border-box;
-    border-width: 1px;
-    border-style: solid;
-
-    @include Sentro.selector-create('&.button--variant') {
-        content: 'hello :)';
-    }
+  width: 100%;
+  max-width: max-content;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  
+  @include Sentro.selector-create('&.button--variant') {
+    content: 'hello :)';
+  }
 }
