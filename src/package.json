@@ -2,13 +2,9 @@
   "name": "@matteusan/sentro",
   "version": "0.1.21",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
-  "main": "index.js",
+  "main": "_index.scss",
   "author": "Matteu",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MatteuSan/sentro.git"
-  },
   "keywords": [
     "css",
     "frontend",
@@ -17,8 +13,12 @@
     "design-tokens",
     "design-system"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatteuSan/sentro.git"
+  },
   "bugs": {
     "url": "https://github.com/MatteuSan/sentro/issues"
   },
-  "homepage": "https://github.com/MatteuSan/sentro#readme"
+  "homepage": "https://github.com/MatteuSan/sentro#readme",
 }
