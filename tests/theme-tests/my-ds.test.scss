@@ -40,6 +40,7 @@ $tokens: (
   @include sentro.token-config(
     $map: $tokens,
     $accent: (
+      'primary': #000,
       'light': #efa0a0,
       'default': #d95f5f,
       'dark': (
@@ -110,3 +111,5 @@ $card-bg: 'accent-light';
 }
 
 @include my-button.use();
+
+@debug sentro.token-registry-get(('radius', 'primary'));
