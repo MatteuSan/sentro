@@ -1,6 +1,6 @@
 {
   "name": "@matteusan/sentro",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "src/_index.scss",
   "author": "Matteu",
@@ -32,7 +32,7 @@
     "gulp-sass": "5.0.0",
     "sass": "1.45.1",
     "@matteusan/himig-web": "0.1.5",
-    "@matteusan/sentro": "0.1.21",
+    "@matteusan/sentro": "0.1.22",
     "sass-true": "6.0.1"
   }
 }
