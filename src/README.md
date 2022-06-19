@@ -7,6 +7,7 @@
 A low-level SCSS library for building and managing token-driven design systems.
 
 ## Installation
+
 ```sh
 # NPM
 npm install @matteusan/sentro --save
@@ -16,11 +17,14 @@ yarn add @matteusan/sentro --save
 ```
 
 ## Documentation
+
 - The documentation for this project is located [here](https://docs.matteusan.me/docs/sentro).
 
 ## Showcase
 #### SCSS Input
+
 - Tokenize your UI while creating an intuitive theming API for your design system.
+
 ```scss
 @use 'path/to/@matteusan/sentro' with (
   $prefix: 'sdb',
@@ -56,8 +60,11 @@ yarn add @matteusan/sentro --save
   border-radius: sentro.key-create('button-radius', sentro.token-get('radius-small'));
 }
 ```
+
 #### CSS Output
+
 - Voila!
+
 ```css
 :root {
   --sdb-theme-primary: #122c53;
