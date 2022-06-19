@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,49 +18,21 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
-@use '../../src' as Sentro with ($prefix: '');
+@use 'node_modules/@matteusan/sentro';
+@use 'node_modules/sass-true/sass/true';
 
-$light-theme: (
-  primary: (
-    'default': #122c53,
-    'light': #536b99,
-    'dark': #061021,
-    'ink': #fff
-  ),
-  secondary: (
-    'default': #ffac00,
-    'light': #ffd77e,
-    'dark': #533800,
-    'ink': #000
-  ),
-  radius: (
-    'small': 0.3rem,
-    'medium': 0.5rem,
-    'large': 0.7rem
-  ),
-  global-font: ('Arial', sans-serif)
-);
-
-:root {
-  @include Sentro.token-config($light-theme);
-}
-
-@include Sentro.selector-create('.button') {
-  width: 100%;
-  max-width: max-content;
-  display: inline-flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  cursor: pointer;
-  box-sizing: border-box;
-  border-width: 1px;
-  border-style: solid;
-  
-  @include Sentro.selector-create('&.button--variant') {
-    content: 'hello :)';
+@include true.describe('Prefix [mixin]') {
+  @include true.it('should add prefixed properties') {
+    @include true.assert {
+      @include true.output('test-component') {
+        @include sentro.prefix(transition, all 0.2s ease);
+      }
+      @include true.expect('test-component') {
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+      }
+    }
   }
 }

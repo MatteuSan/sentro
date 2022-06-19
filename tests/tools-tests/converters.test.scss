@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,10 +18,15 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
-@use '../../src/Tools';
+@use 'node_modules/@matteusan/sentro';
+@use 'node_modules/sass-true/sass/true';
 
-.test-component {
-  @include Tools.prefix(transition, all 0.1s ease);
+@include true.describe('Converters [module]') {
+  @include true.it('should convert px to rem') {
+    @include true.assert-equal(sentro.px-to-rem(18px), 1.125rem);
+    @include true.assert-equal(sentro.px-to-rem(24px), 1.5rem);
+    @include true.assert-equal(sentro.px-to-rem(32px), 2rem);
+  }
 }
