@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,7 +18,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
 @use 'sass:math';
 
@@ -30,8 +30,9 @@
 }
 
 /// Converts rem values to px values.
+/// @deprecated
 /// @param {int} $rem
 /// @return {int} px value.
 @function rem-to-px($rem) {
-  @return ($rem * 16) * 1px;
+  @error 'The rem-to-px() function is now deprecated.';
 }
