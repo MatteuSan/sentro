@@ -1,0 +1,70 @@
+///
+//  Copyright (c) 2022 Matteu
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+///
+
+@use 'node_modules/@matteusan/sentro';
+@use 'node_modules/sass-true/sass/true';
+
+@include true.describe('Token [module]') {
+  @include true.it('should configure tokens') {
+    @include true.assert {
+      @include true.output {
+        :root {
+          @include sentro.token-config((
+            token-test: #f70
+          ));
+        }
+      }
+      @include true.expect {
+        :root {
+          --token-test: #f70;
+        }
+      }
+    }
+  }
+
+  @include true.it('should retrieve a token') {
+    @include true.assert-equal(sentro.token-get('token-test'), var(--token-test));
+  }
+
+  @include true.it('should retrieve a token\'s raw value') {
+    @include true.assert-equal(sentro.token-get-raw('token-test'), #f70);
+  }
+
+  @include true.it('should check a token\'s validity') {
+    @include true.assert-true(sentro.token-check('token-test'));
+    @include true.assert-false(sentro.token-check('token-text'));
+  }
+
+  @include true.it('should switch values depending on the token validity') {
+    @include true.assert-equal(sentro.token-switch('token-test'), var(--token-test));
+    @include true.assert-equal(sentro.token-switch(#237), #237);
+    $param: 'text';
+    @include true.assert-equal(sentro.token-switch('token-#{$param}', #237), #237);
+  }
+
+  @include true.it('should switch raw values depending on the token validity') {
+    @include true.assert-equal(sentro.token-switch-raw('token-test'), #f70);
+    @include true.assert-equal(sentro.token-switch-raw(#237), #237);
+    $param: 'text';
+    @include true.assert-equal(sentro.token-switch-raw('token-#{$param}', #237), #237);
+  }
+}

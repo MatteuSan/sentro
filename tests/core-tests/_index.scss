@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,10 +18,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
-@use '../../src/Tools';
-
-.test-component {
-  @include Tools.elevation-apply(5);
-}
+@use 'token.test';
+@use 'key.test';
