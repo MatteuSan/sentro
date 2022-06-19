@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2021 Matteu
+ *  Copyright (c) 2022 Matteu
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -20,46 +20,15 @@
  *  SOFTWARE.
  */
 
-const {src, dest, watch, series} = require('gulp');
+const { src, dest, watch, series } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
-const postcss = require('gulp-postcss');
-const cssnano = require('cssnano');
-
-function sassTaskDev() {
-    return src(['src/**/*.scss'], {sourcemaps: true})
-        .pipe(sass().on('error', sass.logError))
-        .pipe(dest('./src', {sourcemaps: '.'}));
-}
-
-function sassTaskProd() {
-    return src('src/main.scss', {sourcemaps: true})
-        .pipe(sass().on('error', sass.logError))
-        .pipe(postcss([ cssnano ]))
-        .pipe(dest('./src', {sourcemaps: '.'}));
-}
-
-function sassTaskTest() {
-    return src('tests/**/*.test.scss', {sourcemaps: true})
-        .pipe(sass().on('error', sass.logError))
-        .pipe(dest('./tests', {sourcemaps: '.'}));
-}
 
 function sassTaskWebsite() {
-    return src('website/**/*.scss', {sourcemaps: true})
-        .pipe(sass().on('error', sass.logError))
-        .pipe(dest('./website', {sourcemaps: '.'}));
-}
-
-function watchTask() {
-    watch(['src/**/*.scss', '!src/**/*.test.scss'], sassTaskDev());
-    watch(['tests/**/*.scss'], sassTaskTest());
-    // watch(['src/main.scss'], sassTaskProd());
+  return src('website/**/*.scss', { sourcemaps: true })
+    .pipe(sass().on('error', sass.logError))
+    .pipe(dest('./website', { sourcemaps: '.' }));
 }
 
 exports.default = series(
-    // sassTaskDev,
-    sassTaskTest,
-    // sassTaskProd,
-    // sassTaskWebsite,
-    // watchTask
+  sassTaskWebsite,
 );
