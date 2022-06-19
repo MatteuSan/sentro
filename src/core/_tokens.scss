@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,7 +18,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
 @use 'sass:list';
 @use 'sass:map';
@@ -80,7 +80,7 @@ $_ds-token-registry: ();
       }
     }
   }
-  
+
   @if meta.keywords($tokens) {
     @each $key, $value in meta.keywords($tokens) {
       @if meta.type-of($value) == map {
@@ -100,9 +100,9 @@ $_ds-token-registry: ();
           }
         }
       } @else {
-        
+
         @include create($key, $value);
-        
+
       }
     }
   }
@@ -157,22 +157,41 @@ $_ds-token-registry: ();
     }
     @return $targeted-tokens;
   }
-  
+
   @if $targets == 'all' {
     @return $_ds-token-registry;
   }
-  
+
   @return $_ds-token-registry;
 }
 
 /// Check if the query is a token or not. If the query is a token, output a token. If not, output as is.
 /// @param {*} $query
+/// @param {*} $fallback
 /// @return {token|*} token or raw value.
-@function switch($query) {
+@function switch($query, $fallback: ()) {
   @if not check($query) {
+    @if not feature.is-empty($fallback) {
+      @return $fallback;
+    }
     @return $query;
   } @else {
     @return get($query);
+  }
+}
+
+/// Check if the query is a token or not. If the query is a token, output a raw token value. If not, output as is.
+/// @param {*} $query
+/// @param {*} $fallback
+/// @return {token|*} token raw value or raw value.
+@function switch-raw($query, $fallback: ()) {
+  @if not check($query) {
+    @if not feature.is-empty($fallback) {
+      @return $fallback;
+    }
+    @return $query;
+  } @else {
+    @return get-raw($query);
   }
 }
 
