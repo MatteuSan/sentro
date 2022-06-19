@@ -3,7 +3,7 @@ root = true
 
 [{*.scss, *.css, *.ts}]
 indent_style = space
-indent_size = 4
+indent_size = 2
 tab_width = 2
 continuation_indent_size = 2 # IntelliJ family IDEs
 end_of_line = lf
