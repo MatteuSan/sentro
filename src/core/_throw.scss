@@ -20,25 +20,34 @@
 //  SOFTWARE.
 ///
 
-$prefix: '' !default;
-$context: '' !default;
-$token-validation: true !default;
-$key-validation: true !default;
-$breakpoint-validation: true !default;
+@use '../feature';
 
-@forward 'tokens' as token-* with (
-  $ds-prefix: $prefix,
-  $ds-context: $context,
-  $validation: $token-validation
-);
-@forward 'keys' as key-* with (
-  $ds-prefix: $prefix,
-  $validation: $key-validation
-);
-@forward 'selectors' as selector-* with (
-  $ds-prefix: $prefix
-);
-@forward 'breakpoints' as breakpoint-* with (
-  $validation: $breakpoint-validation
-);
-@forward 'throw' as throw-*;
+/// Prefixing errors/warns.
+/// @access private
+@function _identify($source, $context) {
+  @return if(feature.is-empty($source) == false, '#{$context} [#{$source}]:', '#{$context}:');
+}
+
+/// Throws an error.
+/// @param {string} $message
+/// @param {string} $source
+/// @param {boolean} $output-string
+/// @return {error|string} The error.
+@function error($message, $source: (), $output-string: false) {
+  @if not $output-string {
+    @error '#{_identify($source, 'ERROR')} #{$message}';
+  }
+  @return '#{_identify($source, 'ERROR')} #{$message}';
+}
+
+/// Throws a warning.
+/// @param {string} $message
+/// @param {string} $source
+/// @param {boolean} $output-string
+/// @return {warn|string} The warning.
+@function warn($message, $source: (), $output-string: false) {
+  @if not $output-string {
+    @warn '#{_identify($source, 'WARN')} #{$message}';
+  }
+  @return '#{_identify($source, 'ERROR')} #{$message}';
+}

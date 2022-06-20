@@ -20,25 +20,15 @@
 //  SOFTWARE.
 ///
 
-$prefix: '' !default;
-$context: '' !default;
-$token-validation: true !default;
-$key-validation: true !default;
-$breakpoint-validation: true !default;
+@use 'node_modules/@matteusan/sentro';
+@use 'node_modules/sass-true/sass/true';
 
-@forward 'tokens' as token-* with (
-  $ds-prefix: $prefix,
-  $ds-context: $context,
-  $validation: $token-validation
-);
-@forward 'keys' as key-* with (
-  $ds-prefix: $prefix,
-  $validation: $key-validation
-);
-@forward 'selectors' as selector-* with (
-  $ds-prefix: $prefix
-);
-@forward 'breakpoints' as breakpoint-* with (
-  $validation: $breakpoint-validation
-);
-@forward 'throw' as throw-*;
+@include true.describe('Throw [module]') {
+  @include true.it('should throw an error text') {
+    @include true.assert-equal(sentro.throw-error('test error', 'function()', true), 'ERROR [function()]: test error');
+  }
+
+  @include true.it('should throw a warning text') {
+    @include true.assert-equal(sentro.throw-warn('test error', 'function()', true), 'WARN [function()]: test error');
+  }
+}
