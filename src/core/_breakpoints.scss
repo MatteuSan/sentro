@@ -97,9 +97,22 @@ $validation: true !default;
 
 /// Creates a breakpoint for an element.
 /// @param {string} $query
+/// @param {string} $context
+/// @param {string} $property
 /// @return {*} breakpoint.
-@mixin create($query, $context: 'min') {
-  @media (#{$context}-width: _sanitize-breakpoint($query, $context)) {
+@mixin create($query, $context: 'min', $property: 'width') {
+  $_valid-contexts: ('min', 'max');
+  $_valid-properties: ('width', 'height');
+
+  @if not list.index($_valid-contexts, $context) {
+    @error 'Invalid context: #{$context}. Expecting a valid context (#{$_valid-contexts}).';
+  }
+
+  @if not list.index($_valid-properties, $property) {
+    @error 'Invalid property: #{$property}. Expecting a valid property (#{$_valid-properties}).';
+  }
+
+  @media screen and (#{$context}-#{$property}: _sanitize-breakpoint($query, $context)) {
     @content;
   }
 }
