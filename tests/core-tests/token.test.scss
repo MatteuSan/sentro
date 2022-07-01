@@ -67,4 +67,10 @@
     $param: 'text';
     @include true.assert-equal(sentro.token-switch-raw('token-#{$param}', #237), #237);
   }
+
+  @include true.it('should retrieve the entire token registry') {
+    @include true.assert-equal(sentro.token-registry-get(), (
+      token-test: #f70
+    ));
+  }
 }
