@@ -35,6 +35,13 @@ $_ds-breakpoint-registry: ();
 /// @access public
 $validation: true !default;
 
+/// Verifies a breakpoint.
+/// @param {string} $query
+/// @return {boolean} breakpoint verification.
+@function check($query) {
+  @return _is-registered-breakpoint($query, false);
+}
+
 /// Configures all the breakpoints to be used in the design system.
 /// @param {*} $breakpoints...
 /// @return {void} breakpoint configuration.
@@ -107,13 +114,6 @@ $validation: true !default;
   @if not $validation {
     @return map.get($_ds-breakpoint-registry, $query);
   }
-}
-
-/// Verifies a breakpoint.
-/// @param {string} $query
-/// @return {boolean} breakpoint verification.
-@function check($query) {
-  @return _is-registered-breakpoint($query, false);
 }
 
 /// Retrieves the entire breakpoint registry.
