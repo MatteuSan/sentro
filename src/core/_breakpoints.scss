@@ -1,4 +1,4 @@
-//
+///
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,11 +18,12 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+///
 
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
+@use 'sass:string';
 
 @use '../feature';
 
@@ -61,7 +62,7 @@ $validation: true !default;
       }
     }
   }
-  
+
   @if meta.keywords($breakpoints) {
     @each $key, $value in meta.keywords($breakpoints) {
       @if meta.type-of($value) == map {
@@ -113,6 +114,29 @@ $validation: true !default;
 /// @return {boolean} breakpoint verification.
 @function check($query) {
   @return _is-registered-breakpoint($query, false);
+}
+
+/// Retrieves the entire breakpoint registry.
+/// @param {list<string>} $targets
+/// @return {map} map of tokens.
+@function registry-get($targets: 'all') {
+  @if not feature.is-empty($targets) {
+    $targeted-tokens: ();
+    @each $target in $targets {
+      @each $key, $value in $_ds-breakpoint-registry {
+        @if string.index($key, $target) == 1 {
+          $targeted-tokens: map.set($targeted-tokens, $key, $value);
+        }
+      }
+    }
+    @return $targeted-tokens;
+  }
+
+  @if $targets == 'all' {
+    @return $_ds-breakpoint-registry;
+  }
+
+  @return $_ds-breakpoint-registry;
 }
 
 /// Registers a breakpoint to the registry.
