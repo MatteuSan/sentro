@@ -1,5 +1,5 @@
 # Token Registry Get
-> **STATUS**: ✅ Implemented
+> **STATUS**: ❌ Temporarily Deprecated
 
 A function that retrieves the entire token registry, or tokens from targets.
 
