@@ -13,12 +13,12 @@ A low-level SCSS library for building and managing token-driven design systems.
 npm install @matteusan/sentro --save
 
 # Yarn
-yarn add @matteusan/sentro --save
+yarn add @matteusan/sentro
 ```
 
 ## Documentation
 
-- The documentation for this project is located [here](https://docs.matteusan.me/docs/sentro).
+- The documentation for this project is located [here](https://docs.matteusan.com/docs/sentro).
 
 ## Showcase
 #### SCSS Input
