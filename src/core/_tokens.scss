@@ -142,28 +142,29 @@ $_ds-token-registry: ();
   }
 }
 
+// TODO: Find a way to implement this properly.
 /// Retrieves the entire token registry.
 /// @param {list<string>} $targets
 /// @return {map} map of tokens.
-@function registry-get($targets: 'all') {
-  @if not feature.is-empty($targets) {
-    $targeted-tokens: ();
-    @each $target in $targets {
-      @each $key, $value in $_ds-token-registry {
-        @if string.index($key, $target) == 1 {
-          $targeted-tokens: map.set($targeted-tokens, $key, $value);
-        }
-      }
-    }
-    @return $targeted-tokens;
-  }
-
-  @if $targets == 'all' {
-    @return $_ds-token-registry;
-  }
-
-  @return $_ds-token-registry;
-}
+// @function registry-get($targets: 'all') {
+//   @if not feature.is-empty($targets) {
+//     $targeted-tokens: ();
+//     @each $target in $targets {
+//       @each $key, $value in $_ds-token-registry {
+//         @if string.index($key, $target) == 1 {
+//           $targeted-tokens: map.set($targeted-tokens, $key, $value);
+//         }
+//       }
+//     }
+//     @return $targeted-tokens;
+//   }
+//
+//   @if $targets == 'all' {
+//     @return $_ds-token-registry;
+//   }
+//
+//   @return $_ds-token-registry;
+// }
 
 /// Check if the query is a token or not. If the query is a token, output a token. If not, output as is.
 /// @param {*} $query
