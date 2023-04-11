@@ -1,8 +1,11 @@
 /node_modules
+/.yarn
 /.idea
 /build
 /dist
 /dump
+
+.yarnrc.yml
 
 */**/*.test.css
 */**/*.test.css.map
