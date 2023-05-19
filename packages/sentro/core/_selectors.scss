@@ -24,7 +24,7 @@
 @use 'sass:selector';
 @use 'sass:string';
 
-@use '../feature';
+@use 'validators';
 
 $ds-prefix: '' !default;
 
@@ -65,7 +65,7 @@ $ds-prefix: '' !default;
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
-  @if feature.is-empty($prefix) {
+  @if validators.is-empty($prefix) {
     @return '';
   }
   @return '#{$prefix}-';

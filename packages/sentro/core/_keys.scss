@@ -25,7 +25,7 @@
 @use 'sass:meta';
 @use 'sass:string';
 
-@use '../feature';
+@use 'validators';
 
 /// Stores the prefix for the design system.
 /// @access public
@@ -95,7 +95,7 @@ $validation: true !default;
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
-  @if feature.is-empty($prefix) {
+  @if validators.is-empty($prefix) {
     @return '';
   }
   @return '#{$prefix}-';

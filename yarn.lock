@@ -752,10 +752,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@matteusan/sentro@file:./src::locator=%40matteusan%2Fsentro%40workspace%3A.":
+"@matteusan/sentro@file:./packages/sentro::locator=%40matteusan%2Fsentro%40workspace%3A.":
   version: 0.1.25
-  resolution: "@matteusan/sentro@file:./src#./src::hash=ac0207&locator=%40matteusan%2Fsentro%40workspace%3A."
-  checksum: 4f414db6570e2ad1c2b0065af18ad55311a6f2e9e6ebfa11031fb74c407d760e8d88883b5853f9fd3b6f8b3612e713db3c5d689e93630d2bf313614c3374c4f9
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=3b5517&locator=%40matteusan%2Fsentro%40workspace%3A."
+  checksum: ce945c076721e0074154fe0c08913d95accc69e8bbf155439f7b321c1b220f5297d5a6d026ca4c39202feef837261f903e1696a4e99f22e58954fb7404087435
   languageName: node
   linkType: hard
 
@@ -771,12 +771,12 @@ __metadata:
   resolution: "@matteusan/sentro@workspace:."
   dependencies:
     "@matteusan/himig-web": 0.1.5
-    "@matteusan/sentro": "file:./src"
+    "@matteusan/sentro": "file:./packages/sentro"
     "@types/jest": 28.1.2
     gulp: 4.0.2
     gulp-sass: 5.1.0
     jest: 28.1.1
-    sass: 1.52.3
+    sass: 1.62.1
     sass-true: 6.1.0
     ts-jest: 28.0.5
     ts-node: 10.8.1
@@ -5441,16 +5441,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.52.3":
-  version: 1.52.3
-  resolution: "sass@npm:1.52.3"
+"sass@npm:1.62.1":
+  version: 1.62.1
+  resolution: "sass@npm:1.62.1"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 175a073c0e7b67d1baff6d3969431228002ece681886cebc2a354c241134ff120fda5c12a0465989966dacfb1ca518d85507304f4d4cd03d4a91d71dbc77d978
+  checksum: 1b1b3584b38a63dd94156b65f13b90e3f84b170a38c3d5e3fa578b7a32a37aeb349b4926b0eaf9448d48e955e86b1ee01b13993f19611dad8068af07a607c13b
   languageName: node
   linkType: hard
 

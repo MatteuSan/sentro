@@ -1,10 +1,6 @@
 # Sentro
-![lang](https://img.shields.io/badge/lang-SCSS-%23c69)
-[![version_badge](https://img.shields.io/npm/v/@matteusan/sentro)](https://www.npmjs.com/package/@matteusan/sentro)
-![license_badge](https://img.shields.io/npm/l/@matteusan/sentro)
-![stars](https://img.shields.io/github/stars/MatteuSan/sentro?style=social)
 
-A low-level SCSS library for building and managing token-driven design systems.
+The complete toolkit for creating robust and scalable design systems for the web.
 
 ## Installation
 ```sh

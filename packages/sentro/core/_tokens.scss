@@ -25,7 +25,7 @@
 @use 'sass:meta';
 @use 'sass:string';
 
-@use '../feature';
+@use 'validators';
 
 /// Stores the prefix for the design system.
 /// @access public
@@ -57,7 +57,7 @@ $_ds-token-registry: ();
 /// @param {args} $tokens...
 /// @return {*} CSS-ized tokens.
 @mixin config($map: (), $tokens...) {
-  @if not feature.is-empty($map) {
+  @if not validators.is-empty($map) {
     @each $key, $value in $map {
       @if meta.type-of($value) == map {
         @each $_key, $_value in $value {
@@ -172,13 +172,12 @@ $_ds-token-registry: ();
 /// @return {token|*} token or raw value.
 @function switch($query, $fallback: ()) {
   @if not check($query) {
-    @if not feature.is-empty($fallback) {
+    @if not validators.is-empty($fallback) {
       @return $fallback;
     }
     @return $query;
-  } @else {
-    @return get($query);
   }
+  @return get($query);
 }
 
 /// Check if the query is a token or not. If the query is a token, output a raw token value. If not, output as is.
@@ -187,13 +186,12 @@ $_ds-token-registry: ();
 /// @return {token|*} token raw value or raw value.
 @function switch-raw($query, $fallback: ()) {
   @if not check($query) {
-    @if not feature.is-empty($fallback) {
+    @if not validators.is-empty($fallback) {
       @return $fallback;
     }
     @return $query;
-  } @else {
-    @return get-raw($query);
   }
+  @return get-raw($query);
 }
 
 /// Checks if the query is a valid registered token. This is a different method from the private one.
@@ -219,7 +217,7 @@ $_ds-token-registry: ();
 /// @param {string} $context
 /// @return {string} sanitized and validated context.
 @function _sanitize-context($context) {
-  @if feature.is-empty($context) {
+  @if validators.is-empty($context) {
     @return '';
   }
   @return '#{$context}-';
@@ -230,7 +228,7 @@ $_ds-token-registry: ();
 /// @param {string} $prefix
 /// @return {string} sanitized and validated prefix.
 @function _sanitize-prefix($prefix) {
-  @if feature.is-empty($prefix) {
+  @if validators.is-empty($prefix) {
     @return '';
   }
   @return '#{$ds-prefix}-';

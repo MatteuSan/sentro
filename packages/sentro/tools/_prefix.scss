@@ -1,4 +1,4 @@
-///
+//
 //  Copyright (c) 2022 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -18,36 +18,73 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-///
+//
 
-@use '../feature';
+@use '../core/validators';
+@use 'sass:map';
 
-/// Prefixing errors/warns.
-/// @access private
-@function _identify($source, $context) {
-  @return if(feature.is-empty($source) == false, '#{$context} [#{$source}]:', '#{$context}:');
+$prefix-properties: (
+  transition: (
+    'webkit'
+  ),
+  box-shadow: (
+    'webkit',
+    'ms'
+  ),
+  background-clip: (
+    'webkit'
+  ),
+  box-reflect: (
+    'webkit'
+  ),
+  filter: (
+    'webkit'
+  ),
+  word-break: (
+    'ms'
+  ),
+  object-fit: (
+    'o'
+  ),
+  transform: (
+    'webkit',
+    'ms'
+  ),
+  appearance: (
+    'webkit',
+    'moz'
+  ),
+  user-select: (
+    'webkit',
+    'moz',
+    'ms'
+  )
+);
+
+$prefix-values: ();
+
+$_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
+
+@mixin _prefix-property($property, $value, $targets: all) {
+  @if not validators.has-property($prefix-properties, $property) {
+
+    #{$property}: $value;
+
+  } @else {
+    $_prefix-map: map.get($prefix-properties, $property);
+
+    @each $prefix in $_prefix-map {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    #{$property}: $value;
+  }
 }
 
-/// Throws an error.
-/// @param {string} $message
-/// @param {string} $source
-/// @param {boolean} $output-string
-/// @return {error|string} The error.
-@function error($message, $source: (), $output-string: false) {
-  @if not $output-string {
-    @error '#{_identify($source, 'ERROR')} #{$message}';
-  }
-  @return '#{_identify($source, 'ERROR')} #{$message}';
+@function _prefix-value($property, $value, $targets: all) {
+  //
 }
 
-/// Throws a warning.
-/// @param {string} $message
-/// @param {string} $source
-/// @param {boolean} $output-string
-/// @return {warn|string} The warning.
-@function warn($message, $source: (), $output-string: false) {
-  @if not $output-string {
-    @warn '#{_identify($source, 'WARN')} #{$message}';
-  }
-  @return '#{_identify($source, 'ERROR')} #{$message}';
+@mixin prefix($property, $value, $targets: all) {
+  @include _prefix-property($property, $value, $targets);
 }
