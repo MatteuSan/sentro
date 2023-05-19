@@ -20,6 +20,8 @@
 //  SOFTWARE.
 //
 
+@use 'sass:list';
+@use 'sass:map';
 @use 'sass:meta';
 
 /// Check if query is empty.
@@ -46,4 +48,20 @@
     @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
   }
   @return true;
+}
+
+/// Checks if the list has the item queried.
+/// @param {list} $reference
+/// @param {*} $query
+/// @return {*} an entity if item is successfully indexed from a list.
+@function has-item($reference, $query) {
+  @return list.index($reference, $query) != null;
+}
+
+/// Checks if the map has the property queried.
+/// @param {list} $reference
+/// @param {*} $query
+/// @return {*} an entity if item is successfully indexed from a map.
+@function has-property($reference, $query) {
+  @return map.has-key($reference, $query) != null;
 }
