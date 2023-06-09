@@ -29,23 +29,27 @@
 @mixin reset($preset) {
   @if validator.is-preset($preset) {
     @if $preset == 'cssremedy' {
-      @include preset.css-remedy();
+      @include preset.css-remedy;
       @content;
     }
     
     @if $preset == 'normalize' {
-      @include preset.normalize();
+      @include preset.normalize;
       @content;
     }
     
     @if $preset == 'reseter' {
-      @include preset.reseter-css();
+      @include preset.reseter-css;
       @content;
     }
     
     @if $preset == 'reset' {
-      @include preset.reset-css();
+      @include preset.reset-css;
       @content;
+    }
+
+    @if $preset == 'reseteu' {
+      @include preset.reseteu;
     }
   }
 }

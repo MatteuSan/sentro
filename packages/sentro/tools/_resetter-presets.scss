@@ -22,7 +22,7 @@
 
 /// cssremedy preset
 /// @source 'https://github.com/jensimmons/cssremedy'
-@mixin css-remedy() {
+@mixin css-remedy {
   *, ::before, ::after {
     box-sizing: border-box;
   }
@@ -115,7 +115,7 @@
 
 /// normalize.css preset
 /// @source 'https://github.com/necolas/normalize.css'
-@mixin normalize() {
+@mixin normalize {
   html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
@@ -297,7 +297,7 @@
 
 /// reseter.css preset
 /// @source 'https://github.com/resetercss/reseter.css'
-@mixin reseter-css() {
+@mixin reseter-css {
   *,
   *::before,
   *::after {
@@ -546,7 +546,7 @@
 
 /// reset.css preset
 /// @source: 'https://meyerweb.com/eric/tools/css/reset/'
-@mixin reset-css() {
+@mixin reset-css {
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -597,5 +597,41 @@
   table {
     border-collapse: collapse;
     border-spacing: 0;
+  }
+}
+
+@mixin reseteu {
+  *,
+  :before,
+  :after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    color: inherit;
+  }
+
+  html {
+    box-sizing: border-box;
+    font-size: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1.5;
   }
 }
