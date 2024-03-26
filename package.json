@@ -5,9 +5,7 @@
   "main": "packages/sentro/_index.scss",
   "author": "Matteu",
   "license": "MIT",
-  "files": [
-    "src/**/*"
-  ],
+  "files": ["packages/sentro"],
   "keywords": [
     "css",
     "frontend",
@@ -25,11 +23,13 @@
   },
   "homepage": "https://github.com/MatteuSan/sentro#readme",
   "scripts": {
-    "build:sass": "gulp --gulpfile=\"gulpfile.ts\"",
-    "test:sass": "jest --config=\"jest.config.ts\""
+    "build:sass": "yarn && gulp --gulpfile=\"gulpfile.ts\"",
+    "test:sass": "yarn && jest --config=\"jest.config.ts\"",
+    "pub:major": "npm version major --force && cd packages/sentro && npm version major --force && npm publish",
+    "pub:minor": "npm version minor --force && cd packages/sentro && npm version minor --force && npm publish",
+    "pub:patch": "npm version patch --force && cd packages/sentro && npm version patch --force && npm publish"
   },
   "devDependencies": {
-    "@matteusan/himig-web": "0.1.5",
     "@matteusan/sentro": "file:./packages/sentro",
     "@types/jest": "28.1.2",
     "gulp": "4.0.2",

@@ -1,5 +1,5 @@
-///
-//  Copyright (c) 2022 Matteu
+//--------------------------------------------------------------------
+//  Copyright (c) 2024 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -18,7 +18,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-///
+//--------------------------------------------------------------------
 
 @use 'sass:list';
 @use 'sass:map';
@@ -42,6 +42,10 @@ $validation: true !default;
 /// Stores all the tokens for getting raw values.
 /// @access private
 $_ds-token-registry: ();
+
+/// Default token separator
+/// @access private
+$_ds-token-separator: '-' !default;
 
 /// Creates a theme token.
 /// @param {string} $key
@@ -120,25 +124,33 @@ $_ds-token-registry: ();
 
 /// Retrieves an existing theme token.
 /// @param {string} $key
+/// @param {boolean} $important
 /// @return {string} tokenized css custom property selector.
-@function get($key) {
+@function get($key, $important: false) {
   @if _is-registered-token($key) {
     @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
   }
   @if not $validation {
     @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+  }
+  @if $important {
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)}) !important;
   }
 }
 
 /// Retrieves the raw value of an existing theme token.
 /// @param {string} $key
+/// @param {boolean} $important
 /// @return {*} token value.
-@function get-raw($key) {
+@function get-raw($key, $important: false) {
   @if _is-registered-token($key) {
     @return map.get($_ds-token-registry, $key);
   }
   @if not $validation {
     @return map.get($_ds-token-registry, $key);
+  }
+  @if $important {
+    @return map.get($_ds-token-registry, $key) !important;
   }
 }
 
@@ -169,28 +181,36 @@ $_ds-token-registry: ();
 /// Check if the query is a token or not. If the query is a token, output a token. If not, output as is.
 /// @param {*} $query
 /// @param {*} $fallback
+/// @param {boolean} $important
 /// @return {token|*} token or raw value.
-@function switch($query, $fallback: ()) {
+@function switch($query, $fallback: (), $important: false) {
   @if not check($query) {
     @if not validators.is-empty($fallback) {
+      @if $important { @return $fallback !important; }
       @return $fallback;
     }
+    @if $important { @return $query !important; }
     @return $query;
   }
+  @if $important { @return get($query) !important; }
   @return get($query);
 }
 
 /// Check if the query is a token or not. If the query is a token, output a raw token value. If not, output as is.
 /// @param {*} $query
 /// @param {*} $fallback
+/// @param {boolean} $important
 /// @return {token|*} token raw value or raw value.
-@function switch-raw($query, $fallback: ()) {
+@function switch-raw($query, $fallback: (), $important: false) {
   @if not check($query) {
     @if not validators.is-empty($fallback) {
+      @if $important { @return $fallback !important; }
       @return $fallback;
     }
+    @if $important { @return $query !important; }
     @return $query;
   }
+  @if $important { @return get-raw($query) !important; }
   @return get-raw($query);
 }
 

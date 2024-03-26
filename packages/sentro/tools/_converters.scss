@@ -1,5 +1,5 @@
-///
-//  Copyright (c) 2022 Matteu
+//--------------------------------------------------------------------
+//  Copyright (c) 2024 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -18,21 +18,23 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-///
+//--------------------------------------------------------------------
 
 @use 'sass:math';
+@use '../core/throw';
 
 /// Converts px values to rem values.
 /// @param {int} $px
 /// @return {int} rem value.
-@function px-to-rem($px) {
+@function to-rem($px) {
   @return math.div($px, 16px) * 1rem;
 }
 
-/// Converts rem values to px values.
-/// @deprecated
-/// @param {int} $rem
-/// @return {int} px value.
-@function rem-to-px($rem) {
-  @error 'The rem-to-px() function is now deprecated.';
+/// Converts px values to rem values.
+/// @deprecated Use to-rem() function instead.
+/// @param {int} $px
+/// @return {int} rem value.
+@function px-to-rem($px) {
+  @debug throw.warn('This function is soon to be deprecated. Use to-rem() function instead.');
+  @return to-rem($px);
 }

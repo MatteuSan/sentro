@@ -1,14 +1,16 @@
+---
+title: Sentro
+slug: /
+---
 # Sentro
 A low-level SCSS library for building and managing token-driven design systems.
 
-## Installation
-```sh
-# NPM
-npm install @matteusan/sentro --save
-```
+By utilizing a token-driven approach for your design system, it is easier than ever to enforce consistency, beauty, and delightful DX without sacrificing flexibility, and scalability.
 
-## Documentation
-- The documentation for this project is located [here](https://docs.matteusan.me/docs/sentro).
+## What makes it different?
+Other token-driven libraries tend to use the utility class method. However, this library uses native css custom properties to its fullest extent. This makes it much more flexible compared to the other libraries as you're working directly with CSS and you are in control with your styles.
+
+Sentro is well-equipped for making your design system into a production ready design API for your developers to consume.
 
 ## Showcase
 #### SCSS Input
@@ -65,9 +67,9 @@ npm install @matteusan/sentro --save
 }
 
 .my-button-theme {
-  background: var(--sdb-button-fill, var(--sdb-theme-secondary));
-  color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
-  border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
-  border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
+    background: var(--sdb-button-fill, var(--sdb-theme-secondary));
+    color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
+    border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
+    border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
 }
 ```

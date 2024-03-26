@@ -3,7 +3,7 @@
   "version": "0.1.26",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "_index.scss",
-  "author": "Matteu",
+  "author": "Matteu <matt@matteusan.com>",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

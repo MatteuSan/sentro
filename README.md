@@ -1,14 +1,10 @@
 # Sentro
-
-The complete toolkit for creating robust and scalable design systems for the web.
+A low-level SCSS library for building and managing token-driven design systems.
 
 ## Installation
 ```sh
 # NPM
 npm install @matteusan/sentro --save
-
-# Yarn
-yarn add @matteusan/sentro --save
 ```
 
 ## Documentation
@@ -16,9 +12,8 @@ yarn add @matteusan/sentro --save
 
 ## Showcase
 #### SCSS Input
-- Tokenize your UI while creating an intuitive theming API for your design system.
 ```scss
-@use 'path/to/@matteusan/sentro' with (
+@use '@matteusan/sentro' with (
   $prefix: 'sdb',
   $context: 'theme'
 );
@@ -52,8 +47,8 @@ yarn add @matteusan/sentro --save
   border-radius: sentro.key-create('button-radius', sentro.token-get('radius-small'));
 }
 ```
+
 #### CSS Output
-- Voila!
 ```css
 :root {
   --sdb-theme-primary: #122c53;

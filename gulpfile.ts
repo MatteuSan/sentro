@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022 Matteu
+ *  Copyright (c) 2024 Matteu
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -20,7 +20,7 @@
  *  SOFTWARE.
  */
 
-const { src, dest, watch, series } = require('gulp');
+const { src, dest, series } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 
 function sassTaskWebsite() {
