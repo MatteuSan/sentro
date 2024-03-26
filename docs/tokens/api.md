@@ -14,13 +14,15 @@ team, or from the project's UX lead. Then the second one is for adding your own 
 
 Both parameters can be used simultaneously, or if you don't want that you can always use one or the other.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-@include sentro.token-config({ map } $map, $tokens . . .);
+/// @param {map} $token-map
+/// @param {args} $tokens...
+token-config($map: (), $tokens...) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -45,20 +47,14 @@ Checks if a token is a valid token or not. Must be used within a valid SCSS cond
 
 **NOTE: It does not throw and error when the value is asserted as false, you need to make the error yourself.**
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.token-check
-
-(
-{
-  string
-}
-$query)
-;
+/// @param {*} query
+token-check($query) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -81,13 +77,15 @@ Creates a token. Must be used within a valid CSS selector.
 This is the smallest and the most basic mixin for this API. This is where all the individual tokens gets passed and made
 into a design token available for querying.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-@include sentro.token-create({ string } $key, { *} $value);
+/// @param {string} $key
+/// @param {*} $value
+token-create($key, $value) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -106,20 +104,14 @@ key-fallback value.
 
 Allows you to query your own tokens and pass it off inside a property to be used.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.token-get
-
-(
-{
-  string
-}
-$key)
-;
+/// @param {string} $key
+token-get($key) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -140,20 +132,14 @@ Allows you to query your own tokens and pass it off inside a property to be used
 
 This is especially useful when using the sass version of the `rgba()` function.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.token-get-raw
-
-(
-{
-  string
-}
-$key)
-;
+/// @param {string} $key
+token-get-raw($key) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -172,21 +158,13 @@ value, css-function value, or key-fallback value.
 
 This is especially useful when creating your styling API.
 
-**SYNTAX**
-
+### Syntax
 ```scss
-sentro.token-switch
-
-(
-{
-  string
-}
-$query)
-;
+/// @param {*} $query
+/// @param {*} $fallback
+token-switch($query, $fallback: ()) {}
 ```
-
-**USAGE**
-
+### Usage
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
 
@@ -206,20 +184,15 @@ used as a property value, css-function value, or key-fallback value.
 
 This is especially useful when creating your styling API.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.token-switch
-
-(
-{
-  string
-}
-$query)
-;
+/// @param {*} $query
+/// @param {*} $fallback
+token-switch-raw($query, $fallback: ()) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -227,7 +200,7 @@ $query)
 $fill: #ff7700 !default;
 
 .my-selector {
-  background-color: sentro.token-switch($fill);
+  background-color: sentro.token-switch-raw($fill);
 }
 
 ...
