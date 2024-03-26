@@ -5,17 +5,19 @@ slug: /keys/api
 
 # Keys API
 
-## `key-create()` mixin
+## `key-bind()` mixin
 
 Binds a new value to an existing key. Must be used within a valid CSS selector.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-@include sentro.key-bind({ string } $key, { *} $value);
+/// @param {string} $key
+/// @param {*} $value
+key-bind($key, $value) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -32,23 +34,15 @@ Binds a new value to an existing key. Must be used within a valid CSS selector.
 Creates a key with a fallback value for a CSS property. Must be used as a property value, css-function value, or
 key-fallback value.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.key-create
-
-(
-{
-  string
-}
-$key,
-{
-  *}
-$value)
-;
+/// @param {string} $key
+/// @param {*} $value
+key-create($key, $value) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -66,20 +60,14 @@ Checks if a token is a valid key or not. Must be used within a valid SCSS condit
 
 **NOTE: It does not throw and error when the value is asserted as false, you need to make the error yourself.**
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.key-check
-
-(
-{
-  string
-}
-$query)
-;
+/// @param {*} $query
+key-check($query) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -100,20 +88,14 @@ $query)
 Queries and retrieves a key in its CSS custom property form. Must be used as a property value, css-function value, or
 key-fallback value.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.key-get
-
-(
-{
-  string
-}
-$key)
-;
+/// @param {string} $key
+key-get($key) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -130,20 +112,14 @@ $key)
 Queries and retrieves a key in its raw value form. Must be used as a property value, css-function value, or key-fallback
 value.
 
-**SYNTAX**
+### Syntax
 
 ```scss
-sentro.key-get-raw
-
-(
-{
-  string
-}
-$key)
-;
+/// @param {string} $key
+key-get-raw($key) {}
 ```
 
-**USAGE**
+### Usage
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
