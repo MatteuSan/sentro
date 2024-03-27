@@ -11,11 +11,10 @@ able to create a very reliable source of truth for your design system. Sentro ma
 maintain.
 
 ## Basic Usage
-
+### Configuring tokens
 Configure your tokens using the `sentro.token-config()` mixin.
 
-- It can be a map with a default value and variants, or a separate variable argument.
-- For maps, the `default` key is the set non-variant key for the parent key (please see the examples below).
+It can be a map with a default value and variants, or a separate variable argument.  For maps, the `default` key is the set non-variant key for the parent key (please see the examples below).
 
 ```scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
@@ -59,7 +58,7 @@ $_my-token-map: (
 ...
 ```
 
-### Two-way token creation
+### Two-way token configuration
 
 It also supports both at the same time.
 
@@ -88,6 +87,7 @@ $_my-token-map: (
 }
 ```
 
+### Nesting tokens
 You can also nest tokens. Though we do not recommend nesting too deep, about 3 levels is the maximum.
 
 ```scss
@@ -109,9 +109,10 @@ You can also nest tokens. Though we do not recommend nesting too deep, about 3 l
 }
 ```
 
-Apply these tokens to your CSS property values using the `sentro.token-get()` function.
+### Using tokens
+Using these tokens in your CSS property values using the `sentro.token-get()` function.
 
-- If the token you created has the `default` as the key of its variant, you won't have to point it to add `default` to
+If the token you created has the `default` as the key of its variant, you won't have to point it to add `default` to
   your `token-get()` key as sentro automatically maps it for you.
 
 ```scss

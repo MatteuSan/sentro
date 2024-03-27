@@ -43,3 +43,14 @@ Use it upon using the module in the root stylesheet.
   $key-validation: false
 );
 ```
+
+## `$default-separator`
+It accepts a character. This will be the default token separator for your entire design system.
+
+```scss
+@use 'node_modules/@matteusan/sentro' with (
+  $prefix: 'hc',
+  $context: 'theme',
+  $default-separator: '.' // uses . instead of - to separate tokens.
+);
+```
