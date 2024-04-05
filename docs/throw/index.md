@@ -1,4 +1,4 @@
 ---
-title:
-slug:
+title: Throw
+slug: /throw
 ---

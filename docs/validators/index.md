@@ -1,4 +1,4 @@
 ---
-title:
-slug:
+title: Validators
+slug: /validators
 ---
