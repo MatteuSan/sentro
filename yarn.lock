@@ -743,26 +743,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@matteusan/himig-web@npm:0.1.5":
-  version: 0.1.5
-  resolution: "@matteusan/himig-web@npm:0.1.5"
-  dependencies:
-    "@matteusan/sentro": 0.1.12
-  checksum: 8cac8c0d78ad311dcd2fd75bbc4a3a23cda46ace7faa5984bdcc000c5843e8561939314fe32a13ec271e60e1f20d84dd3e4c537805b7cacc8a614b656905bb77
-  languageName: node
-  linkType: hard
-
 "@matteusan/sentro@file:./packages/sentro::locator=%40matteusan%2Fsentro%40workspace%3A.":
-  version: 0.1.25
-  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=3b5517&locator=%40matteusan%2Fsentro%40workspace%3A."
-  checksum: ce945c076721e0074154fe0c08913d95accc69e8bbf155439f7b321c1b220f5297d5a6d026ca4c39202feef837261f903e1696a4e99f22e58954fb7404087435
-  languageName: node
-  linkType: hard
-
-"@matteusan/sentro@npm:0.1.12":
-  version: 0.1.12
-  resolution: "@matteusan/sentro@npm:0.1.12"
-  checksum: 3877c44b78b9a0ec6a6a2b8ca31a9fb9a80c845321d456a7dec7efd025644a807da6bfad7d6d699d4a7096b949e44080d24967e799252d1f705d1ab5bfc4bb43
+  version: 1.0.0-alpha
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=bd5861&locator=%40matteusan%2Fsentro%40workspace%3A."
+  checksum: 52089664edd19010d2acb0c68387f85c1b4866e71d6e6394a06d0029afabb15ff803742547a20bf5faf722dd6850835212eee38ef55909db00c34f587b33e73e
   languageName: node
   linkType: hard
 
@@ -770,7 +754,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@matteusan/sentro@workspace:."
   dependencies:
-    "@matteusan/himig-web": 0.1.5
     "@matteusan/sentro": "file:./packages/sentro"
     "@types/jest": 28.1.2
     gulp: 4.0.2
