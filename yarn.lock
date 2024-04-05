@@ -745,8 +745,8 @@ __metadata:
 
 "@matteusan/sentro@file:./packages/sentro::locator=%40matteusan%2Fsentro%40workspace%3A.":
   version: 1.0.0-alpha
-  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=bd5861&locator=%40matteusan%2Fsentro%40workspace%3A."
-  checksum: 52089664edd19010d2acb0c68387f85c1b4866e71d6e6394a06d0029afabb15ff803742547a20bf5faf722dd6850835212eee38ef55909db00c34f587b33e73e
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=a4c0ec&locator=%40matteusan%2Fsentro%40workspace%3A."
+  checksum: ea6ebdf1f98f144fd99aff1851a642e0cdcf8197af14a6c244112d4a355c9ddc760207de77b6c40794d628e87541a93eb7b184661174667b3815f6b8ca4d7adb
   languageName: node
   linkType: hard
 
