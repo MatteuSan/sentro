@@ -37,7 +37,7 @@ $breakpoint-validation: true !default;
 );
 @forward 'keys' as key-* with (
   $ds-prefix: $prefix,
-  $validation: $key-validation
+  $ds-separator: $separator,
   $validation: $key-validation,
   $verbose: $verbose
 );

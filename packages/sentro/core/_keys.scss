@@ -1,5 +1,5 @@
-//
-//  Copyright (c) 2022 Matteu
+//--------------------------------------------------------------------
+//  Copyright (c) 2024 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -18,8 +18,9 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-//
+//--------------------------------------------------------------------
 
+@use '../tools';
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
@@ -31,9 +32,9 @@
 /// @access public
 $ds-prefix: '' !default;
 
-/// Stores the keys for getting raw values.
-/// @access private
-$_ds-key-registry: ();
+/// Stores the separator for the design system.
+/// @access public
+$ds-separator: '-' !default;
 
 /// Validation for keys.
 /// @access public
@@ -53,7 +54,7 @@ $_ds-key-registry: ();
 /// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
   $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
-  @return var(--#{_sanitize-prefix($ds-prefix)}#{$key}, #{$value});
+  @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}, #{$value});
 }
 
 /// Retrieves an existing component key.
@@ -61,10 +62,10 @@ $_ds-key-registry: ();
 /// @return {string} returns var() with key.
 @function get($key) {
   @if _is-registered-key($key) {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)});
   }
   @if not $validation {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{$key});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)});
   }
 }
 
@@ -92,7 +93,7 @@ $_ds-key-registry: ();
 /// @param {*} $value
 /// @return {string|*} returns an overrider css custom property with a new value.
 @mixin bind($key, $value) {
-  --#{_sanitize-prefix($ds-prefix)}#{$key}: #{$value};
+  --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{$value};
   @if not check($key) {
     @include _register-key($key, $value);
   }
@@ -107,6 +108,17 @@ $_ds-key-registry: ();
     @return '';
   }
   @return '#{$prefix}-';
+}
+
+/// Sanitizes and verifies a key.
+/// @access private
+/// @param {string} $key
+/// @return {string} sanitized and validated context.
+@function _sanitize-key-in-custom-property($key) {
+  @if $ds-separator != '-' {
+    @return tools.string-replace($key, $ds-separator, '-');
+  }
+  @return $key;
 }
 
 /// Registers a key to the key registry variable.
