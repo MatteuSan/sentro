@@ -1,6 +1,6 @@
 ---
 title: Token Module API
-slug: /token/api
+slug: /api/tokens
 ---
 
 # Token API
@@ -25,7 +25,7 @@ token-config($map: (), $tokens...) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use '../../node_modules/@matteusan/sentro/index' with ($prefix: 'sdc', $context: 'theme');
 
 :root {
   @include sentro.token-config(

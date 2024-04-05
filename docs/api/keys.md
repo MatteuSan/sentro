@@ -1,6 +1,6 @@
 ---
 title: Keys Module API
-slug: /keys/api
+slug: /api/keys
 ---
 
 # Keys API
@@ -20,7 +20,7 @@ key-bind($key, $value) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use '../../node_modules/@matteusan/sentro/index' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   @include sentro.key-bind('card-bg', sentro.token-switch('surface-light'));
