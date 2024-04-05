@@ -14,7 +14,7 @@ npm install @matteusan/sentro --save
 #### SCSS Input
 ```scss
 @use '@matteusan/sentro' with (
-  $prefix: 'sdb',
+  $prefix: 'sdc',
   $context: 'theme'
 );
 
