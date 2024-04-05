@@ -1,5 +1,5 @@
 {
-  "name": "@matteusan/sentro",
+  "name": "sentro",
   "version": "1.0.0",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "packages/sentro/_index.scss",
@@ -7,6 +7,10 @@
   "license": "MIT",
   "files": [
     "packages/sentro"
+  ],
+  "workspaces": [
+    "packages/*",
+    "website"
   ],
   "keywords": [
     "css",
