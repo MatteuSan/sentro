@@ -27,7 +27,7 @@ Then configure the **prefix** to be used and the **context** in your design syst
 - **Context** provides an additional unique prefix for your tokens (e.g. `'token'`, `'theme'`, etc.)
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 ```
 
 ### When using it in partials
@@ -37,7 +37,7 @@ requires you to configure the `$prefix` and `$context` once in your main SCSS fi
 
 ```scss
 // main.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 // _partial.scss
 @use 'node_modules/@matteusan/sentro';
@@ -49,7 +49,7 @@ the main SCSS file.
 
 ```scss
 // main.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 // my-component.scss
 @use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'my-component');
