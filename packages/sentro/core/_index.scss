@@ -45,6 +45,7 @@ $breakpoint-validation: true !default;
   $ds-prefix: $prefix
 );
 @forward 'breakpoints' as breakpoint-* with (
+  $ds-separator: $separator,
   $validation: $breakpoint-validation
 );
 @forward 'throw' as throw-*;
