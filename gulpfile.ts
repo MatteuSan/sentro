@@ -24,9 +24,9 @@ const { src, dest, series } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 
 function sassTaskWebsite() {
-  return src('website/**/*.scss', { sourcemaps: true })
+  return src('tests/build.test.scss', { sourcemaps: true })
     .pipe(sass().on('error', sass.logError))
-    .pipe(dest('./website', { sourcemaps: '.' }));
+    .pipe(dest('./tests', { sourcemaps: '.' }));
 }
 
 exports.default = series(

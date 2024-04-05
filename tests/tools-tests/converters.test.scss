@@ -27,6 +27,6 @@
   @include true.it('should convert px to rem') {
     @include true.assert-equal(sentro.to-rem(18px), 1.125rem);
     @include true.assert-equal(sentro.to-rem(24px), 1.5rem);
-    @include true.assert-equal(sentro.px-to-rem(32px), 2rem);
+    @include true.assert-equal(sentro.to-rem(32px), 2rem);
   }
 }
