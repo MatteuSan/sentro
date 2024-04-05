@@ -39,6 +39,10 @@ $ds-context: '' !default;
 /// @access public
 $validation: true !default;
 
+/// Determines if errors contain extra information (i.e. valid values)
+/// @access public
+$verbose: false !default;
+
 /// Stores all the tokens for getting raw values.
 /// @access private
 $_ds-token-registry: ();
@@ -260,7 +264,10 @@ $_ds-token-separator: '-' !default;
 @function _is-registered-token($query, $errors: $validation) {
   @if not list.index(map.keys($_ds-token-registry), $query) {
     @if $errors {
-      @error 'Invalid token: #{$query}. Please use a valid registered token: #{map.keys($_ds-token-registry)}';
+      @if $verbose {
+        @error 'Invalid token: #{$query}. Please use a valid registered token: #{map.keys($_ds-token-registry)}';
+      }
+      @error 'Invalid token: #{$query}.';
     } @else {
       @return false;
     }

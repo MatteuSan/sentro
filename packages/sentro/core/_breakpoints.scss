@@ -27,13 +27,17 @@
 
 @use 'validators';
 
-/// Stores all breakpoints of the design system. Reference for all mixins below
-/// @access private
-$_ds-breakpoint-registry: ();
-
 /// Validation for breakpoints.
 /// @access public
 $validation: true !default;
+
+/// Determines if errors contain extra information (i.e. valid values)
+/// @access public
+$verbose: false !default;
+
+/// Stores all breakpoints of the design system. Reference for all mixins below
+/// @access private
+$_ds-breakpoint-registry: ();
 
 /// Verifies a breakpoint.
 /// @param {string} $query
@@ -167,7 +171,10 @@ $validation: true !default;
 @function _is-registered-breakpoint($query, $errors: $validation) {
   @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
     @if $errors {
-      @error 'Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}';
+      @if $verbose {
+        @error 'Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}';
+      }
+      @error 'Invalid breakpoint: #{$query}.';
     } @else {
       @return false;
     }

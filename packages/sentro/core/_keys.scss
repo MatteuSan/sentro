@@ -39,6 +39,14 @@ $_ds-key-registry: ();
 /// @access public
 $validation: true !default;
 
+/// Determines if errors contain extra information (i.e. valid values)
+/// @access public
+$verbose: false !default;
+
+/// Stores the keys for getting raw values.
+/// @access private
+$_ds-key-registry: ();
+
 /// Creates a key for a css property of a component.
 /// @param {string} $key
 /// @param {*} $value
@@ -117,7 +125,10 @@ $validation: true !default;
 @function _is-registered-key($query, $errors: $validation) {
   @if not list.index(map.keys($_ds-key-registry), $query) {
     @if $errors {
-      @error 'Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}';
+      @if $verbose {
+        @error 'Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}';
+      }
+      @error 'Invalid key: #{$query}.';
     } @else {
       @return false;
     }
