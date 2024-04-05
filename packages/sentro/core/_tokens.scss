@@ -112,16 +112,6 @@ $_ds-token-separator: '-' !default;
   }
 }
 
-/// DEPRECATED: Configures a set of tokens, either using maps or separate arguments, to a selector.
-/// @deprecated Use token-config() instead.
-/// @param {map} $token-map
-/// @param {args} $tokens...
-/// @return {*} CSS-ized tokens.
-@mixin add($map: (), $tokens...) {
-  @warn 'The token-add() mixin will be deprecated on version 1.x. Use the token-config() mixin instead.';
-  @include config($map, $tokens...);
-}
-
 /// Retrieves an existing theme token.
 /// @param {string} $key
 /// @param {boolean} $important
