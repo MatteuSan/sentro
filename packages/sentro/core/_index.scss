@@ -22,6 +22,7 @@
 
 $prefix: '' !default;
 $context: '' !default;
+$separator: '-' !default;
 $verbose: false !default;
 $token-validation: true !default;
 $key-validation: true !default;
@@ -30,7 +31,7 @@ $breakpoint-validation: true !default;
 @forward 'tokens' as token-* with (
   $ds-prefix: $prefix,
   $ds-context: $context,
-  $validation: $token-validation
+  $ds-separator: $separator,
   $validation: $token-validation,
   $verbose: $verbose
 );

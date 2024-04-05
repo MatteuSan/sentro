@@ -20,6 +20,7 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
+@use '../tools';
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
@@ -35,6 +36,10 @@ $ds-prefix: '' !default;
 /// @access public
 $ds-context: '' !default;
 
+/// Stores the separator for the design system.
+/// @access public
+$ds-separator: '-' !default;
+
 /// Validation for tokens.
 /// @access public
 $validation: true !default;
@@ -47,16 +52,13 @@ $verbose: false !default;
 /// @access private
 $_ds-token-registry: ();
 
-/// Default token separator
-/// @access private
-$_ds-token-separator: '-' !default;
-
 /// Creates a theme token.
 /// @param {string} $key
 /// @param {*} $value
 /// @return {*} returns a token as CSS custom properties with prefix and context.
 @mixin create($key, $value) {
-  --#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{$key}: #{$value};
+  --#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key-in-custom-property($key)}: #{$value};
+  @debug _sanitize-key-in-custom-property($key);
   @include _register-token($key, $value);
 }
 
@@ -77,9 +79,9 @@ $_ds-token-separator: '-' !default;
             }
           } @else {
             @if meta.type-of($_value) == map {
-              @include config(('#{$key}-#{$_key}': $_value));
+              @include config(('#{$key}#{$ds-separator}#{$_key}': $_value));
             } @else {
-              @include create('#{$key}-#{$_key}', $_value);
+              @include create('#{$key}#{$ds-separator}#{$_key}', $_value);
             }
           }
         }
@@ -101,9 +103,9 @@ $_ds-token-separator: '-' !default;
             }
           } @else {
             @if meta.type-of($_value) == map {
-              @include config($map: ('#{$key}-#{$_key}': $_value));
+              @include config($map: ('#{$key}#{$ds-separator}#{$_key}': $_value));
             } @else {
-              @include create('#{$key}-#{$_key}', $_value);
+              @include create('#{$key}#{$ds-separator}#{$_key}', $_value);
             }
           }
         }
@@ -122,13 +124,13 @@ $_ds-token-separator: '-' !default;
 /// @return {string} tokenized css custom property selector.
 @function get($key, $important: false) {
   @if _is-registered-token($key) {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key-in-custom-property($key)});
   }
   @if not $validation {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)});
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key-in-custom-property($key)});
   }
   @if $important {
-    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key($key)}) !important;
+    @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key-in-custom-property($key)}) !important;
   }
 }
 
@@ -152,25 +154,25 @@ $_ds-token-separator: '-' !default;
 /// Retrieves the entire token registry.
 /// @param {list<string>} $targets
 /// @return {map} map of tokens.
-// @function registry-get($targets: 'all') {
-//   @if not feature.is-empty($targets) {
-//     $targeted-tokens: ();
-//     @each $target in $targets {
-//       @each $key, $value in $_ds-token-registry {
-//         @if string.index($key, $target) == 1 {
-//           $targeted-tokens: map.set($targeted-tokens, $key, $value);
-//         }
-//       }
-//     }
-//     @return $targeted-tokens;
-//   }
-//
-//   @if $targets == 'all' {
-//     @return $_ds-token-registry;
-//   }
-//
-//   @return $_ds-token-registry;
-// }
+@function registry-get($targets: 'all') {
+  @if not validators.is-empty($targets) {
+    $targeted-tokens: ();
+    @each $target in $targets {
+      @each $key, $value in $_ds-token-registry {
+        @if string.index($key, $target) == 1 {
+          $targeted-tokens: map.set($targeted-tokens, $key, $value);
+        }
+      }
+    }
+    @return $targeted-tokens;
+  }
+
+  @if $targets == 'all' {
+    @return $_ds-token-registry;
+  }
+
+  @return $_ds-token-registry;
+}
 
 /// Check if the query is a token or not. If the query is a token, output a token. If not, output as is.
 /// @param {*} $query
@@ -248,13 +250,24 @@ $_ds-token-separator: '-' !default;
   @return '#{$ds-prefix}-';
 }
 
+/// Sanitizes and verifies a key.
+/// @access private
+/// @param {string} $key
+/// @return {string} sanitized and validated context.
+@function _sanitize-key-in-custom-property($key) {
+  @if $ds-separator != '-' {
+    @return tools.string-replace(_sanitize-key($key), $ds-separator, '-');
+  }
+  @return _sanitize-key($key);
+}
+
 /// Registers a token to the token registry variable.
 /// @access private
 /// @param {string} $key
 /// @param {*} $value
 /// @return {void} token registry
 @mixin _register-token($key, $value) {
-  $_ds-token-registry: map.set($_ds-token-registry, $key, $value) !global;
+  $_ds-token-registry: map.set($_ds-token-registry, _sanitize-key($key), $value) !global;
 }
 
 /// Validates a query if it's a registered token or not
