@@ -17,7 +17,7 @@ Configure your tokens using the `sentro.token-config()` mixin.
 It can be a map with a default value and variants, or a separate variable argument.  For maps, the `default` key is the set non-variant key for the parent key (please see the examples below).
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 :root {
   @include sentro.token-config(
@@ -36,7 +36,7 @@ It can be a map with a default value and variants, or a separate variable argume
 The `token-config()` mixin also supports map-based token sets using the `$map` parameter.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-token-map: (
   'brand-color': (
@@ -63,7 +63,7 @@ $_my-token-map: (
 It also supports both at the same time.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'token');
+@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-token-map: (
   'brand-color': (
@@ -137,3 +137,6 @@ If the token you created has the `default` as the key of its variant, you won't 
   color: var(--sdc-token-brand-color-ink);
 }
 ```
+
+### Using tokens with a custom separator
+When you want to use custom separators for your tokens, the global separator can be changed using the `$separator` parameter. Please refer to [this guide](../api/settings.md#separator) for more information.

@@ -107,3 +107,6 @@ $_my-breakpoint-map: (
   // Styles here...
 }
 ```
+
+### Using breakpoints with a custom separator
+When you want to use custom separators for your breakpoints, the global separator can be changed using the `$separator` parameter. Please refer to [this guide](../api/settings.md#separator) for more information.
