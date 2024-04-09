@@ -40,6 +40,15 @@
   @return '#{_identify($source, 'ERROR')} #{$message}';
 }
 
+/// The error() function mixin counterpart.
+/// @param {string} $message
+/// @param {string} $source
+/// @param {boolean} $output-string
+/// @return {error|string} The error.
+@mixin error($message, $source: (), $output-string: false) {
+  --sentro-error: "#{error($message, $source, $output-string)}";
+}
+
 /// Throws a warning.
 /// @param {string} $message
 /// @param {string} $source
@@ -50,4 +59,13 @@
     @warn '#{_identify($source, 'WARN')} #{$message}';
   }
   @return '#{_identify($source, 'WARN')} #{$message}';
+}
+
+/// The warn() function mixin counterpart.
+/// @param {string} $message
+/// @param {string} $source
+/// @param {boolean} $output-string
+/// @return {warn|string} The warning.
+@mixin warn($message, $source: (), $output-string: false) {
+  --sentro-warn: "#{warn($message, $source, $output-string)}";
 }
