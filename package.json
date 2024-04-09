@@ -51,6 +51,8 @@
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.1.4",
-    "@types/mdx": "^2.0.12"
+    "@types/mdx": "^2.0.12",
+    "sassdoc": "^2.7.4",
+    "sassdoc-theme-herman": "^6.0.0"
   }
 }
