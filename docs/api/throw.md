@@ -5,9 +5,9 @@ slug: /api/throw
 
 # Throw API
 
-## `throw-error()` function/mixin
+## `throw-error()` function and mixin
 
-Throws an error. Must be used within a valid SCSS conditional statement or a valid selector
+Throws an error. Must be used within a valid SCSS conditional statement or a valid selector.
 
 ### Syntax
 
@@ -35,11 +35,9 @@ Throws an error. Must be used within a valid SCSS conditional statement or a val
 ...
 ```
 
-## `throw-warn()` function
+## `throw-warn()` function and mixin
 
-Checks if a breakpoint is a valid breakpoint or not. Must be used within a valid SCSS conditional statement.
-
-**NOTE: It does not throw and error when the value is asserted as false, you need to make the error yourself.**
+Throws a warning. Must be used within a valid SCSS conditional statement or a valid selector.
 
 ### Syntax
 
