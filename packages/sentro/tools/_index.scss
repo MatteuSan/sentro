@@ -23,6 +23,4 @@
 @forward 'converters';
 @forward 'line-clamp';
 @forward 'prefix' hide prefix-property;
-@forward 'elevation' as elevation-*;
-@forward 'resetter';
 @forward 'string' as string-*;
