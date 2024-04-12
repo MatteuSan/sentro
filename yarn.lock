@@ -735,14 +735,18 @@ __metadata:
 
 "@matteusan/sentro@file:./packages/sentro::locator=sentro%40workspace%3A.":
   version: 1.0.0-alpha
-  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=510611&locator=sentro%40workspace%3A."
-  checksum: 396049696d22c0d4c567394578f1d96651c02cd40645920acbbd84c161616f59782cddb378753b52674ccdd0e62aebc9a486bd7f8ad3c0017e1a1900196ba59d
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=e2959e&locator=sentro%40workspace%3A."
+  peerDependencies:
+    sass: ^1.74.1
+  checksum: c48fe735f2c3277112732542bf55200c4fe967f173378409ee0bfef42b57862ae01a12660bf5c7caa1f733b3e07f7bd3b44693ebd70343873d657c6af2978ec6
   languageName: node
   linkType: hard
 
 "@matteusan/sentro@workspace:packages/sentro":
   version: 0.0.0-use.local
   resolution: "@matteusan/sentro@workspace:packages/sentro"
+  peerDependencies:
+    sass: ^1.74.1
   languageName: unknown
   linkType: soft
 
@@ -7968,16 +7972,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.62.1":
-  version: 1.62.1
-  resolution: "sass@npm:1.62.1"
+"sass@npm:1.74.1":
+  version: 1.74.1
+  resolution: "sass@npm:1.74.1"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 1b1b3584b38a63dd94156b65f13b90e3f84b170a38c3d5e3fa578b7a32a37aeb349b4926b0eaf9448d48e955e86b1ee01b13993f19611dad8068af07a607c13b
+  checksum: 3cbcd73d91e65607f7987656b7f6b0c6143724304544768079ecbe95505f1ce71036916e0e02dcc9923551c3779863bcdd522732a8f4409e89205271966a36f4
   languageName: node
   linkType: hard
 
@@ -8152,7 +8156,7 @@ __metadata:
     gulp: 4.0.2
     gulp-sass: 5.1.0
     jest: 28.1.1
-    sass: 1.62.1
+    sass: 1.74.1
     sass-true: 6.1.0
     sassdoc: ^2.7.4
     sassdoc-theme-herman: ^6.0.0

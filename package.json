@@ -1,6 +1,6 @@
 {
-  "name": "sentro",
-  "version": "1.0.0",
+  "name": "@matteusan/sentro",
+  "version": "1.0.0-alpha",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "packages/sentro/_index.scss",
   "author": "Matteu",
@@ -20,12 +20,16 @@
     "design-tokens",
     "design-system"
   ],
+  "readme": "README.md",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatteuSan/sentro.git"
   },
   "bugs": {
     "url": "https://github.com/MatteuSan/sentro/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "homepage": "https://github.com/MatteuSan/sentro#readme",
   "scripts": {
@@ -37,22 +41,22 @@
   },
   "devDependencies": {
     "@matteusan/sentro": "file:./packages/sentro",
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.1.4",
     "@types/jest": "28.1.2",
     "gulp": "4.0.2",
     "gulp-sass": "5.1.0",
     "jest": "28.1.1",
-    "sass": "1.62.1",
     "sass-true": "6.1.0",
     "ts-jest": "28.0.5",
     "ts-node": "10.8.1",
-    "typescript": "4.7.4"
-  },
-  "dependencies": {
-    "@mdx-js/loader": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "^14.1.4",
+    "typescript": "4.7.4",
     "@types/mdx": "^2.0.12",
     "sassdoc": "^2.7.4",
     "sassdoc-theme-herman": "^6.0.0"
+  },
+  "peerDependencies": {
+    "sass": "1.74.1"
   }
 }
