@@ -1,16 +1,12 @@
 {
-  "name": "@matteusan/sentro",
+  "name": "sentro",
   "version": "1.0.0-alpha",
   "description": "A low-level SCSS library for building and managing token-driven design systems.",
   "main": "packages/sentro/_index.scss",
   "author": "Matteu",
   "license": "MIT",
   "files": [
-    "packages/sentro"
-  ],
-  "workspaces": [
-    "packages/*",
-    "website"
+    "packages/sentro/*"
   ],
   "keywords": [
     "css",
@@ -29,34 +25,26 @@
     "url": "https://github.com/MatteuSan/sentro/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "restricted"
   },
   "homepage": "https://github.com/MatteuSan/sentro#readme",
   "scripts": {
     "build:sass": "yarn && gulp --gulpfile=\"gulpfile.ts\"",
     "test:sass": "yarn && jest --config=\"jest.config.ts\"",
-    "pub:major": "npm version major --force && cd packages/sentro && npm version major --force && cd ../.. && npm publish",
-    "pub:minor": "npm version minor --force && cd packages/sentro && npm version minor --force && cd ../.. && npm publish",
-    "pub:patch": "npm version patch --force && cd packages/sentro && npm version patch --force && cd ../.. && npm publish"
+    "pub:major": "npm version major --force && cd packages/sentro && npm version major --force && npm publish",
+    "pub:minor": "npm version minor --force && cd packages/sentro && npm version minor --force && npm publish",
+    "pub:patch": "npm version patch --force && cd packages/sentro && npm version patch --force && npm publish"
   },
   "devDependencies": {
     "@matteusan/sentro": "file:./packages/sentro",
-    "@mdx-js/loader": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "^14.1.4",
     "@types/jest": "28.1.2",
     "gulp": "4.0.2",
     "gulp-sass": "5.1.0",
     "jest": "28.1.1",
+    "sass": "1.74.1",
     "sass-true": "6.1.0",
     "ts-jest": "28.0.5",
     "ts-node": "10.8.1",
-    "typescript": "4.7.4",
-    "@types/mdx": "^2.0.12",
-    "sassdoc": "^2.7.4",
-    "sassdoc-theme-herman": "^6.0.0"
-  },
-  "peerDependencies": {
-    "sass": "1.74.1"
+    "typescript": "5.4.5"
   }
 }
