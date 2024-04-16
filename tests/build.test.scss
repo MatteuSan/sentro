@@ -20,5 +20,36 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'converters.test';
-@use 'prefix.test';
+@use 'node_modules/@matteusan/sentro' with ($verbose: true, $separator: '.');
+
+@include sentro.breakpoint-config((
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  'mobile': (
+    'phone': 320px,
+    'tablet': 640px
+  )
+));
+
+:root {
+  @include sentro.token-config((
+    '$red': red,
+    '$blue': (
+      default: blue,
+      light: lightblue
+    )
+  ));
+}
+
+body {
+  background: sentro.key-create('global.bg-color', sentro.token-get('blue.light'));
+  color: sentro.key-create('global.text-color', sentro.token-get('red'));
+  border: 1px solid sentro.key-get('global.bg-color');
+
+  @include sentro.breakpoint-create('mobile.tablet') {
+    @include sentro.key-bind('global.bg-color', sentro.token-get('blue'));
+    @include sentro.key-bind('global.text-color', sentro.token-get('red'));
+  }
+}

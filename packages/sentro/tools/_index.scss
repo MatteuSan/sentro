@@ -20,5 +20,7 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'converters.test';
-@use 'prefix.test';
+@forward 'converters';
+@forward 'line-clamp';
+@forward 'prefix' hide prefix-property;
+@forward 'string' as string-*;

@@ -20,5 +20,21 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'converters.test';
-@use 'prefix.test';
+$prefix: '' !default;
+$context: '' !default;
+$separator: '-' !default;
+$verbose: false !default;
+$token-validation: true !default;
+$key-validation: true !default;
+$breakpoint-validation: true !default;
+
+@forward 'core/index' with (
+  $prefix: $prefix,
+  $context: $context,
+  $separator: $separator,
+  $verbose: $verbose,
+  $token-validation: $token-validation,
+  $key-validation: $key-validation,
+  $breakpoint-validation: $breakpoint-validation,
+);
+@forward 'tools/index';

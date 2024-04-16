@@ -20,5 +20,32 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'converters.test';
-@use 'prefix.test';
+$prefix: '' !default;
+$context: '' !default;
+$separator: '-' !default;
+$verbose: false !default;
+$token-validation: true !default;
+$key-validation: true !default;
+$breakpoint-validation: true !default;
+
+@forward 'tokens' as token-* with (
+  $ds-prefix: $prefix,
+  $ds-context: $context,
+  $ds-separator: $separator,
+  $validation: $token-validation,
+  $verbose: $verbose
+);
+@forward 'keys' as key-* with (
+  $ds-prefix: $prefix,
+  $ds-separator: $separator,
+  $validation: $key-validation,
+  $verbose: $verbose
+);
+@forward 'selectors' as selector-* with (
+  $ds-prefix: $prefix
+);
+@forward 'breakpoints' as breakpoint-* with (
+  $ds-separator: $separator,
+  $validation: $breakpoint-validation
+);
+@forward 'throw' as throw-*;

@@ -20,5 +20,41 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'converters.test';
-@use 'prefix.test';
+@use 'sass:string';
+@use 'sass:list';
+
+/// Replaces a string with another string.
+/// @param {string} $string
+/// @param {string} $search
+/// @param {string} $replace
+/// @return {string} returns replaced string.
+@function replace($string, $search, $replace: '') {
+  $index: string.index($string, $search);
+
+  @if $index {
+    @return string.slice($string, 1, $index - 1) + $replace + replace(string.slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+/// Splits a string from a given separator.
+/// Source: https://stackoverflow.com/a/42295154
+/// @param {string} $string
+/// @param {string} $separator
+/// @return {list} returns split string list.
+@function split($string, $separator) {
+  $split-list: ();
+  $index : string.index($string, $separator);
+
+  @while $index != null {
+    $item: string.slice($string, 1, $index - 1);
+    $split-list: list.append($split-list, $item, comma);
+    $string: string.slice($string, $index + string.length($separator));
+    $index : string.index($string, $separator);
+  }
+
+  $split-list: list.append($split-list, $string, comma);
+
+  @return $split-list;
+}

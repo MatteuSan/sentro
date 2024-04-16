@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2022 Matteu
+ *  Copyright (c) 2024 Matteu
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
  *  of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +20,13 @@
  *  SOFTWARE.
  */
 
-const { src, dest, watch, series } = require('gulp');
+const { src, dest, series } = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 
 function sassTaskWebsite() {
-  return src('website/**/*.scss', { sourcemaps: true })
+  return src('tests/build.test.scss', { sourcemaps: true })
     .pipe(sass().on('error', sass.logError))
-    .pipe(dest('./website', { sourcemaps: '.' }));
+    .pipe(dest('./tests', { sourcemaps: '.' }));
 }
 
 exports.default = series(

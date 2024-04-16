@@ -1,5 +1,5 @@
-///
-//  Copyright (c) 2022 Matteu
+//--------------------------------------------------------------------
+//  Copyright (c) 2024 Matteu
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -18,7 +18,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
-///
+//--------------------------------------------------------------------
 
 @use 'node_modules/@matteusan/sentro';
 @use 'node_modules/sass-true/sass/true';
@@ -40,6 +40,12 @@
       }
     }
   }
+
+  // @include true.it('should retrieve a token registry') {
+  //   @include true.assert-equal(sentro.token-registry-get(), (
+  //     'token-test': #f70
+  //   ));
+  // }
 
   @include true.it('should retrieve a token') {
     @include true.assert-equal(sentro.token-get('token-test'), var(--token-test));
