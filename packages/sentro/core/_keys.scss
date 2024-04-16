@@ -21,6 +21,7 @@
 //--------------------------------------------------------------------
 
 @use '../tools';
+@use 'tokens';
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
@@ -53,8 +54,8 @@ $_ds-key-registry: ();
 /// @param {*} $value
 /// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
-  $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
-  @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}, #{$value});
+  $_ds-key-registry: map.set($_ds-key-registry, $key, tokens.switch($value)) !global;
+  @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}, #{tokens.switch($value)});
 }
 
 /// Retrieves an existing component key.
@@ -127,7 +128,7 @@ $_ds-key-registry: ();
 /// @param {*} $value
 /// @return {void} key registry
 @mixin _register-key($key, $value) {
-  $_ds-key-registry: map.set($_ds-key-registry, $key, $value) !global;
+  $_ds-key-registry: map.set($_ds-key-registry, $key, tokens.switch($value)) !global;
 }
 
 /// Validates a query if it's a registered key or not
