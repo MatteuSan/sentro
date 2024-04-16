@@ -41,6 +41,12 @@
     }
   }
 
+  // @include true.it('should retrieve a token registry') {
+  //   @include true.assert-equal(sentro.token-registry-get(), (
+  //     'token-test': #f70
+  //   ));
+  // }
+
   @include true.it('should retrieve a token') {
     @include true.assert-equal(sentro.token-get('token-test'), var(--token-test));
   }
