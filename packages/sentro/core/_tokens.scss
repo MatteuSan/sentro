@@ -58,7 +58,6 @@ $_ds-token-registry: ();
 /// @return {*} returns a token as CSS custom properties with prefix and context.
 @mixin create($key, $value) {
   --#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key-in-custom-property($key)}: #{$value};
-  @debug _sanitize-key-in-custom-property($key);
   @include _register-token($key, $value);
 }
 
