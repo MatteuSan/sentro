@@ -41,10 +41,10 @@ npm install @matteusan/sentro --save
 }
 
 .my-button-theme {
-  background: sentro.key-create('button-fill', sentro.token-get('secondary'));
-  color: sentro.key-create('button-ink', sentro.token-get('secondary-ink'));
-  border-color: sentro.key-create('button-border', sentro.token-get('secondary'));
-  border-radius: sentro.key-create('button-radius', sentro.token-get('radius-small'));
+  background: sentro.key-create('button-fill', 'secondary');
+  color: sentro.key-create('button-ink', 'secondary-ink');
+  border-color: sentro.key-create('button-border', 'secondary');
+  border-radius: sentro.key-create('button-radius', 'radius-small');
 }
 ```
 
@@ -65,9 +65,9 @@ npm install @matteusan/sentro --save
 }
 
 .my-button-theme {
-    background: var(--sdb-button-fill, var(--sdb-theme-secondary));
-    color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
-    border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
-    border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
+  background: var(--sdb-button-fill, var(--sdb-theme-secondary));
+  color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
+  border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
+  border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
 }
 ```
