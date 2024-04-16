@@ -726,10 +726,10 @@ __metadata:
 
 "@matteusan/sentro@file:./packages/sentro::locator=sentro%40workspace%3A.":
   version: 1.0.0-alpha
-  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=1d9d3d&locator=sentro%40workspace%3A."
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=48c306&locator=sentro%40workspace%3A."
   peerDependencies:
     sass: ^1.74.1
-  checksum: 3f5a2998c0efd41dbb34b74a12f5791d07b010ec8cdacc673f602959439ae74e5c416ee052457824f60e7676face038ce3ddc8b5279da537812a4d2bf57941e5
+  checksum: d4f95f38ce3f48de752a0e3d4b31ed84d45ac2c0f0fd3d153923151853bfd37b5c674c24720a0a6b3e85abfc12acb55991fbf2d12a2a6388903ec3fff40968a0
   languageName: node
   linkType: hard
 
