@@ -96,9 +96,14 @@ $_ds-key-registry: ();
 /// Binds the a value to the component key.
 /// @param {string} $key
 /// @param {*} $value
+/// @param {boolean} $important
 /// @return {string|*} returns an overrider css custom property with a new value.
-@mixin bind($key, $value) {
-  --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{$value};
+@mixin bind($key, $value, $important: false) {
+  @if $important {
+    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{tokens.switch($value)} !important;
+  } @else {
+    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{tokens.switch($value)};
+  }
   @if not check($key) {
     @include _register-key($key, $value);
   }
