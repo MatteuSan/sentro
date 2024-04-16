@@ -75,6 +75,10 @@ $_ds-key-registry: ();
 /// @return {string} returns var() with key.
 @function get-raw($key) {
   @if _is-registered-key($key) {
+    $raw: tools.string-replace('#{tools.string-replace('#{map.get($_ds-key-registry, $key)}', ')', '')}', 'var(--', '');
+    @if tokens.check($raw) {
+      @return tokens.switch-raw($raw);
+    }
     @return map.get($_ds-key-registry, $key);
   }
   @if not $validation {
