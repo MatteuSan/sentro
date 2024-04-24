@@ -1,5 +1,5 @@
 # Sentro
-A low-level SCSS library for building and managing token-driven design systems.
+A low-level SCSS library for building robust token-driven design systems at scale.
 
 ## Installation
 ```sh
@@ -51,23 +51,23 @@ npm install @matteusan/sentro --save
 #### CSS Output
 ```css
 :root {
-  --sdb-theme-primary: #122c53;
-  --sdb-theme-primary-light: #536b99;
-  --sdb-theme-primary-dark: #061021;
-  --sdb-theme-primary-ink: #fff;
-  --sdb-theme-secondary: #ffac00;
-  --sdb-theme-secondary-light: #ffd77e;
-  --sdb-theme-secondary-dark: #533800;
-  --sdb-theme-secondary-ink: #000;
-  --sdb-theme-radius-small: 0.3rem;
-  --sdb-theme-radius-medium: 0.5rem;
-  --sdb-theme-radius-large: 0.7rem;
+  --sdc-theme-primary: #122c53;
+  --sdc-theme-primary-light: #536b99;
+  --sdc-theme-primary-dark: #061021;
+  --sdc-theme-primary-ink: #fff;
+  --sdc-theme-secondary: #ffac00;
+  --sdc-theme-secondary-light: #ffd77e;
+  --sdc-theme-secondary-dark: #533800;
+  --sdc-theme-secondary-ink: #000;
+  --sdc-theme-radius-small: 0.3rem;
+  --sdc-theme-radius-medium: 0.5rem;
+  --sdc-theme-radius-large: 0.7rem;
 }
 
 .my-button-theme {
-    background: var(--sdb-button-fill, var(--sdb-theme-secondary));
-    color: var(--sdb-button-ink, var(--sdb-theme-secondary-ink));
-    border-color: var(--sdb-button-border, var(--sdb-theme-secondary));
-    border-radius: var(--sdb-button-radius, var(--sdb-theme-radius-small));
+    background: var(--sdc-button-fill, var(--sdc-theme-secondary));
+    color: var(--sdc-button-ink, var(--sdc-theme-secondary-ink));
+    border-color: var(--sdc-button-border, var(--sdc-theme-secondary));
+    border-radius: var(--sdc-button-radius, var(--sdc-theme-radius-small));
 }
 ```
