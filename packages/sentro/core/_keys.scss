@@ -45,6 +45,10 @@ $validation: true !default;
 /// @access public
 $verbose: false !default;
 
+/// Switches the leniency of the passed values to the keys.
+/// @access public
+$strict-values: false !default;
+
 /// Stores the keys for getting raw values.
 /// @access private
 $_ds-key-registry: ();
@@ -54,8 +58,8 @@ $_ds-key-registry: ();
 /// @param {*} $value
 /// @return {string} returns var() with key and fallback value.
 @function create($key, $value) {
-  $_ds-key-registry: map.set($_ds-key-registry, $key, tokens.switch($value)) !global;
-  @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}, #{tokens.switch($value)});
+  $_ds-key-registry: map.set($_ds-key-registry, $key, _sanitize-value($value)) !global;
+  @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}, #{_sanitize-value($value)});
 }
 
 /// Retrieves an existing component key.
@@ -100,13 +104,24 @@ $_ds-key-registry: ();
 /// @return {string|*} returns an overrider css custom property with a new value.
 @mixin bind($key, $value, $important: false) {
   @if $important {
-    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{tokens.switch($value)} !important;
+    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{_sanitize-value($value)} !important;
   } @else {
-    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{tokens.switch($value)};
+    --#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)}: #{_sanitize-value($value)};
   }
   @if not check($key) {
     @include _register-key($key, $value);
   }
+}
+
+/// Sanitizes the value passed to the key.
+/// @access private
+/// @param {*} $value
+/// @return {*} sanitized value.
+@function _sanitize-value($value) {
+  @if $strict-values {
+    @return tokens.get($value);
+  }
+  @return tokens.switch($value);
 }
 
 /// Sanitizes and verifies a prefix.

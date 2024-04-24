@@ -24,6 +24,7 @@ $prefix: '' !default;
 $context: '' !default;
 $separator: '-' !default;
 $verbose: false !default;
+$strict-values: false !default;
 $token-validation: true !default;
 $key-validation: true !default;
 $breakpoint-validation: true !default;
@@ -33,6 +34,7 @@ $breakpoint-validation: true !default;
   $context: $context,
   $separator: $separator,
   $verbose: $verbose,
+  $strict-values: $strict-values,
   $token-validation: $token-validation,
   $key-validation: $key-validation,
   $breakpoint-validation: $breakpoint-validation,
