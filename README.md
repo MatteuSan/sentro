@@ -13,7 +13,7 @@ npm install @matteusan/sentro --save
 ## Showcase
 #### SCSS Input
 ```scss
-@use '@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme'
 );

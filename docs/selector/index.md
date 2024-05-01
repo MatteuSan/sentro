@@ -13,7 +13,7 @@ The selector module is a powerful tool for selecting elements in the DOM. It all
 Create a selector using the `sentro.selector-create()` mixin.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @include sentro.selector-create('.button') {
   // Your styles here
@@ -30,7 +30,7 @@ And it outputs:
 You can nest selectors using the `&` symbol.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @include sentro.selector-create('.button') {
   // Your base styles here

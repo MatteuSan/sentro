@@ -20,7 +20,7 @@ key-bind($key, $value) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   @include sentro.key-bind('card-bg', sentro.token-switch('surface-light'));
@@ -45,7 +45,7 @@ key-create($key, $value) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   background: sentro.key-create('card-bg', sentro.token-switch('surface-light'));
@@ -70,7 +70,7 @@ key-check($query) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @function tell-me-if-its-a-key($key) {
   @if sentro.key-check($key) {
@@ -98,7 +98,7 @@ key-get($key) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   background: sentro.key-get('card-bg');
@@ -122,7 +122,7 @@ key-get-raw($key) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   background: sentro.key-get-raw('card-bg');

@@ -23,7 +23,7 @@ Throws an error. Must be used within a valid SCSS conditional statement or a val
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   @if sentro.key-check('card-bg') {
@@ -53,7 +53,7 @@ Throws a warning. Must be used within a valid SCSS conditional statement or a va
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
   @if sentro.key-check('card-bg') {

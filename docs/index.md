@@ -15,7 +15,7 @@ Sentro is well-equipped for making your design system into a production ready de
 ## Showcase
 #### SCSS Input
 ```scss
-@use '@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme'
 );

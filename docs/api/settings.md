@@ -22,7 +22,7 @@ It accepts a string. This will be the separator for your tokens. By default, it 
 This is specifically useful if your design system specifications call for a different separator for tokens. For example, you want to use `.` instead of `-` for your tokens. You can set it like this:
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme',
   $separator: '.' // uses . instead of - to separate tokens.
@@ -46,7 +46,7 @@ body {
 The scope of this setting is not only exclusive to tokens but also to keys and breakpoints:
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme',
   $separator: '.'
@@ -97,7 +97,7 @@ It accepts a boolean value. This will enable/disable token validation throughout
 Use it upon using the module in the root stylesheet.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme',
   $token-validation: false
@@ -111,7 +111,7 @@ It accepts a boolean value. This will enable/disable key validation throughout t
 Use it upon using the module in the root stylesheet.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme',
   $key-validation: false
@@ -122,7 +122,7 @@ Use it upon using the module in the root stylesheet.
 It accepts a character. This will be the default token separator for your entire design system.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with (
+@use 'pkg:@matteusan/sentro' with (
   $prefix: 'sdc',
   $context: 'theme',
   $default-separator: '.' // uses . instead of - to separate tokens.

@@ -25,7 +25,7 @@ token-config($map: (), $tokens...) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 :root {
   @include sentro.token-config(
@@ -57,7 +57,7 @@ token-check($query) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @function tell-me-if-its-a-token($token) {
   @if sentro.token-check($token) {
@@ -88,7 +88,7 @@ token-create($key, $value) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 :root {
   @include sentro.token-create('brand-color-light', #ff7700);
@@ -114,7 +114,7 @@ token-get($key) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .my-selector {
   background-color: sentro.token-get('brand-color-light');
@@ -142,7 +142,7 @@ token-get-raw($key) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .my-selector {
   background-color: rgba(sentro.token-get-raw('brand-color-light'), 70%);
@@ -166,7 +166,7 @@ token-switch($query, $fallback: ()) {}
 ```
 ### Usage
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $fill: #ff7700 !default;
 
@@ -195,7 +195,7 @@ token-switch-raw($query, $fallback: ()) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $fill: #ff7700 !default;
 

@@ -20,8 +20,8 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'node_modules/@matteusan/sentro';
-@use 'node_modules/sass-true/sass/true';
+@use 'pkg:@matteusan/sentro';
+@use 'pkg:sass-true/sass/true';
 
 @include true.describe('Converters [module]') {
   @include true.it('should convert px to rem') {

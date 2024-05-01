@@ -25,7 +25,7 @@ breakpoint-config($map: (), $breakpoints...) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 :root {
   @include sentro.token-config(
@@ -55,7 +55,7 @@ breakpoint-check($query) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @function tell-me-if-its-a-breakpoint($breakpoint) {
   @if sentro.breakpoint-check($breakpoint) {
@@ -83,7 +83,7 @@ breakpoint-create($key, $value) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 dialog {
   // CSS Styles
@@ -112,7 +112,7 @@ token-get($key) {}
 ### Usage
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 dialog {
   // CSS Styles

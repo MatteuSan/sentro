@@ -12,7 +12,7 @@ Throwing an error is as simple as calling the `sentro.throw-error()` mixin with 
 
 ```scss
 // main.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @debug sentro.throw-error('This is an error message.', 'main.scss');
 ```
@@ -28,7 +28,7 @@ Throwing a warning is as simple as calling the `sentro.throw-warn()` mixin with 
 
 ```scss
 // main.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @debug sentro.throw-warn('This is a warning message.', 'main.scss');
 ```

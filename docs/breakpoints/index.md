@@ -13,7 +13,7 @@ Configure your breakpoints using the `sentro.breakpoint-config()` mixin.
 - For maps, the `default` key is the set non-variant key for the parent key (please see the examples below).
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 @include sentro.breakpoint-config(
   $small: 320px,
@@ -26,7 +26,7 @@ Configure your breakpoints using the `sentro.breakpoint-config()` mixin.
 The `breakpoint-config()` mixin also supports map-based token sets using the `$map` parameter.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-breakpoint-map: (
   small: 320px,
@@ -46,7 +46,7 @@ $_my-breakpoint-map: (
 You can also nest breakpoints within each other.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-breakpoint-map: (
   mobile: (
@@ -75,7 +75,7 @@ You can use these breakpoints by doing this:
 It also supports both at the same time.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-breakpoint-map: (
   large: 890px,
@@ -94,7 +94,7 @@ $_my-breakpoint-map: (
 When using the breakpoints in your CSS, you are going to use the `breakpoint-create()` mixin. It takes in a valid breakpoint token you've configured in the `breakpoint-config()` mixin.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-breakpoint-map: (
   small: 320px,
@@ -119,7 +119,7 @@ When you want a specific type of breakpoint in your CSS, you can use the same mi
 - `$property` refers to what property to watch for. The usual values for this property are `'width'` and `'height'` with the default being `'height'`.
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 $_my-breakpoint-map: (
   small: 320px,

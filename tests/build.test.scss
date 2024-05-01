@@ -20,7 +20,7 @@
 //  SOFTWARE.
 //--------------------------------------------------------------------
 
-@use 'node_modules/@matteusan/sentro' with ($verbose: true, $separator: '.');
+@use 'pkg:@matteusan/sentro' with ($verbose: true, $separator: '.');
 
 @include sentro.breakpoint-config((
   'sm': 640px,

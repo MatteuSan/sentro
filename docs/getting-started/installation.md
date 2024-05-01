@@ -18,7 +18,7 @@ npm install @matteusan/sentro --save
 In your main SCSS stylesheet, use the `@use` at-rule to use the library.
 
 ```scss
-@use 'node_modules/@matteusan/sentro';
+@use 'pkg:@matteusan/sentro';
 ```
 
 Then configure the **prefix** to be used and the **context** in your design system using the `with ()` sass feature.
@@ -27,7 +27,7 @@ Then configure the **prefix** to be used and the **context** in your design syst
 - **Context** provides an additional unique prefix for your tokens (e.g. `'token'`, `'theme'`, etc.)
 
 ```scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 ```
 
 ### When using it in partials
@@ -37,10 +37,10 @@ requires you to configure the `$prefix` and `$context` once in your main SCSS fi
 
 ```scss
 // main.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 // _partial.scss
-@use 'node_modules/@matteusan/sentro';
+@use 'pkg:@matteusan/sentro';
 ```
 
 The case is different for SCSS files that are not partials and will not get used/imported in the main SCSS file. You
@@ -49,10 +49,10 @@ the main SCSS file.
 
 ```scss
 // main.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 // my-component.scss
-@use 'node_modules/@matteusan/sentro' with ($prefix: 'sdc', $context: 'my-component');
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'my-component');
 ```
 
 As seen above, we recommend that the `$context` value is the same as the component name.

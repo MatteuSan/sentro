@@ -23,4 +23,8 @@
 const path = require('path');
 const sassTest = require('sass-true');
 const filePath = path.join(__dirname, './main.test.scss');
-sassTest.runSass({ file: filePath }, { describe, it });
+const scss = require('sass');
+
+sassTest.runSass({ describe, it }, filePath, {
+  importers: [new scss.NodePackageImporter()]
+});
