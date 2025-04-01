@@ -5,7 +5,5 @@
 /dist
 /dump
 
-.yarnrc.yml
-
-*/**/*.test.css
-*/**/*.test.css.map
+/tests/**/*.test.css
+/tests/**/*.test.css.map
