@@ -1,6 +1,6 @@
 {
   "name": "sentro",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A low-level SCSS library for building robust token-driven design systems at scale.",
   "main": "packages/sentro/_index.scss",
   "author": "Matteu",

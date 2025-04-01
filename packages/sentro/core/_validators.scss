@@ -33,7 +33,7 @@
        or $query == ()
        or $query == none
        or $query == null
-       or length($query) == 0 {
+       or list.length($query) == 0 {
     @return true;
   }
   @return false;
