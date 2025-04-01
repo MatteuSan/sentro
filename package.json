@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/MatteuSan/sentro#readme",
   "scripts": {
-    "build:sass": "yarn && clear && gulp --gulpfile=\"gulpfile.ts\"",
-    "test:sass": "yarn && clear && jest --config=\"jest.config.ts\"",
+    "build:sass": "yarn && gulp --gulpfile=\"gulpfile.ts\"",
+    "test:sass": "yarn && jest --config=\"jest.config.ts\"",
     "pub:major": "npm version major --force && cd packages/sentro && npm version major --force && npm publish",
     "pub:minor": "npm version minor --force && cd packages/sentro && npm version minor --force && npm publish",
     "pub:patch": "npm version patch --force && cd packages/sentro && npm version patch --force && npm publish"
