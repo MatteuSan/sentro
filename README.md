@@ -8,7 +8,7 @@ npm install @matteusan/sentro --save
 ```
 
 ## Documentation
-- The documentation for this project is located [here](https://docs.matteusan.me/docs/sentro).
+- The documentation for this project is located [here](https://sentro.matteusan.com/docs).
 
 ## Showcase
 #### SCSS Input
