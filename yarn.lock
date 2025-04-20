@@ -882,11 +882,11 @@ __metadata:
   linkType: hard
 
 "@matteusan/sentro@file:./packages/sentro::locator=sentro%40workspace%3A.":
-  version: 1.2.1
-  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=7e04cf&locator=sentro%40workspace%3A."
+  version: 1.2.2
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=7ea03d&locator=sentro%40workspace%3A."
   peerDependencies:
     sass: ^1.74.1
-  checksum: e4ed20c1dd1f9a1cf5c87e5786ba420be7e991077011fd266caf15252cb9fa50984d7b3036c595c6c6803e670f15764c31cebcfe17c97a31e4deee7a7024dd24
+  checksum: 11e3aedd0a70c6daccc8af4738cae34c5dd666cf8c6062238bb9442657a84922a65e51b84a2654a310b4e4e01cbff66152c66d4ab62d29376c39bbd03d774f82
   languageName: node
   linkType: hard
 
