@@ -1,0 +1,17 @@
+<component name="CopyrightManager">
+  <settings default="MatteuSan MIT">
+    <module2copyright>
+      <element module="Project Files" copyright="MatteuSan MIT" />
+    </module2copyright>
+    <LanguageOptions name="CSS">
+      <option name="fileTypeOverride" value="3" />
+    </LanguageOptions>
+    <LanguageOptions name="SCSS">
+      <option name="fileTypeOverride" value="3" />
+      <option name="block" value="false" />
+      <option name="lenBefore" value="70" />
+      <option name="lenAfter" value="70" />
+      <option name="filler" value="-" />
+    </LanguageOptions>
+  </settings>
+</component>
