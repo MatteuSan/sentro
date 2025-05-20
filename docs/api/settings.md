@@ -128,3 +128,14 @@ It accepts a character. This will be the default token separator for your entire
   $default-separator: '.' // uses . instead of - to separate tokens.
 );
 ```
+
+## `$verbose`
+It accepts a boolean value. Specifies if the errors and warnings provided are verbose. It is turned off by default.
+
+```scss
+@use 'pkg:@matteusan/sentro' with (
+  $prefix: 'sdc',
+  $context: 'theme',
+  $verbose: true
+);
+```

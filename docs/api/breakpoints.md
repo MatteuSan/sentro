@@ -124,3 +124,22 @@ dialog {
 
 ...
 ```
+
+## `breakpoint-registry-get()` function
+
+A function that returns a list of keys from all registered breakpoints. By default, it returns all registered breakpoint keys. However, you can specify which breakpoints to get from the registry using a list of keywords.
+
+### Syntax
+```scss
+/// @param {list<string>} $targets
+/// @return {list<string>} A list of all registered breakpoint keys.
+breakpoint-registry-get($targets: ()) {}
+```
+
+### Usage
+```scss
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+
+$breakpoints: sentro.breakpoint-registry-get();
+$mobile-only: sentro.breakpoint-registry-get(('mobile'));
+```

@@ -74,7 +74,7 @@ token-check($query) {}
 
 Creates a token. Must be used within a valid CSS selector.
 
-This is the smallest and the most basic mixin for this API. This is where all the individual tokens gets passed and made
+This is the smallest and the most basic mixin for this API. This is where all the individual tokens get passed and made
 into a design token available for querying.
 
 ### Syntax
@@ -153,7 +153,7 @@ token-get-raw($key) {}
 
 ## `token-switch()` function
 
-Queries a token; if it is a token it returns the token, if not it returns the value as is. Must be used as a property
+Queries a token; if it is a token, it returns the token, if not, it returns the value as is. Must be used as a property
 value, css-function value, or key-fallback value.
 
 This is especially useful when creating your styling API.
@@ -179,7 +179,7 @@ $fill: #ff7700 !default;
 
 ## `token-switch-raw()` function
 
-Queries a token; if it is a token it returns the token in its raw value form, if not it returns the value as is. Must be
+Queries a token; if it is a token, it returns the token in its raw value form, if not, it returns the value as is. Must be
 used as a property value, css-function value, or key-fallback value.
 
 This is especially useful when creating your styling API.
@@ -204,4 +204,23 @@ $fill: #ff7700 !default;
 }
 
 ...
+```
+
+## `token-registry-get()` function
+
+A function that returns a list of keys from all registered tokens. By default, it returns all registered token keys. However, you can specify which tokens to get from the registry using a list of keywords.
+
+### Syntax
+```scss
+/// @param {list<string>} $targets
+/// @return {list<string>} A list of all registered token keys.
+token-registry-get($targets: ()) {}
+```
+
+### Usage
+```scss
+@use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
+
+$tokens: sentro.token-registry-get();
+$colors-only: sentro.token-registry-get(('color'));
 ```
