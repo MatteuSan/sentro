@@ -127,16 +127,16 @@ $_ds-breakpoint-registry: ();
   @if not validators.is-empty($targets) {
     $targeted-breakpoints: ();
     @each $target in $targets {
-      @each $key, $value in $_ds-breakpoint-registry {
+      @each $key in map.keys($_ds-breakpoint-registry) {
         @if string.index($key, $target) == 1 {
-          $targeted-breakpoints: map.set($targeted-breakpoints, $key, $value);
+          $targeted-breakpoints: list.append($targeted-breakpoints, $key);
         }
       }
     }
     @return $targeted-breakpoints;
   }
 
-  @return $_ds-breakpoint-registry;
+  @return map.keys($_ds-breakpoint-registry);
 }
 
 /// Registers a breakpoint to the registry.

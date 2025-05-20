@@ -98,21 +98,21 @@ $_ds-key-registry: ();
 
 /// Retrieves the entire key registry.
 /// @param {list<string>} $targets
-/// @return {map} map of registered keys.
+/// @return {list<string>} list of registered keys.
 @function registry-get($targets: ()) {
   @if not validators.is-empty($targets) {
     $targeted-keys: ();
     @each $target in $targets {
-      @each $key, $value in $_ds-key-registry {
+      @each $key in map.keys($_ds-key-registry) {
         @if string.index($key, $target) == 1 {
-          $targeted-keys: map.set($targeted-keys, $key, $value);
+          $targeted-keys: list.append($targeted-keys, $key);
         }
       }
     }
     @return $targeted-keys;
   }
 
-  @return $_ds-key-registry;
+  @return map.keys($_ds-key-registry);
 }
 
 /// Sanitizes the value passed to the key.
