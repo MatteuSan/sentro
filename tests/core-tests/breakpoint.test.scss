@@ -1,10 +1,10 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
 
 @use 'pkg:@matteusan/sentro';
-@use 'sass-true' as true;
+@use 'pkg:sass-true' as true;
 
 @include true.describe('Breakpoint [module]') {
   @include true.it('should configure breakpoints') {
@@ -14,11 +14,20 @@
       'large': 890px,
       'xlarge': 1077px
     ));
+    @include true.assert-equal(sentro.breakpoint-registry-get(), ( // Confirm each breakpoint has been created through the registry
+      'small',
+      'medium',
+      'large',
+      'xlarge'
+    ));
+  }
+
+  @include true.it('should retreive a breakpoint registry') {
     @include true.assert-equal(sentro.breakpoint-registry-get(), (
-      'small': 320px,
-      'medium': 640px,
-      'large': 890px,
-      'xlarge': 1077px
+      'small',
+      'medium',
+      'large',
+      'xlarge'
     ));
   }
 
@@ -43,14 +52,14 @@
 
   @include true.it('should retrieve the entire breakpoint registry') {
     @include true.assert-equal(sentro.breakpoint-registry-get(), (
-      'small': 320px,
-      'medium': 640px,
-      'large': 890px,
-      'xlarge': 1077px
+      'small',
+      'medium',
+      'large',
+      'xlarge'
     ));
     @include true.assert-equal(sentro.breakpoint-registry-get($targets: ('small', 'xlarge')), (
-      'small': 320px,
-      'xlarge': 1077px
+      'small',
+      'xlarge'
     ));
   }
 }

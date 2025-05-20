@@ -1,4 +1,4 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -12,48 +12,95 @@
       @include true.output {
         :root {
           @include sentro.token-config((
-            token-test: #f70
+            'orange': (
+              100: hsl(24, 80%, 93%),
+              200: hsl(24, 80%, 80%),
+              300: hsl(24, 80%, 70%),
+              400: hsl(24, 80%, 53%),
+              600: hsl(24, 80%, 40%),
+              800: hsl(24, 80%, 20%),
+            ),
+            'amber': (
+              100: hsl(36, 85%, 93%),
+              200: hsl(36, 85%, 80%),
+              300: hsl(36, 85%, 70%),
+              400: hsl(36, 85%, 53%),
+              600: hsl(36, 85%, 40%),
+              800: hsl(36, 85%, 20%),
+            )
           ));
         }
       }
       @include true.expect {
         :root {
-          --token-test: #f70;
+          --orange-100: hsl(24, 80%, 93%);
+          --orange-200: hsl(24, 80%, 80%);
+          --orange-300: hsl(24, 80%, 70%);
+          --orange-400: hsl(24, 80%, 53%);
+          --orange-600: hsl(24, 80%, 40%);
+          --orange-800: hsl(24, 80%, 20%);
+          --amber-100: hsl(36, 85%, 93%);
+          --amber-200: hsl(36, 85%, 80%);
+          --amber-300: hsl(36, 85%, 70%);
+          --amber-400: hsl(36, 85%, 53%);
+          --amber-600: hsl(36, 85%, 40%);
+          --amber-800: hsl(36, 85%, 20%);
         }
       }
     }
   }
 
-  // @include true.it('should retrieve a token registry') {
-  //   @include true.assert-equal(sentro.token-registry-get(), (
-  //     'token-test': #f70
-  //   ));
-  // }
-
   @include true.it('should retrieve a token') {
-    @include true.assert-equal(sentro.token-get('token-test'), var(--token-test));
+    @include true.assert-equal(sentro.token-get('orange-400'), var(--orange-400));
   }
 
   @include true.it('should retrieve a token\'s raw value') {
-    @include true.assert-equal(sentro.token-get-raw('token-test'), #f70);
+    @include true.assert-equal(sentro.token-get-raw('orange-400'), hsl(24, 80%, 53%));
   }
 
   @include true.it('should check a token\'s validity') {
-    @include true.assert-true(sentro.token-check('token-test'));
-    @include true.assert-false(sentro.token-check('token-text'));
+    @include true.assert-true(sentro.token-check('orange-400'));
+    @include true.assert-false(sentro.token-check('invalid-token'));
   }
 
   @include true.it('should switch values depending on the token validity') {
-    @include true.assert-equal(sentro.token-switch('token-test'), var(--token-test));
+    @include true.assert-equal(sentro.token-switch('orange-400'), var(--orange-400));
     @include true.assert-equal(sentro.token-switch(#237), #237);
     $param: 'text';
     @include true.assert-equal(sentro.token-switch('token-#{$param}', #237), #237);
   }
 
   @include true.it('should switch raw values depending on the token validity') {
-    @include true.assert-equal(sentro.token-switch-raw('token-test'), #f70);
+    @include true.assert-equal(sentro.token-switch-raw('orange-400'), hsl(24, 80%, 53%));
     @include true.assert-equal(sentro.token-switch-raw(#237), #237);
     $param: 'text';
     @include true.assert-equal(sentro.token-switch-raw('token-#{$param}', #237), #237);
+  }
+
+  @include true.it('should retrieve a token registry') {
+    @include true.assert-equal(sentro.token-registry-get(), (
+      'orange-100',
+      'orange-200',
+      'orange-300',
+      'orange-400',
+      'orange-600',
+      'orange-800',
+      'amber-100',
+      'amber-200',
+      'amber-300',
+      'amber-400',
+      'amber-600',
+      'amber-800',
+    ));
+
+    // Test with targets
+    @include true.assert-equal(sentro.token-registry-get($targets: ('amber')), (
+      'amber-100',
+      'amber-200',
+      'amber-300',
+      'amber-400',
+      'amber-600',
+      'amber-800'
+    ));
   }
 }
