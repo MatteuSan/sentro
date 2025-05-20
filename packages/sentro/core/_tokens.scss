@@ -1,4 +1,4 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -132,17 +132,16 @@ $_ds-token-registry: ();
   }
 }
 
-// TODO: Find a way to implement this properly.
 /// Retrieves the entire token registry.
 /// @param {list<string>} $targets
-/// @return {map} map of tokens.
+/// @return {list<string>} list of token keys.
 @function registry-get($targets: 'all') {
   @if not validators.is-empty($targets) {
     $targeted-tokens: ();
     @each $target in $targets {
-      @each $key, $value in $_ds-token-registry {
+      @each $key in $_ds-token-registry {
         @if string.index($key, $target) == 1 {
-          $targeted-tokens: map.set($targeted-tokens, $key, $value);
+          $targeted-tokens: map.set($targeted-tokens, $key);
         }
       }
     }

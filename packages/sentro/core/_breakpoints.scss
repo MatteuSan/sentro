@@ -1,4 +1,4 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -125,15 +125,15 @@ $_ds-breakpoint-registry: ();
 /// @return {map} map of tokens.
 @function registry-get($targets: 'all') {
   @if not validators.is-empty($targets) {
-    $targeted-tokens: ();
+    $targeted-breakpoints: ();
     @each $target in $targets {
       @each $key, $value in $_ds-breakpoint-registry {
         @if string.index($key, $target) == 1 {
-          $targeted-tokens: map.set($targeted-tokens, $key, $value);
+          $targeted-breakpoints: map.set($targeted-breakpoints, $key);
         }
       }
     }
-    @return $targeted-tokens;
+    @return $targeted-breakpoints;
   }
 
   @if $targets == 'all' {

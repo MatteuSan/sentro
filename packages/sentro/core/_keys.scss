@@ -1,4 +1,4 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -94,6 +94,29 @@ $_ds-key-registry: ();
   @if not check($key) {
     @include _register-key($key, $value);
   }
+}
+
+/// Retrieves the entire key registry.
+/// @param {list<string>} $targets
+/// @return {list<string>} list of keys' keys.
+@function registry-get($targets: 'all') {
+  @if not validators.is-empty($targets) {
+    $targeted-keys: ();
+    @each $target in $targets {
+      @each $key in $_ds-key-registry {
+        @if string.index($key, $target) == 1 {
+          $targeted-keys: map.set($targeted-keys, $key);
+        }
+      }
+    }
+    @return $targeted-keys;
+  }
+
+  @if $targets == 'all' {
+    @return $_ds-key-registry;
+  }
+
+  @return $_ds-key-registry;
 }
 
 /// Sanitizes the value passed to the key.
