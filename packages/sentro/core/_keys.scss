@@ -105,7 +105,7 @@ $_ds-key-registry: ();
     @each $target in $targets {
       @each $key in map.keys($_ds-key-registry) {
         @if string.index($key, $target) == 1 {
-          $targeted-keys: list.append($targeted-keys, $key);
+          $targeted-keys: list.append($targeted-keys, $key, 'comma');
         }
       }
     }

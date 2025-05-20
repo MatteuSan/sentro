@@ -141,7 +141,7 @@ $_ds-token-registry: ();
     @each $target in $targets {
       @each $key in map.keys($_ds-token-registry) {
         @if string.index($key, $target) == 1 {
-          $targeted-tokens: list.append($targeted-tokens, $key);
+          $targeted-tokens: list.append($targeted-tokens, $key, 'comma');
         }
       }
     }

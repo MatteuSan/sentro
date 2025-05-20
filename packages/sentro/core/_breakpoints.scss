@@ -129,7 +129,7 @@ $_ds-breakpoint-registry: ();
     @each $target in $targets {
       @each $key in map.keys($_ds-breakpoint-registry) {
         @if string.index($key, $target) == 1 {
-          $targeted-breakpoints: list.append($targeted-breakpoints, $key);
+          $targeted-breakpoints: list.append($targeted-breakpoints, $key, 'comma');
         }
       }
     }
