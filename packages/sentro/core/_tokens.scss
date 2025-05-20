@@ -134,22 +134,18 @@ $_ds-token-registry: ();
 
 /// Retrieves the entire token registry.
 /// @param {list<string>} $targets
-/// @return {list<string>} list of token keys.
-@function registry-get($targets: 'all') {
+/// @return {map} map of registered tokens.
+@function registry-get($targets: ()) {
   @if not validators.is-empty($targets) {
     $targeted-tokens: ();
     @each $target in $targets {
-      @each $key in $_ds-token-registry {
+      @each $key, $value in $_ds-token-registry {
         @if string.index($key, $target) == 1 {
-          $targeted-tokens: map.set($targeted-tokens, $key);
+          $targeted-tokens: map.set($targeted-tokens, $key, $value);
         }
       }
     }
     @return $targeted-tokens;
-  }
-
-  @if $targets == 'all' {
-    @return $_ds-token-registry;
   }
 
   @return $_ds-token-registry;
