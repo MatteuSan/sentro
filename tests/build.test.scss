@@ -35,12 +35,12 @@ $tokens: sentro.token-registry-get();
 $breakpoints: sentro.breakpoint-registry-get();
 
 @layer utils {
-  @each $key, $_ in $tokens {
+  @each $key in $tokens {
     .color-#{$key} {
       color: sentro.token-get($key);
     }
 
-    @each $bp, $_ in $breakpoints {
+    @each $bp in $breakpoints {
       .\@#{$bp}\:color-#{$key} {
         @include sentro.breakpoint-create($bp) {
           color: sentro.token-get($key);
