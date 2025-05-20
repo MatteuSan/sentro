@@ -99,7 +99,7 @@ $_ds-key-registry: ();
 /// Retrieves the entire key registry.
 /// @param {list<string>} $targets
 /// @return {list<string>} list of registered keys.
-@function registry-get($targets: ()) {
+@function registry-get($targets: (), $exceptions: ()) {
   @if not validators.is-empty($targets) {
     $targeted-keys: ();
     @each $target in $targets {
@@ -107,6 +107,16 @@ $_ds-key-registry: ();
         @if string.index($key, $target) == 1 {
           $targeted-keys: list.append($targeted-keys, $key, 'comma');
         }
+      }
+    }
+    @return $targeted-keys;
+  }
+
+  @if not validators.is-empty($exceptions) {
+    $targeted-keys: ();
+    @each $key in map.keys($_ds-key-registry) {
+      @if not list.index($exceptions, $key) {
+        $targeted-keys: list.append($targeted-keys, $key, 'comma');
       }
     }
     @return $targeted-keys;

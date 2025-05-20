@@ -123,7 +123,7 @@ $_ds-breakpoint-registry: ();
 /// Retrieves the entire breakpoint registry.
 /// @param {list<string>} $targets
 /// @return {map} map of registered breakpoints.
-@function registry-get($targets: ()) {
+@function registry-get($targets: (), $exceptions: ()) {
   @if not validators.is-empty($targets) {
     $targeted-breakpoints: ();
     @each $target in $targets {
@@ -131,6 +131,16 @@ $_ds-breakpoint-registry: ();
         @if string.index($key, $target) == 1 {
           $targeted-breakpoints: list.append($targeted-breakpoints, $key, 'comma');
         }
+      }
+    }
+    @return $targeted-breakpoints;
+  }
+
+  @if not validators.is-empty($exceptions) {
+    $targeted-breakpoints: ();
+    @each $key in map.keys($_ds-breakpoint-registry) {
+      @if not list.index($exceptions, $key) {
+        $targeted-breakpoints: list.append($targeted-breakpoints, $key, 'comma');
       }
     }
     @return $targeted-breakpoints;
