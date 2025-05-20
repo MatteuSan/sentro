@@ -1,9 +1,11 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
 
-@use 'pkg:@matteusan/sentro' with ($verbose: true, $separator: '.');
+@use 'pkg:@matteusan/sentro' with ($verbose: true);
+
+@layer layout, utils;
 
 @include sentro.breakpoint-config((
   'sm': 640px,
@@ -18,21 +20,45 @@
 
 :root {
   @include sentro.token-config((
-    '$red': red,
+    '$red': #f00,
     '$blue': (
-      default: blue,
-      light: lightblue
+      'default': hsl(240, 100%, 50%),
+      'light': (
+        'default': oklch(0.856 0.049 219.654),
+        'alpha': rgb(from oklch(0.856 0.049 219.654) r g b / 50%)
+      )
     )
   ));
 }
 
-body {
-  background: sentro.key-create('global.bg-color', sentro.token-get('blue.light'));
-  color: sentro.key-create('global.text-color', sentro.token-get('red'));
-  border: 1px solid sentro.key-get('global.bg-color');
+$tokens: sentro.token-registry-get();
+$breakpoints: sentro.breakpoint-registry-get();
 
-  @include sentro.breakpoint-create('mobile.tablet') {
-    @include sentro.key-bind('global.bg-color', sentro.token-get('blue'));
-    @include sentro.key-bind('global.text-color', sentro.token-get('red'));
+@layer utils {
+  @each $key, $_ in $tokens {
+    .color-#{$key} {
+      color: sentro.token-get($key);
+    }
+
+    @each $bp, $_ in $breakpoints {
+      .\@#{$bp}\:color-#{$key} {
+        @include sentro.breakpoint-create($bp) {
+          color: sentro.token-get($key);
+        }
+      }
+    }
+  }
+}
+
+@layer layout {
+  body {
+    background: sentro.key-create('global-bg-color', sentro.token-get('blue-light'));
+    color: sentro.key-create('global-text-color', sentro.token-get('red'));
+    border: 1px solid sentro.key-get('global-bg-color');
+
+    @include sentro.breakpoint-create('mobile-tablet') {
+      @include sentro.key-bind('global-bg-color', sentro.token-get('blue'));
+      @include sentro.key-bind('global-text-color', sentro.token-get('red'));
+    }
   }
 }
