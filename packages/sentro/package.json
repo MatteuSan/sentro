@@ -24,9 +24,6 @@
   "exports": {
     ".": {
       "sass": "./_index.scss"
-    },
-    "./**/*.scss": {
-      "sass": "./**/*.scss"
     }
   },
   "publishConfig": {
