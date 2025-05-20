@@ -139,3 +139,14 @@ It accepts a boolean value. Specifies if the errors and warnings provided are ve
   $verbose: true
 );
 ```
+
+## `$strict-values`
+It accepts a boolean value. This will allow functions like `key-create` to automatically query the token registry and get its value in CSS custom property form. Otherwise, it will only use the entered value as-is. If this setting is turned on, you are required to specify what action to perform by calling Sentro's other functions such as `token-get-raw()`, `token-switch()`, etc. This is turned off by default.
+
+```scss
+@use 'pkg:@matteusan/sentro' with (
+  $prefix: 'sdc',
+  $context: 'theme',
+  $strict-values: true
+);
+```

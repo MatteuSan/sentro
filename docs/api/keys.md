@@ -23,7 +23,7 @@ key-bind($key, $value) {}
 @use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
-  @include sentro.key-bind('card-bg', sentro.token-switch('surface-light'));
+  @include sentro.key-bind('card-bg', 'surface-light');
 }
 
 ...
@@ -48,7 +48,7 @@ key-create($key, $value) {}
 @use 'pkg:@matteusan/sentro' with ($prefix: 'sdc', $context: 'theme');
 
 .sdc-card {
-  background: sentro.key-create('card-bg', sentro.token-switch('surface-light'));
+  background: sentro.key-create('card-bg', 'surface-light');
 }
 
 ...
