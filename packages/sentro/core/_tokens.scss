@@ -9,6 +9,7 @@
 @use 'sass:meta';
 @use 'sass:string';
 
+@use 'throw';
 @use 'validators';
 
 /// Stores the prefix for the design system.
@@ -105,7 +106,7 @@ $_ds-token-registry: ();
 /// @param {boolean} $important
 /// @return {string} tokenized css custom property selector.
 @function get($key, $important: false) {
-  @if _is-registered-token($key) {
+  @if _is-registered-token($key, $source: 'token-get()') {
     @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-context($ds-context)}#{_sanitize-key-in-custom-property($key)});
   }
   @if not $validation {
@@ -121,7 +122,7 @@ $_ds-token-registry: ();
 /// @param {boolean} $important
 /// @return {*} token value.
 @function get-raw($key, $important: false) {
-  @if _is-registered-token($key) {
+  @if _is-registered-token($key, $source: 'token-get-raw()') {
     @return map.get($_ds-token-registry, $key);
   }
   @if not $validation {
@@ -213,7 +214,7 @@ $_ds-token-registry: ();
 /// @param {*} query
 /// @return {boolean} validated query.
 @function check($query) {
-  @return _is-registered-token($query, false);
+  @return _is-registered-token($query, false, 'token-check()');
 }
 
 /// Sanitizes and verifies a key.
@@ -273,13 +274,13 @@ $_ds-token-registry: ();
 /// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered token
-@function _is-registered-token($query, $errors: $validation) {
+@function _is-registered-token($query, $errors: $validation, $source: ()) {
   @if not list.index(map.keys($_ds-token-registry), $query) {
     @if $errors {
       @if $verbose {
-        @error 'Invalid token: #{$query}. Please use a valid registered token: #{map.keys($_ds-token-registry)}';
+        @return throw.error('Invalid token: #{$query}. Please use a valid registered token: #{map.keys($_ds-token-registry)}', $source);
       }
-      @error 'Invalid token: #{$query}.';
+      @return throw.error('Invalid token: #{$query}.', $source);
     } @else {
       @return false;
     }
