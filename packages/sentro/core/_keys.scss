@@ -10,6 +10,7 @@
 @use 'sass:meta';
 @use 'sass:string';
 
+@use 'throw';
 @use 'validators';
 
 /// Stores the prefix for the design system.
@@ -49,7 +50,7 @@ $_ds-key-registry: ();
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get($key) {
-  @if _is-registered-key($key) {
+  @if _is-registered-key($key, $source: 'key-get()') {
     @return var(--#{_sanitize-prefix($ds-prefix)}#{_sanitize-key-in-custom-property($key)});
   }
   @if not $validation {
@@ -61,7 +62,7 @@ $_ds-key-registry: ();
 /// @param {string} $key
 /// @return {string} returns var() with key.
 @function get-raw($key) {
-  @if _is-registered-key($key) {
+  @if _is-registered-key($key, $source: 'key-get-raw()') {
     $raw: tools.string-replace('#{tools.string-replace('#{map.get($_ds-key-registry, $key)}', ')', '')}', 'var(--', '');
     @if tokens.check($raw) {
       @return tokens.switch-raw($raw);
@@ -77,7 +78,7 @@ $_ds-key-registry: ();
 /// @param {*} query
 /// @return {boolean} validated query.
 @function check($query) {
-  @return _is-registered-key($query, false);
+  @return _is-registered-key($query, false, 'key-check()');
 }
 
 /// Binds the a value to the component key.
@@ -171,13 +172,13 @@ $_ds-key-registry: ();
 /// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered key
-@function _is-registered-key($query, $errors: $validation) {
+@function _is-registered-key($query, $errors: $validation, $source: ()) {
   @if not list.index(map.keys($_ds-key-registry), $query) {
     @if $errors {
       @if $verbose {
-        @error 'Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}';
+        @return throw.error('Invalid key: #{$query}. Please use a valid registered key: #{map.keys($_ds-key-registry)}', $source);
       }
-      @error 'Invalid key: #{$query}.';
+      @return throw.error('Invalid key: #{$query}.', $source);
     } @else {
       @return false;
     }
