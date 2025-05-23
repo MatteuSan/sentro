@@ -18,6 +18,6 @@
 /// @param {int} $px
 /// @return {int} rem value.
 @function px-to-rem($px) {
-  @warn 'This function is soon to be deprecated. Use to-rem() function instead.';
+  @debug throw.warn('This function will be deprecated in version 2.0. Use to-rem() function instead.');
   @return to-rem($px);
 }
