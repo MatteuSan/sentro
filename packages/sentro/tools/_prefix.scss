@@ -4,6 +4,7 @@
 // LICENSE file in the root directory of this source tree.
 
 @use '../core/validators';
+@use '../core/throw';
 @use 'sass:map';
 
 $prefix-properties: (
@@ -69,5 +70,6 @@ $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
 }
 
 @mixin prefix($property, $value, $targets: all) {
+  @debug throw.warn('This function will be deprecated in version 2.0. We strongly recommend not to use this function.');
   @include _prefix-property($property, $value, $targets);
 }
