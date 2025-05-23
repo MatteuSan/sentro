@@ -166,9 +166,9 @@ $_ds-breakpoint-registry: ();
   @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
     @if $errors {
       @if $verbose {
-        @return throw.error('Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}');
+        @return throw.error('Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}', $source);
       }
-      @error throw.error('Invalid breakpoint: #{$query}.');
+      @error throw.error('Invalid breakpoint: #{$query}.', $source);
     } @else {
       @return false;
     }
