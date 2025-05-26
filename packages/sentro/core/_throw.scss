@@ -1,4 +1,4 @@
-// Copyright (c) 2025 MatteuSan and its affiliates.
+// Copyright 2025 (c) MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -39,9 +39,9 @@
 /// @return {warn|string} The warning.
 @function warn($message, $source: (), $output-string: false) {
   @if not $output-string {
-    @warn '#{_identify($source, 'WARNING')} #{$message}';
+    @warn '#{_identify($source, 'WARN')} #{$message}';
   }
-  @return '#{_identify($source, 'WARNING')} #{$message}';
+  @return '#{_identify($source, 'WARN')} #{$message}';
 }
 
 /// The warn() function mixin counterpart.
