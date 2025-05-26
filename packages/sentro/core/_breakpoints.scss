@@ -8,7 +8,6 @@
 @use 'sass:meta';
 @use 'sass:string';
 
-@use 'throw';
 @use 'validators';
 
 /// Stores the separator for the design system.
@@ -31,7 +30,7 @@ $_ds-breakpoint-registry: ();
 /// @param {string} $query
 /// @return {boolean} breakpoint verification.
 @function check($query) {
-  @return _is-registered-breakpoint($query, false, 'breakpoint-check()');
+  @return _is-registered-breakpoint($query, false);
 }
 
 /// Configures all the breakpoints to be used in the design system.
@@ -113,7 +112,7 @@ $_ds-breakpoint-registry: ();
 /// @param {string} $query
 /// @return {int|null} breakpoint.
 @function get($query) {
-  @if _is-registered-breakpoint($query, $source: 'breakpoint-get()') {
+  @if _is-registered-breakpoint($query) {
     @return map.get($_ds-breakpoint-registry, $query);
   }
   @if not $validation {
@@ -162,13 +161,13 @@ $_ds-breakpoint-registry: ();
 /// @access private
 /// @param {string} $query
 /// @return {boolean|error} is registered token
-@function _is-registered-breakpoint($query, $errors: $validation, $source: ()) {
+@function _is-registered-breakpoint($query, $errors: $validation) {
   @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
     @if $errors {
       @if $verbose {
-        @return throw.error('Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}');
+        @error 'Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}';
       }
-      @error throw.error('Invalid breakpoint: #{$query}.');
+      @error 'Invalid breakpoint: #{$query}.';
     } @else {
       @return false;
     }
