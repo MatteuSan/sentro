@@ -46,8 +46,8 @@
 
   @include true.it('should retrieve a key registry') {
     @include true.assert-equal(sentro.key-registry-get(), (
-      'test-key',
-      'test-key-2',
+      'token-test',
+      'token-test-2',
     ));
   }
 }
