@@ -12,6 +12,13 @@
   @return math.div($px, 16px) * 1rem;
 }
 
+/// Converts px values to em values.
+/// @param {int} $px
+/// @return {int} em value.
+@function to-em($px) {
+  @return math.div($px, 16px) * 1em;
+}
+
 /// Converts px values to rem values.
 /// @deprecated Use to-rem() function instead.
 /// @param {int} $px
