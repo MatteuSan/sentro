@@ -1,4 +1,4 @@
-// Copyright (c) 2025 MatteuSan and its affiliates.
+// Copyright 2025 (c) MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -6,8 +6,6 @@
 @use 'sass:list';
 @use 'sass:map';
 @use 'sass:meta';
-
-@use 'throw';
 
 /// Check if query is empty.
 /// @param {*} $query
@@ -28,9 +26,9 @@
 /// @param {string} $reference
 /// @param {*} $query
 /// @return {boolean|error} true if the query matches the referenced data type.
-@function is-type($reference, $query, $source: ()) {
+@function is-type($reference, $query) {
   @if meta.type-of($query) != unquote($reference) {
-    @return throw.error('Invalid #{$reference}: #{$query}. Expecting a #{$reference}', $source);
+    @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
   }
   @return true;
 }
