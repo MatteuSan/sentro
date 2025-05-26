@@ -883,10 +883,10 @@ __metadata:
 
 "@matteusan/sentro@file:./packages/sentro::locator=sentro%40workspace%3A.":
   version: 1.3.0
-  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=37d62a&locator=sentro%40workspace%3A."
+  resolution: "@matteusan/sentro@file:./packages/sentro#./packages/sentro::hash=6add2d&locator=sentro%40workspace%3A."
   peerDependencies:
     sass: ^1.74.1
-  checksum: 99c2da5f0b7d67d190335a7e70510f1c26199adaa74e9b9ddaf0964b8653375aa2ac82974dde74d563d4f44c06eee99bac23e870e470882d233e1189aef2305c
+  checksum: aaee66b12d4af2d99a4fd9202b914cfaf0785c80e0d30fcf9b4f179923142191ee7a9ed1faed9c1276667de5f6311ee78d038e12d54c766eb03740302f9d1845
   languageName: node
   linkType: hard
 
