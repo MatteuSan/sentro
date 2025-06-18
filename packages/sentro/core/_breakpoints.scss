@@ -96,11 +96,17 @@ $_ds-breakpoint-registry: ();
   $_valid-properties: ('width', 'height');
 
   @if not list.index($_valid-contexts, $context) {
-    @error 'Invalid context: #{$context}. Expecting a valid context (#{$_valid-contexts}).';
+    @if $verbose {
+      @error 'ERROR [breakpoint-create()]: Invalid context: #{$context}. Expecting a valid context (#{$_valid-contexts}).';
+    }
+    @error 'ERROR [breakpoint-create()]: Invalid context: #{$context}.';
   }
 
   @if not list.index($_valid-properties, $property) {
-    @error 'Invalid property: #{$property}. Expecting a valid property (#{$_valid-properties}).';
+    @if $verbose {
+      @error 'ERROR [breakpoint-create()]: Invalid property: #{$property}. Expecting a valid property (#{$_valid-properties}).';
+    }
+    @error 'ERROR [breakpoint-create()]: Invalid property: #{$property}.';
   }
 
   @media screen and (#{$context}-#{$property}: _sanitize-breakpoint($query, $context)) {
@@ -160,14 +166,15 @@ $_ds-breakpoint-registry: ();
 /// Validates a query if it's a registered token or not.
 /// @access private
 /// @param {string} $query
+/// @param {string} $source
 /// @return {boolean|error} is registered token
-@function _is-registered-breakpoint($query, $errors: $validation) {
+@function _is-registered-breakpoint($query, $errors: $validation, $source: '_is-registered-breakpoint') {
   @if not list.index(map.keys($_ds-breakpoint-registry), $query) {
     @if $errors {
       @if $verbose {
-        @error 'Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}';
+        @error 'ERROR [#{$source}()]: Invalid breakpoint: #{$query}. Please use a valid registered breakpoint: #{map.keys($_ds-breakpoint-registry)}';
       }
-      @error 'Invalid breakpoint: #{$query}.';
+      @error 'ERROR [#{$source}()]: Invalid breakpoint: #{$query}.';
     } @else {
       @return false;
     }

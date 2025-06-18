@@ -69,5 +69,6 @@ $_valid-prefixes: ('webkit', 'ms', 'moz', 'o');
 }
 
 @mixin prefix($property, $value, $targets: all) {
+  @warn 'WARNING [prefix()]: The prefix mixin will be deprecated in version 2.x. Please do not use this mixin in production code.';
   @include _prefix-property($property, $value, $targets);
 }

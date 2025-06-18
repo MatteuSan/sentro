@@ -1,4 +1,4 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -25,10 +25,15 @@
 /// Validate a query's data type from a reference.
 /// @param {string} $reference
 /// @param {*} $query
+/// @param {boolean} $errors
+/// @param {string} $source
 /// @return {boolean|error} true if the query matches the referenced data type.
-@function is-type($reference, $query) {
+@function is-type($reference, $query, $errors: true, $source: ()) {
   @if meta.type-of($query) != unquote($reference) {
-    @error 'Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
+    @if $errors {
+      @error 'ERROR [#{$source}]: Invalid #{$reference}: #{$query}. Expecting a #{$reference}';
+    }
+    @return false;
   }
   @return true;
 }
