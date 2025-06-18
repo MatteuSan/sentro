@@ -1,4 +1,4 @@
-// Copyright 2025 (c) MatteuSan and its affiliates.
+// Copyright (c) 2025 MatteuSan and its affiliates.
 //
 // This source code is licensed under the MIT license found in the
 // LICENSE file in the root directory of this source tree.
@@ -8,9 +8,13 @@ $context: '' !default;
 $separator: '-' !default;
 $verbose: false !default;
 $strict-values: false !default;
-$token-validation: true !default;
-$key-validation: true !default;
-$breakpoint-validation: true !default;
+
+$module-mode: false !default;
+$_validation: if($module-mode == true, false, true);
+
+$token-validation: $_validation !default;
+$key-validation: $_validation !default;
+$breakpoint-validation: $_validation !default;
 
 @forward 'core' with (
   $prefix: $prefix,
